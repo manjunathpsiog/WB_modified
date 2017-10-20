@@ -823,6 +823,32 @@
 
         }
 
+        $scope.DeleteFlowChart = function () {
+            var flowID = $scope.itemSelected.flowChartID
+            var data = JSON.parse($scope.model.toJson());
+            var flowchartID = "flowChartID"
+            data[flowchartID] = flowID;
+            var flowchartName = "flowchartName"
+            data[flowchartName] = $scope.itemSelected.flowchartName;
+
+            $http({
+                method: 'DELETE',
+                url: config.baseUrl + 'deleteFlowchartByID',
+                data: data,
+                headers: {
+                    'Content-Type': 'application/json; charset=utf-8'
+                }
+            }).then(function successCallback(response) {
+                $scope.employees = response.data;
+                alert(JSON.stringify("Deleted Successfully"));
+                window.location = "#/dashboard/ViewFlowChart";
+            }, function errorCallback(response) {
+                console.log(response.statusText);
+            });
+
+
+        }
+
 
         $scope.UploadFile = function () {
 

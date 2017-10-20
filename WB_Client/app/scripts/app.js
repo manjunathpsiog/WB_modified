@@ -156,6 +156,10 @@ angular
                 templateUrl: 'views/ui-elements/ModifyFlowChart.html',
                 url: '/ModifyFlowChart'
             })
+            .state('dashboard.DeleteFlowChart', {
+                templateUrl: 'views/ui-elements/DeleteFlowChart.html',
+                url: '/DeleteFlowChart'
+            })
             .state('dashboard.CreateUsability', {
                 templateUrl: 'views/ui-elements/CreateUsability.html',
                 url: '/CreateUsability'

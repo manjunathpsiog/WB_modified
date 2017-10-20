@@ -77,6 +77,7 @@ app.get('/getFlowChartByID/:id', flowChart.getFlowChartByID);
 app.get('/getFlowChartByName/:id', flowChart.getFlowChartByName);
 app.get('/getFlowChartByFlowIdBlockId/:flowId/:blockId', flowChart.getFlowChartByFlowIdBlockId);
 app.post('/updateFlowchartByID', flowChart.updateFlowchartByID);
+app.delete('/deleteFlowchartByID', flowChart.deleteFlowchartByID);
 
 //Pass formData with key:xmlaData and value as the XML string and returns object with results, nodes and links []
 app.post('/generateFromXml', function (req, res) {
