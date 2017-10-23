@@ -877,7 +877,7 @@
                 }
             }).then(function successCallback(response) {
                 $scope.employees = response.data;
-                alert(JSON.stringify("Deleted Successfully"));
+                //alert(JSON.stringify("Deleted Successfully"));
                 //window.location = "#/dashboard/ViewFlowChart";
                 location.reload()
             }, function errorCallback(response) {
