@@ -168,17 +168,13 @@ angular
                 templateUrl: 'views/ui-elements/ViewPresentations.html',
                 url: '/ViewPresentation'
             })
-            .state('dashboard.buttons', {
-                templateUrl: 'views/ui-elements/buttons.html',
-                url: '/buttons'
-            })
-            .state('dashboard.notifications', {
-                templateUrl: 'views/ui-elements/notifications.html',
-                url: '/notifications'
-            })
             .state('dashboard.generateTests', {
                 templateUrl: 'views/pages/generateTests.html',
                 url: '/generateTests'
+            })
+            .state('dashboard.download', {
+                templateUrl: 'views/ui-elements/Download.html',
+                url: '/download'
             })
     }]);
 
