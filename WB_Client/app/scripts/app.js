@@ -176,18 +176,6 @@ angular
                 templateUrl: 'views/ui-elements/notifications.html',
                 url: '/notifications'
             })
-            .state('dashboard.typography', {
-                templateUrl: 'views/ui-elements/typography.html',
-                url: '/typography'
-            })
-            .state('dashboard.icons', {
-                templateUrl: 'views/ui-elements/icons.html',
-                url: '/icons'
-            })
-            .state('dashboard.grid', {
-                templateUrl: 'views/ui-elements/grid.html',
-                url: '/grid'
-            })
             .state('dashboard.generateTests', {
                 templateUrl: 'views/pages/generateTests.html',
                 url: '/generateTests'
