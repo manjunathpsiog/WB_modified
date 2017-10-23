@@ -205,7 +205,8 @@
                     { text: "Step" },
                     { text: "???", figure: "Diamond" },
                     { category: "End", text: "End" },
-                    { category: "Comment", text: "Comment" }
+                    { category: "Comment", text: "Comment" },
+                    {category : "Connector", text: "Connector" }
                 ])
             });
 

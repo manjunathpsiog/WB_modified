@@ -3,7 +3,7 @@
         return {
             restrict: 'E',
             scope: false,
-            template: '<select ng-model="itemSelected" ng-class="selectpicker" ng-options="item as item.flowchartName for item in items track by item.flowChartID"></select>',
+            template: '<select ng-model="itemSelected" ng-class="selectpicker" class="form-control" ng-options="item as item.flowchartName for item in items track by item.flowChartID"></select>',
             link: function (scope, elem, attr) {               
                 $http({
                     method: 'GET',

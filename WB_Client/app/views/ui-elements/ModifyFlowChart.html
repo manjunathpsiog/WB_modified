@@ -1,20 +1,28 @@
 ﻿<style type="text/css">
     /* The Modal (background) */
+
     .modal {
-        display: none; /* Hidden by default */
-        position: fixed; /* Stay in place */
-        z-index: 1005; /* Sit on top */
+        display: none;
+        /* Hidden by default */
+        position: fixed;
+        /* Stay in place */
+        z-index: 1005;
+        /* Sit on top */
         left: 0;
         top: 0;
-        width: 100%; /* Full width */
-        height: 100%; /* Full height */
-        overflow: auto; /* Enable scroll if needed */
-        background-color: rgb(0,0,0); /* Fallback color */
-        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        width: 100%;
+        /* Full width */
+        height: 100%;
+        /* Full height */
+        overflow: auto;
+        /* Enable scroll if needed */
+        background-color: rgb(0, 0, 0);
+        /* Fallback color */
+        background-color: rgba(0, 0, 0, 0.4);
+        /* Black w/ opacity */
     }
 
     /* Modal Content/Box */
-
 
     .modal-content {
         background-color: #fefefe;
@@ -42,22 +50,22 @@
             float: right;
         }*/
 
-
     .smallUpload {
         float: right;
         font-weight: bold;
         margin: 3%;
     }
 
-        .smallUpload:hover,
-        .smallUpload:focus {
-            color: black;
-            text-decoration: none;
-            cursor: pointer;
-        }
+    .smallUpload:hover,
+    .smallUpload:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
 
 
     /* The Close Button */
+
     .close {
         color: #aaa;
         float: right;
@@ -65,25 +73,26 @@
         font-weight: bold;
     }
 
-        .close:hover,
-        .close:focus {
-            color: black;
-            text-decoration: none;
-            cursor: pointer;
-        }
+    .close:hover,
+    .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
 
     .slick-slide {
         margin: 0px 1px;
     }
 
-        .slick-slide img {
-            width: 100%;
-        }
+    .slick-slide img {
+        width: 100%;
+    }
 
     .slick-prev:before,
     .slick-next:before {
         color: black;
     }
+
     .container {
         width: 800px;
         margin: 0 auto;
@@ -97,18 +106,18 @@
         list-style: none;
     }
 
-        ul.tabs li {
-            background: none;
-            color: #222;
-            display: inline-block;
-            padding: 10px 15px;
-            cursor: pointer;
-        }
+    ul.tabs li {
+        background: none;
+        color: #222;
+        display: inline-block;
+        padding: 10px 15px;
+        cursor: pointer;
+    }
 
-            ul.tabs li.current {
-                background: #ededed;
-                color: #222;
-            }
+    ul.tabs li.current {
+        background: #ededed;
+        color: #222;
+    }
 
     .tab-content {
         display: none;
@@ -116,21 +125,19 @@
         padding: 15px;
     }
 
-        .tab-content.current {
-            display: inherit;
-        }
-
-
+    .tab-content.current {
+        display: inherit;
+    }
 </style>
 
 
 <div>
 
-   
+
     <div class="row">
         <div class="col-lg-12">
             <h1 class="page-header">Business Flows</h1>
-                
+
 
         </div>
         <!-- /.col-lg-12 -->
@@ -141,12 +148,13 @@
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-Modify Flowchart
-                </div><div class="panel-body" ng-controller="MinimalCtrl">
+                    Modify Flowchart
+                </div>
+                <div class="panel-body" ng-controller="MinimalCtrl">
                     <div class="row">
                         <div class="col-lg-6">
                             <form role="form">
-                                <div class="form-group" >
+                                <div class="form-group">
                                     <label>Choose File</label>
                                     <div class="form-group">
                                         <flowchartddl></flowchartddl>
@@ -158,15 +166,15 @@ Modify Flowchart
 
                             </form>
                         </div>
-                        <div class="col-lg-12" >
+                        <div class="col-lg-12">
                             <form role="form">
                                 <div class="form-group">
-                                    <div >
+                                    <div>
                                         <div id="sample">
-                                            
+
                                             <div style="width: 100%; white-space: nowrap;">
                                                 <span style="display: inline-block; vertical-align: top; width: 100px">
-                                                    <go-Palatte go-model="model" style="border: solid 1px black; height: 500px"></go-Palatte>
+                                                    <go-Palatte go-model="model" style="border: solid 1px green; height: 500px"></go-Palatte>
                                                 </span>
                                                 <span style="display: inline-block; vertical-align: top; width: 80%">
                                                     <go-diagram go-model="model" op="1" style="border: solid 1px black; height: 500px"></go-diagram>
@@ -174,7 +182,7 @@ Modify Flowchart
                                             </div>
                                             <div>
                                                 <br />
-                                                <button type="button" ng-click="UpdateFlowChart()"  class="btn btn-primary">Update</button>
+                                                <button type="button" ng-click="UpdateFlowChart()" class="btn btn-primary">Update</button>
                                             </div>
                                             <div>
                                             </div>
@@ -190,23 +198,25 @@ Modify Flowchart
                                                 </div>
                                                 <!-- Modal content -->
                                                 <div class="modal-body">
-                                               
-                                                        <!--<ul class="nav nav-tabs" role="tablist" id="tabContent">
+
+                                                    <!--<ul class="nav nav-tabs" role="tablist" id="tabContent">
                                                             <li><a href="#uploadFile" onclick="return ShowDivs();" data-toggle="tab">File Upload</a></li>
                                                             <li class="active"><a href="#details" onclick="return loadImagesAsList();" id="ListTab" data-toggle="tab">File List View</a></li>
                                                         </ul>-->
                                                     <ul class="tabs">
                                                         <li class="tab-link current" data-toggle="#uploadFile" onclick="return ShowDivs()">
 
-                                                         File Upload
+                                                            File Upload
                                                         </li>
                                                         <li class="tab-link" data-toggle="#details" onclick="return loadImagesAsList()">Order File</li>
                                                     </ul>
                                                     <div id="uploadFile" class="tab-content current">
                                                         <div id="FileUploadDiv">
                                                             <div class="widget-body" style="width: 125px; float: right;">
-                                                              <span id="spnKey" style="display: none"></span>
-                                                                <span class="large label tag label-primary"><span id="spnText"></span></span>
+                                                                <span id="spnKey" style="display: none"></span>
+                                                                <span class="large label tag label-primary">
+                                                                    <span id="spnText"></span>
+                                                                </span>
                                                             </div>
                                                             <br />
                                                             <div class="smallUploadBox">
@@ -218,7 +228,7 @@ Modify Flowchart
                                                             </div>
 
                                                             <!--<i class="glyphicon glyphicon-cloud-upload smallUpload" onclick="openUpload('upload');" aria-hidden="true"></i>-->
-                                                           
+
                                                             <div id="viewError">
                                                                 <h6>No views to show.</h6>
                                                             </div>
@@ -230,7 +240,7 @@ Modify Flowchart
 
                                                         <div id="viewList" class="sortable">
                                                         </div>
-                                                        </div>
+                                                    </div>
                                                     <div id="details" class="tab-content">
                                                         <div id="ListView" class="sortable"></div>
                                                         <div class="modal-footer">
@@ -238,14 +248,14 @@ Modify Flowchart
                                                         </div>
                                                     </div>
 
-                                                        <div id="divAssets" style="display: none">
-                                                            <table id="tableAssets" style="border: 1px solid; display: none" border="1"></table>
-                                                            <br />
-                                                        </div>
-                                                        <pre id="content" style="display: none"></pre>
-
-
+                                                    <div id="divAssets" style="display: none">
+                                                        <table id="tableAssets" style="border: 1px solid; display: none" border="1"></table>
+                                                        <br />
                                                     </div>
+                                                    <pre id="content" style="display: none"></pre>
+
+
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -262,6 +272,5 @@ Modify Flowchart
         </div>
 
     </div>
-   
-</div>
 
+</div>
