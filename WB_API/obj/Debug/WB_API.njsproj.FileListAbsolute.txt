@@ -1,0 +1,2 @@
+D:\WB_modified\WB_API\obj\Debug\WB_API.njsprojResolveAssemblyReference.cache
+D:\WB_modified\WB_API\bin\Microsoft.NodejsTools.WebRole.dll
