@@ -95,54 +95,20 @@ angular
                                 'scripts/controllers/main.js',
                                 'scripts/directives/timeline/timeline.js',
                                 'scripts/directives/notifications/notifications.js',
-                                'scripts/directives/chat/chat.js',
                                 'scripts/directives/generator/generator.js',
                                 'scripts/directives/genAndView/genandview.js',
-                                'scripts/directives/dashboard/stats/stats.js'
                             ]
                         })
                     }
                 }
             })
-            .state('dashboard.form', {
-                templateUrl: 'views/form.html',
-                url: '/form'
+            .state('dashboard.register', {
+                templateUrl: 'views/pages/register.html',
+                url: '/register'
             })
-            .state('dashboard.blank', {
-                templateUrl: 'views/pages/blank.html',
-                url: '/blank'
-            })
-            .state('login', {
+            .state('dashboard.login', {
                 templateUrl: 'views/pages/login.html',
                 url: '/login'
-            })
-            .state('dashboard.chart', {
-                templateUrl: 'views/chart.html',
-                url: '/chart',
-                controller: 'ChartCtrl',
-                resolve: {
-                    loadMyFile: function ($ocLazyLoad) {
-                        return $ocLazyLoad.load({
-                            name: 'chart.js',
-                            files: [
-                                'bower_components/angular-chart.js/dist/angular-chart.min.js',
-                                'bower_components/angular-chart.js/dist/angular-chart.css'
-                            ]
-                        }),
-                            $ocLazyLoad.load({
-                                name: 'sbAdminApp',
-                                files: ['scripts/controllers/chartContoller.js']
-                            })
-                    }
-                }
-            })
-            .state('dashboard.table', {
-                templateUrl: 'views/table.html',
-                url: '/table'
-            })
-            .state('dashboard.panels-wells', {
-                templateUrl: 'views/ui-elements/panels-wells.html',
-                url: '/panels-wells'
             })
             .state('dashboard.CreateFlowChart', {
                 templateUrl: 'views/ui-elements/CreateFlowChart.html',
