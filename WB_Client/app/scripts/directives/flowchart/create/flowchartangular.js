@@ -328,13 +328,29 @@
                         makePort("B", go.Spot.Bottom, true, false)
                     ));
 
-                diagram.nodeTemplateMap.add("End",
+                diagram.nodeTemplateMap.add("Connector",
                     $(go.Node, "Spot", nodeStyle(),
+                        $(go.Panel, "Auto",
+                            $(go.Shape, "Circle",
+                                { maxSize: new go.Size(40, 40), fill: "black", stroke: null }),
+                            $(go.TextBlock, "Connector",
+                                { font: "bold 11pt Helvetica, Arial, sans-serif", editable: true, stroke: lightText },
+                                new go.Binding("text"))
+                        ),
+                        // three named ports, one on each side except the top, all output only:
+                        makePort("T", go.Spot.Top, true, true),
+                        makePort("L", go.Spot.Left, true, false),
+                        makePort("R", go.Spot.Right, true, false),
+                        makePort("B", go.Spot.Bottom, true, false)
+                    ));
+
+                diagram.nodeTemplateMap.add("End",
+                    $(go.Node, "Auto", nodeStyle(),
                         $(go.Panel, "Auto",
                             $(go.Shape, "Circle",
                                 { minSize: new go.Size(40, 40), fill: "#DC3C00", stroke: null }),
                             $(go.TextBlock, "End",
-                                { font: "bold 11pt Helvetica, Arial, sans-serif", stroke: lightText },
+                                { font: "bold 10pt Helvetica, Arial, sans-serif", stroke: lightText },
                                 new go.Binding("text"))
                         ),
                         // three named ports, one on each side except the bottom, all input only:
@@ -514,8 +530,8 @@
                                 { text: "???", figure: "Diamond" },
                                 { category: "Input", figure: "Input", text: "Input" },
                                 { category: "Comment", text: "Comment" },
-                                { category: "End", text: "End" }
-
+                                { category: "End", text: "End" },
+                                { category: "Connector", text: "Connector" }
                             ])
                         });
 
@@ -554,6 +570,22 @@
                                 new go.Binding("text"))
                         ),
                         // three named ports, one on each side except the top, all output only:
+                        makePort("L", go.Spot.Left, true, false),
+                        makePort("R", go.Spot.Right, true, false),
+                        makePort("B", go.Spot.Bottom, true, false)
+                    ));
+
+                    diagram.nodeTemplateMap.add("Connector",
+                    $(go.Node, "Spot", nodeStyle(),
+                        $(go.Panel, "Auto",
+                            $(go.Shape, "Circle",
+                                { maxSize: new go.Size(40, 40), fill: "black", stroke: null }),
+                            $(go.TextBlock, "Connector",
+                                { font: "bold 11pt Helvetica, Arial, sans-serif", editable: true, stroke: lightText },
+                                new go.Binding("text"))
+                        ),
+                        // three named ports, one on each side except the top, all output only:
+                        makePort("T", go.Spot.Top, true, true),
                         makePort("L", go.Spot.Left, true, false),
                         makePort("R", go.Spot.Right, true, false),
                         makePort("B", go.Spot.Bottom, true, false)
@@ -719,14 +751,17 @@
                 { "category": "Start", "text": "Start", "key": -1, "loc": "-317 -502" },
                 { "text": "Process", "figure": "Rectangle", "tetx": "Process", "key": -2, "loc": "-317 -418" },
                 { "text": "???", "figure": "Diamond", "key": -3, "loc": "-317 -273" },
+                // { "category": "Connector", "text": "0", "key": -7, "loc": "-200 -270" },
                 { "category": "Input", "figure": "Input", "text": "Input", "key": -4, "loc": "-317 -349" },
-                { "category": "End", "text": "End", "key": -6, "loc": "-315 -164" }
+                { "category": "End", "text": "End", "key": -6, "loc": "-315 -164" },
+                
             ],
             [
                 { "from": -1, "to": -2, "fromPort": "B", "toPort": "T", "points": [-317, -476.79069767441854, -317, -466.79069767441854, -317, -455.5453488372093, -317, -455.5453488372093, -317, -444.3, -317, -434.3] },
                 { "from": -2, "to": -4, "fromPort": "B", "toPort": "T", "points": [-317, -401.7, -317, -391.7, -317, -383.5, -317, -383.5, -317, -375.3, -317, -365.3] },
                 { "from": -4, "to": -3, "fromPort": "B", "toPort": "T", "points": [-317, -332.7, -317, -322.7, -317, -318.9, -317, -318.9, -317, -315.1, -317, -305.1] },
-                { "from": -3, "to": -6, "fromPort": "B", "toPort": "T", "visible": true, "points": [-317, -240.90000000000003, -317, -230.90000000000003, -317, -212.87441860465117, -315, -212.87441860465117, -315, -194.84883720930233, -315, -184.84883720930233] }
+                { "from": -3, "to": -6, "fromPort": "B", "toPort": "T", "visible": true, "points": [-317, -240.90000000000003, -317, -230.90000000000003, -317, -212.87441860465117, -315, -212.87441860465117, -315, -194.84883720930233, -315, -184.84883720930233] },
+                // { "from": -3, "to": -7, "fromPort": "R", "toPort": "L", "visible": true, "points": [-317, -240.90000000000003, -317, -230.90000000000003, -317, -212.87441860465117, -315, -212.87441860465117, -315, -194.84883720930233, -315, -184.84883720930233] }
             ]
         );
 
@@ -773,7 +808,7 @@
         }
 
         $scope.model.selectedNodeData = null;
-        $scope.saveFlowChart = function () {
+        $scope.saveFlowChart = function ($location, $rootScope) {
 
             var myGuid = GUID();
             GUID.register(myGuid);
@@ -790,9 +825,11 @@
                 headers: {
                     'Content-Type': 'application/json; charset=utf-8'
                 }
-            }).then(function successCallback(response) {
+            }).then(function successCallback(response, $state) {
                 $scope.employees = response.data;
                 alert(JSON.stringify($scope.employees));
+                //$location.path("#/dashboard/ModifyFlowChart");
+                window.open("#/dashboard/ModifyFlowChart", "_self");
             }, function errorCallback(response) {
                 console.log(response.statusText);
             });

@@ -109,6 +109,21 @@
             makePort("B", go.Spot.Bottom, true, false)
         ));
 
+    myDiagram.nodeTemplateMap.add("Connector",
+        $(go.Node, "Spot", nodeStyle(),
+            $(go.Panel, "Auto",
+                $(go.Shape, "Circle",
+                    { minSize: new go.Size(40, 40), fill: "black", stroke: null }),
+                $(go.TextBlock, "Connector",
+                    { font: "bold 11pt Helvetica, Arial, sans-serif", stroke: lightText },
+                    new go.Binding("text"))
+            ),
+            // three named ports, one on each side except the top, all output only:
+            makePort("L", go.Spot.Left, true, false),
+            makePort("R", go.Spot.Right, true, false),
+            makePort("B", go.Spot.Bottom, true, false)
+        ));
+
     myDiagram.nodeTemplateMap.add("End",
         $(go.Node, "Spot", nodeStyle(),
             $(go.Panel, "Auto",
@@ -206,7 +221,7 @@
                     { text: "???", figure: "Diamond" },
                     { category: "End", text: "End" },
                     { category: "Comment", text: "Comment" },
-                    {category : "Connector", text: "Connector" }
+                    { category: "Connector", text: "Connector" }
                 ])
             });
 
