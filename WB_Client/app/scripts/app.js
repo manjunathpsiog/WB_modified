@@ -26,7 +26,7 @@ angular
             events: true,
         });
 
-        $urlRouterProvider.otherwise('/dashboard/CreateFlowChart');
+        $urlRouterProvider.otherwise('/dashboard/home');
 
         $stateProvider
             .state('dashboard', {
@@ -86,7 +86,7 @@ angular
             .state('dashboard.home', {
                 url: '/home',
                 controller: 'MainCtrl',
-                templateUrl: 'views/dashboard/home.html',
+                templateUrl: 'views/ui-elements/Home.html',
                 resolve: {
                     loadMyFiles: function ($ocLazyLoad) {
                         return $ocLazyLoad.load({
