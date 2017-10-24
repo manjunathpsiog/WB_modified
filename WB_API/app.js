@@ -15,13 +15,7 @@ var bodyParser = require('body-parser');
 var cors = require('cors');
 var router = express.Router();
 var convert = require('xml-js');
-var morgan = require('morgan');
-var mongoose = require('mongoose');
-var passport = require('passport');
-var config = require('./database');
-mongoose.connect(config.db,
 var app = express();
-
 app.use(cors());
 
 // all environments

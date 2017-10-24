@@ -39,6 +39,9 @@
     <Compile Include="public\javascripts\ManageFlowChart.js">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="public\javascripts\ManageUsers.js">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="routes\index.js" />
     <Compile Include="routes\user.js" />
     <Compile Include="service.install.js">
