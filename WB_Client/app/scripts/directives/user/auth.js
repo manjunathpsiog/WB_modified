@@ -1,25 +1,44 @@
 ﻿angular.module('sbAdminApp')
-    .controller('registerCtrl', function ($location, $scope, $http, config) {
-        $scope.saveUser = function () {
-            var user = {
-                FirstName: $scope.FirstName,
-                LastName: $scope.LastName,
-                Email: $scope.Email,
-                Password: $scope.Password,
-            };
-            $http({
-                method: 'POST',
-                url: config.baseUrl + 'addUsers',
-                data: user,
-                headers: {
-                    'Content-Type': 'application/json; charset=utf-8'
+    .controller('registerCtrl', function ($location, $scope, $http, config, authentication, UserService) {
+        var vm = this;
+
+        vm.login = login;
+
+        (function initController() {
+            // reset login status
+            authentication.ClearCredentials();
+            //console.log("problem from not inside");
+        })();
+
+        function login() {
+            dataLoading = true;
+            authentication.Login(vm.Email, vm.Password, function (response) {
+                if (response.success) {
+                    console.log("nnananannnan");
+                    authentication.SetCredentials(vm.Email, vm.Password);
+                    $location.path('/dashboard/home');
+                } else {
+                    console.log("Error authenticating...");
+                    vm.dataLoading = false;
                 }
-            }).then(function successCallback(response, $state) {
-                //$location.path("#/dashboard/ModifyFlowChart");
-                window.open("#/dashboard/ModifyFlowChart", "_self");
-            }, function errorCallback(response) {
-                console.log(response.statusText);
             });
+        }
+
+        vm.register = register;
+
+        function register() {
+            vm.dataLoading = true;
+            UserService.Create(vm.user)
+                .then(function (response) {
+                    if (response.success) {
+                        console.log("Registration successful");
+                        $location.path('/auth/login');
+                    } else {
+                        console.log("Bad Registration");
+                        console.log(response.message);
+                        vm.dataLoading = false;
+                    }
+                });
         };
     });
 

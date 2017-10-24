@@ -57,11 +57,10 @@ app.get('/getCoordbyFlowIdBlockID/:id', coordinates.getCoordbyFlowIdBlockID);
 
 app.get('/getAllUsers', users.getAllUsers);
 app.get('/getAllUserName', users.getAllUserNames);
-app.post('/addUsers', users.addUser);
-app.get('/getUserByID/:UserID', users.getUserByID);
-app.get('/getUserByEmil/:Email', users.getUserByEmail);
-app.post('/updateUserByID', users.updateUserByID);
-app.delete('/deleteUserByID', users.deleteUserByID);
+app.post('/addUser', users.addUser);
+app.get('/getUserByEmail/:Email', users.getUserByEmail);
+app.post('/updateUserByEmail', users.updateUserByEmail);
+app.delete('/deleteUserByEmail', users.deleteUserByEmail);
 
 app.get('/getAllFlowCharts', flowChart.getAllFlowCharts);
 app.get('/getAllFlowChartNames', flowChart.getAllFlowChartNames);

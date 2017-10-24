@@ -14,11 +14,14 @@ angular
         'ui.router',
         'ui.bootstrap',
         'angular-loading-bar',
-    ])
+        'ngRoute',
+        'ngCookies',
+    ]).run(run)
     .value('config', {
         baseUrl: 'http://192.168.10.147:1337/'
         //baseUrl: 'http://localhost:1337/'
     })
+
     .config(['$stateProvider', '$urlRouterProvider', '$ocLazyLoadProvider', function ($stateProvider, $urlRouterProvider, $ocLazyLoadProvider) {
 
         $ocLazyLoadProvider.config({
@@ -44,7 +47,8 @@ angular
                                     'scripts/directives/genAndView/genandview.js',
                                     'scripts/directives/generator/generator.js',
                                     'scripts/slideshowplugin.js',
-                                    'scripts/directives/user/flash.js',
+                                    'scripts/directives/user/User.js',
+                                    'scripts/directives/user/authentication.js'
                                 ]
                             }),
                             $ocLazyLoad.load(
@@ -172,6 +176,24 @@ angular
             })
     }]);
 
+run.$inject = ['$rootScope', '$location', '$cookies', '$http'];
+function run($rootScope, $location, $cookies, $http) {
+    // keep user logged in after page refresh
+    $rootScope.globals = $cookies.getObject('globals') || {};
+    if ($rootScope.globals.currentUser) {
+        $http.defaults.headers.common['Authorization'] = 'Basic ' + $rootScope.globals.currentUser.authdata;
+    }
+
+    $rootScope.$on('$locationChangeStart', function (event, next, current) {
+        // redirect to login page if not logged in and trying to access a restricted page
+        var restrictedPage = $.inArray($location.path(), ['/auth/login', '/auth/register']) === -1;
+        var loggedIn = $rootScope.globals.currentUser;
+        if (restrictedPage && !loggedIn) {
+            $location.path('/auth/login');
+        }
+    });
+}
+
 //Service to Generate all combinations of flows
 angular
     .module('sbAdminApp').factory('generatorService', ['$http', 'config', function ($http, config) {
@@ -196,7 +218,7 @@ angular
             }
 
 
-        }
+        };
     }]);
 
 

@@ -19,7 +19,7 @@ exports.addUser = function (req, res) {
     });
 };
 
-exports.deleteUserByID = function (req, res) {
+exports.deleteUserByEmail = function (req, res) {
     // Connect to the db
     MongoClient.connect(url, function (err, db) {
         if (!err) {
@@ -28,7 +28,7 @@ exports.deleteUserByID = function (req, res) {
                 { UserID: req.body.UserID },
                 {
                     FirstName: req.body.FirstName, LastName: req.body.LastName,
-                    Email: req.body.Email, Password: req.body.Password, flowChartID: req.body.flowChartID
+                    Email: req.body.Email, Password: req.body.Password, UserID: req.body.UserID
                 }
                 ,
                 { upsert: true }
@@ -41,16 +41,16 @@ exports.deleteUserByID = function (req, res) {
     });
 };
 
-exports.updateUserByID = function (req, res) {
+exports.updateUserByEmail = function (req, res) {
     // Connect to the db
     MongoClient.connect(url, function (err, db) {
         if (!err) {
             var dat = req.body;
             db.collection("Users").update(
-                { UserID: req.body.UserID },
+                { Email: req.body.Email },
                 {
                     FirstName: req.body.FirstName, LastName: req.body.LastName,
-                    Email: req.body.Email, Password: req.body.Password, flowChartID: req.body.flowChartID
+                    Email: req.body.Email, Password: req.body.Password, UserID: req.body.UserID
                 },
                 { upsert: true }
             )
@@ -90,25 +90,6 @@ exports.getAllUserNames = function (req, res) {
             res.send("failure");
         }
     });
-};
-
-exports.getUserByID = function (req, res) {
-    MongoClient.connect(url, function (err, db) {
-        if (!err) {
-
-            var query = { UserID: req.params.UserID };
-            db.collection("Users").find(query).toArray(function (err, result) {
-                if (err) throw err;
-                res.status(200).json({ 'Users': result });
-                db.close();
-            });
-
-        }
-        else {
-            res.send("failure");
-        }
-    });
-
 };
 
 exports.getUserByEmail = function (req, res) {
