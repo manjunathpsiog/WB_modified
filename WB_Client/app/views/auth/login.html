@@ -1,17 +1,17 @@
 <div class="container">
     <div class="row">
+        <div class="col-md-3">
+
+        </div>
+        <h1 class="display-4">Welcome to Workbench</h1>
+    </div>
+    <div class="row">
         <div class="col-md-4">
 
         </div>
-        <h2>Log in here</h2>
-    </div>
-
-    <div class="row">
-        <div class="col-md-2">
-
-        </div>
-        <div class="col-md-6 offset-md-4">
-            <form class="center-block" id="needs-validation">
+        <div class="col-md-8">
+            <h2>Log In</h2>
+            <form class="center-block" name="login" style="margin-top:30px;">
                 <div class="form-group">
                     <label for="exampleInputEmail1">Email address</label>
                     <input style="width:300px" required type="email" class="form-control" placeholder="Enter email">
@@ -27,26 +27,10 @@
                         Remember Me
                     </label>
                 </div>
-                <button type="submit" class="btn btn-success text-center" style="width:150px;">Log in</button>
+                <div style="margin-left:70px;">
+                    <button ng-disabled="login.$invalid" type="submit" class="btn btn-success" style="width:150px;">Log in</button>
+                </div>
             </form>
         </div>
     </div>
 </div>
-
-<script>
-    // Example starter JavaScript for disabling form submissions if there are invalid fields
-    (function () {
-        'use strict';
-
-        window.addEventListener('load', function () {
-            var form = document.getElementById('needs-validation');
-            form.addEventListener('submit', function (event) {
-                if (form.checkValidity() === false) {
-                    event.preventDefault();
-                    event.stopPropagation();
-                }
-                form.classList.add('was-validated');
-            }, false);
-        }, false);
-    })();
-</script>

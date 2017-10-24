@@ -1,25 +1,34 @@
-<div class="container">
+<div ng-controller="registerCtrl" class="container">
+    <div class="row">
+        <div class="col-md-3">
+
+        </div>
+        <h1 class="display-4">Welcome to Workbench</h1>
+    </div>
     <div class="row">
         <div class="col-md-4">
 
         </div>
-        <h2>Log in here</h2>
-    </div>
+        <div class="col-md-8">
+            <h2>Register</h2>
 
-    <div class="row">
-        <div class="col-md-2">
-
-        </div>
-        <div class="col-md-6 offset-md-4">
-            <form class="center-block" id="needs-validation">
+            <form class="center-block" name="register" style="margin-top:30px;">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">First Name :</label>
+                    <input style="width:300px" required type="text" id="fname" class="form-control" data-ng-model="FirstName" placeholder="First Name">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Last Name</label>
+                    <input style="width:300px" required type="text" id="lname" class="form-control" data-ng-model="LastName" placeholder="Last Name">
+                </div>
                 <div class="form-group">
                     <label for="exampleInputEmail1">Email address</label>
-                    <input style="width:300px" required type="email" class="form-control" placeholder="Enter email">
+                    <input style="width:300px" required id="email" type="email" class="form-control" data-ng-model="Email" placeholder="Enter email">
                     <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
                 </div>
                 <div class="form-group">
                     <label for="exampleInputPassword1">Password</label>
-                    <input style="width:300px" required type="password" class="form-control" placeholder="Password">
+                    <input style="width:300px" required id="password" type="password" data-ng-model="Password" class="form-control" placeholder="Password">
                 </div>
                 <div class="form-check">
                     <label class="form-check-label">
@@ -27,26 +36,11 @@
                         Remember Me
                     </label>
                 </div>
-                <button type="submit" class="btn btn-success text-center" style="width:150px;">Log in</button>
+                <div style="margin-left:70px;">
+                    <button ng-disabled="register.$invalid" type="submit" ng-click="saveUser()" class="btn btn-success" style="width:150px;">Create Account</button>
+                    <i ng-if="dataLoading"class="fa fa-spinner fa-spin" style="font-size:30px;" aria-hidden="true"></i>
+                </div>
             </form>
         </div>
     </div>
 </div>
-
-<script>
-    // Example starter JavaScript for disabling form submissions if there are invalid fields
-    (function () {
-        'use strict';
-
-        window.addEventListener('load', function () {
-            var form = document.getElementById('needs-validation');
-            form.addEventListener('submit', function (event) {
-                if (form.checkValidity() === false) {
-                    event.preventDefault();
-                    event.stopPropagation();
-                }
-                form.classList.add('was-validated');
-            }, false);
-        }, false);
-    })();
-</script>

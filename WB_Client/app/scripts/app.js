@@ -16,7 +16,7 @@ angular
         'angular-loading-bar',
     ])
     .value('config', {
-        baseUrl: 'http://192.168.1.6:1337/'
+        baseUrl: 'http://192.168.10.147:1337/'
         //baseUrl: 'http://localhost:1337/'
     })
     .config(['$stateProvider', '$urlRouterProvider', '$ocLazyLoadProvider', function ($stateProvider, $urlRouterProvider, $ocLazyLoadProvider) {
@@ -43,7 +43,8 @@ angular
                                     'scripts/directives/flowchartdd.js',
                                     'scripts/directives/genAndView/genandview.js',
                                     'scripts/directives/generator/generator.js',
-                                    'scripts/slideshowplugin.js'
+                                    'scripts/slideshowplugin.js',
+                                    'scripts/directives/user/flash.js',
                                 ]
                             }),
                             $ocLazyLoad.load(
