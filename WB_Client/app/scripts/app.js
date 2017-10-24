@@ -15,8 +15,8 @@ angular
         'ui.bootstrap',
         'angular-loading-bar',
     ])
-    .value('config', {       
-        baseUrl:'http://192.168.1.6:1337/'
+    .value('config', {
+        baseUrl: 'http://192.168.1.6:1337/'
         //baseUrl: 'http://localhost:1337/'
     })
     .config(['$stateProvider', '$urlRouterProvider', '$ocLazyLoadProvider', function ($stateProvider, $urlRouterProvider, $ocLazyLoadProvider) {
@@ -26,7 +26,7 @@ angular
             events: true,
         });
 
-        $urlRouterProvider.otherwise('/dashboard/home');
+        $urlRouterProvider.otherwise('/auth/login');
 
         $stateProvider
             .state('dashboard', {
@@ -40,11 +40,9 @@ angular
                                 files: [
                                     'scripts/directives/header/header.js',
                                     'scripts/directives/header/header-notification/header-notification.js',
-                                    'scripts/directives/sidebar/sidebar.js',
-                                    'scripts/directives/sidebar/sidebar-search/sidebar-search.js',
                                     'scripts/directives/flowchartdd.js',
                                     'scripts/directives/genAndView/genandview.js',
-                                    'scripts/directives/generator/generator.js',     
+                                    'scripts/directives/generator/generator.js',
                                     'scripts/slideshowplugin.js'
                                 ]
                             }),
@@ -83,6 +81,27 @@ angular
                     }
                 }
             })
+
+            .state('auth', {
+                url: '/auth',
+                templateUrl: 'views/auth/auth.html',
+                resolve: {
+                    loadMyDirectives: function ($ocLazyLoad) {
+                        return $ocLazyLoad.load(
+                            {
+                                name: 'sbAdminApp',
+                                files: [
+                                    'scripts/directives/header/header.js',
+                                    'scripts/directives/header/header-notification/header-notification.js',
+                                    'scripts/directives/flowchartdd.js',
+                                    'scripts/directives/genAndView/genandview.js',
+                                    'scripts/directives/generator/generator.js',
+                                    'scripts/slideshowplugin.js'
+                                ]
+                            })
+                    }
+                }
+            })
             .state('dashboard.home', {
                 url: '/home',
                 controller: 'MainCtrl',
@@ -102,13 +121,21 @@ angular
                     }
                 }
             })
-            .state('dashboard.register', {
-                templateUrl: 'views/pages/register.html',
+            .state('auth.register', {
+                templateUrl: 'views/auth/register.html',
                 url: '/register'
             })
-            .state('dashboard.login', {
-                templateUrl: 'views/pages/login.html',
+            .state('auth.manage', {
+                templateUrl: 'views/auth/manage.html',
+                url: '/manage'
+            })
+            .state('auth.login', {
+                templateUrl: 'views/auth/login.html',
                 url: '/login'
+            })
+            .state('auth.logout', {
+                templateUrl: 'views/auth/logout.html',
+                url: '/logout'
             })
             .state('dashboard.CreateFlowChart', {
                 templateUrl: 'views/ui-elements/CreateFlowChart.html',
@@ -148,7 +175,7 @@ angular
 angular
     .module('sbAdminApp').factory('generatorService', ['$http', 'config', function ($http, config) {
         var data = { name: 'MS' };
-        
+
         return {
             generateFromXml: function (xmlData) {
                 var formData = new FormData();

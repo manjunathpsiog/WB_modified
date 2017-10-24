@@ -69,14 +69,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\js\xmlToJSON.js" />
-    <Content Include="app\scripts\database.js" />
     <Content Include="app\scripts\directives\modal\fileUploadPopup.directive.js" />
     <Content Include="app\scripts\directives\genAndView\genandview.html" />
     <Content Include="app\scripts\directives\genAndView\genandview.js" />
     <Content Include="app\scripts\directives\generator\generator.html" />
     <Content Include="app\scripts\directives\generator\generator.js" />
     <Content Include="app\scripts\directives\modal\fileUploadPopup.html" />
-    <Content Include="app\scripts\passport.js" />
     <Content Include="app\scripts\PptxGenJs\jszip.min.js" />
     <Content Include="app\scripts\PptxGenJs\pptxgen.js" />
     <Content Include="app\scripts\PptxGenJs\pptxgen.shapes.js" />
@@ -84,6 +82,10 @@
     <Content Include="app\scripts\users.js" />
     <Content Include="app\scripts\vendor\jquery.blockUI.js" />
     <Content Include="app\scripts\ViewPresentation.js" />
+    <Content Include="app\views\auth\auth.html" />
+    <Content Include="app\views\auth\manage.html" />
+    <Content Include="app\views\auth\register.html" />
+    <Content Include="app\views\auth\logout.html" />
     <Content Include="app\views\pages\generateTests.html" />
     <Content Include="app\img\ellipsis.gif" />
     <Content Include="app\img\logo.png" />
@@ -1735,8 +1737,7 @@
     <Content Include="app\styles\sb-admin-2.css" />
     <Content Include="app\styles\timeline.css" />
     <Content Include="app\views\dashboard\main.html" />
-    <Content Include="app\views\pages\blank.html" />
-    <Content Include="app\views\pages\login.html" />
+    <Content Include="app\views\auth\login.html" />
     <Content Include="app\views\ui-elements\CreateFlowChart.html" />
     <Content Include="Gruntfile.js" />
     <Content Include="test\karma.conf.js" />
