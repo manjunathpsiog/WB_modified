@@ -32,3 +32,6 @@ D:\WB_modified\WB_Client\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.
 D:\WB_modified\WB_Client\obj\Debug\WB_Client.csprojResolveAssemblyReference.cache
 D:\WB_modified\WB_Client\obj\Debug\angularjs.dll
 D:\WB_modified\WB_Client\obj\Debug\angularjs.pdb
+C:\Users\devpo\Documents\Project\WB_modified\WB_Client\obj\Debug\WB_Client.csprojResolveAssemblyReference.cache
+C:\Users\devpo\Documents\Project\WB_modified\WB_Client\obj\Debug\angularjs.dll
+C:\Users\devpo\Documents\Project\WB_modified\WB_Client\obj\Debug\angularjs.pdb

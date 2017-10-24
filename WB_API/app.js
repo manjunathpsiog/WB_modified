@@ -9,12 +9,17 @@ var http = require('http');
 var path = require('path');
 var data = require('./public/javascripts/data.js');
 var coordinates = require('./public/javascripts/ManageCoordinates.js');
+var users = require('./public/javascripts/ManageUsers.js');
 var flowChart = require('./public/javascripts/ManageFlowChart.js');
 var bodyParser = require('body-parser');
 var cors = require('cors');
 var router = express.Router();
 var convert = require('xml-js');
-
+var morgan = require('morgan');
+var mongoose = require('mongoose');
+var passport = require('passport');
+var config = require('./database');
+mongoose.connect(config.db,
 var app = express();
 
 app.use(cors());
@@ -47,14 +52,8 @@ if ('development' == app.get('env')) {
     app.use(express.errorHandler());
 }
 
-app.get('/', routes.index);
-app.get('/users', user.list);
 
 
-app.get('/products', data.getProducts);
-app.post('/products', data.addProduct);
-app.delete('/products/:id', data.deleteProduct);
-app.put('/products/:id', data.updateProduct);
 app.get('/CheckConnection', coordinates.getConnectionStatus);
 
 app.get('/getCoordinates', coordinates.getCoordinates);
@@ -62,13 +61,13 @@ app.post('/addCoordinates', coordinates.addCoordinates);
 app.get('/getCoordbyFlowId/:flowId', coordinates.getCoordbyFlowId);
 app.get('/getCoordbyFlowIdBlockID/:id', coordinates.getCoordbyFlowIdBlockID);
 
-
-//app.get('/getCoordinates', coordinates.getAssestsByFlowChart);
-
-
-//app.delete('/deleteCoordinates', coordinates.deleteCoordinates);
-//app.put('/updateCoordinates/:id', coordinates.updateCoordinates);
-
+app.get('/getAllUsers', users.getAllUsers);
+app.get('/getAllUserName', users.getAllUserNames);
+app.post('/addUsers', users.addUser);
+app.get('/getUserByID/:UserID', users.getUserByID);
+app.get('/getUserByEmil/:Email', users.getUserByEmail);
+app.post('/updateUserByID', users.updateUserByID);
+app.delete('/deleteUserByID', users.deleteUserByID);
 
 app.get('/getAllFlowCharts', flowChart.getAllFlowCharts);
 app.get('/getAllFlowChartNames', flowChart.getAllFlowChartNames);
@@ -115,7 +114,7 @@ app.post('/generateFromJson', function (req, res) {
 
 
 
-http.createServer(app).listen(app.get('port'),"0.0.0.0", function () {
+http.createServer(app).listen(app.get('port'), "0.0.0.0", function () {
     console.log('Express server listening on port ' + app.get('port'));
 });
 
