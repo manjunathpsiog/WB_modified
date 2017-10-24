@@ -16,12 +16,12 @@
         return service;
 
         function Login(Email, Password, callback) {
-
             $timeout(function () {
                 var response;
                 UserService.GetByEmail(Email)
                     .then(function (user) {
-                        if (user !== null && user.Password === Password) {
+                        console.log(user.Email);
+                        if (user !== null && user.Email === Email && user.Password === Password) {
                             response = { success: true };
                             console.log(response);
                         } else {

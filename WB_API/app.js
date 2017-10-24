@@ -56,7 +56,6 @@ app.get('/getCoordbyFlowId/:flowId', coordinates.getCoordbyFlowId);
 app.get('/getCoordbyFlowIdBlockID/:id', coordinates.getCoordbyFlowIdBlockID);
 
 app.get('/getAllUsers', users.getAllUsers);
-app.get('/getAllUserName', users.getAllUserNames);
 app.post('/addUser', users.addUser);
 app.get('/getUserByEmail/:Email', users.getUserByEmail);
 app.post('/updateUserByEmail', users.updateUserByEmail);

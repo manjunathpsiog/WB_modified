@@ -48,7 +48,8 @@ angular
                                     'scripts/directives/generator/generator.js',
                                     'scripts/slideshowplugin.js',
                                     'scripts/directives/user/User.js',
-                                    'scripts/directives/user/authentication.js'
+                                    'scripts/directives/user/authentication.js',
+                                    'scripts/directives/user/flash.js'
                                 ]
                             }),
                             $ocLazyLoad.load(

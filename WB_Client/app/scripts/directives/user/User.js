@@ -31,7 +31,13 @@
         }
 
         function Create(user) {
-            return $http.post(config.baseUrl + 'addUser', user).then(handleSuccess, handleError('Error creating user'));
+            return $http.post(
+                config.baseUrl + 'addUser', user
+            ).then(function successCallback(response) {
+                return response.data;
+            }, function errorCallback(response) {
+                return response.data;
+            });
         }
 
         //function Update(user) {
@@ -55,7 +61,6 @@
         //}
 
         function handleSuccess(res) {
-            console.log(res.data);
             return res.data;
         }
 

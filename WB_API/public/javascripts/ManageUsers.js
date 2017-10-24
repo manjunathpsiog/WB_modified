@@ -28,7 +28,7 @@ exports.deleteUserByEmail = function (req, res) {
                 { UserID: req.body.UserID },
                 {
                     FirstName: req.body.FirstName, LastName: req.body.LastName,
-                    Email: req.body.Email, Password: req.body.Password, UserID: req.body.UserID
+                    Email: req.body.Email, Password: req.body.Password
                 }
                 ,
                 { upsert: true }
@@ -50,7 +50,7 @@ exports.updateUserByEmail = function (req, res) {
                 { Email: req.body.Email },
                 {
                     FirstName: req.body.FirstName, LastName: req.body.LastName,
-                    Email: req.body.Email, Password: req.body.Password, UserID: req.body.UserID
+                    Email: req.body.Email, Password: req.body.Password
                 },
                 { upsert: true }
             )
@@ -70,21 +70,6 @@ exports.getAllUsers = function (req, res) {
                 // so now, we can return all students to the screen.
                 res.status(200).json({ 'Users': user });
             });
-        }
-        else {
-            res.send("failure");
-        }
-    });
-};
-
-exports.getAllUserNames = function (req, res) {
-    MongoClient.connect(url, function (err, db) {
-        if (!err) {
-            var collection = db.collection('Users').find({}, { "UserID": 1, "FirstName": 2, _id: 0 })
-                .toArray(function (err, user) {
-                    // so now, we can return all students to the screen.
-                    res.status(200).json({ user });
-                });
         }
         else {
             res.send("failure");
