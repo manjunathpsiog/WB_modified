@@ -6,7 +6,7 @@ fs = require('fs'),
 url = require('url'),
 events = require('events');
 
-var DEFAULT_PORT = 8000;
+var DEFAULT_PORT = 5000;
 
 function main(argv) {
 new HttpServer({

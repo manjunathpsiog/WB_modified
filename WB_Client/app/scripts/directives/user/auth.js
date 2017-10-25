@@ -1,5 +1,5 @@
 ﻿angular.module('sbAdminApp')
-    .controller('registerCtrl', function ($location, $rootScope, authentication, UserService, FlashService) {
+    .controller('registerCtrl', function ($location, $scope, authentication, UserService, FlashService) {
         var vm = this;
 
         vm.login = login;
@@ -11,9 +11,11 @@
         })();
 
         function login() {
+            console.log(vm.Email);
+            console.log(vm.Password);
             vm.dataLoading = true;
             authentication.Login(vm.Email, vm.Password, function (response) {
-                if (response == "Saved Successfully") {
+                if (response == "Succes") {
                     authentication.SetCredentials(vm.Email, vm.Password);
                     $location.path('/dashboard/home');
                 } else {

@@ -14,12 +14,12 @@
             <form class="center-block" ng-submit="vm.login()" name="login" style="margin-top:30px;">
                 <div class="form-group">
                     <label for="exampleInputEmail1">Email address</label>
-                    <input style="width:300px" ng-model="vm.Email" required type="email" class="form-control" placeholder="Enter email">
+                    <input style="width:300px" name="Email" ng-model="vm.Email" required type="email" class="form-control" placeholder="Enter email">
                     <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
                 </div>
                 <div class="form-group">
                     <label for="exampleInputPassword1">Password</label>
-                    <input style="width:300px" ng-model="vm.Password" required type="password" class="form-control" placeholder="Password">
+                    <input style="width:300px" name="Password" ng-model="vm.Password" required type="password" class="form-control" placeholder="Password">
                 </div>
                 <div class="form-check">
                     <label class="form-check-label">
@@ -28,7 +28,7 @@
                     </label>
                 </div>
                 <div style="margin-left:70px;">
-                    <button ng-disabled="login.$invalid" ng-click="vm.login()" type="submit" class="btn btn-success" style="width:150px;">Log in</button>
+                    <button ng-disabled="login.$invalid" type="submit" class="btn btn-success" style="width:150px;">Log in</button>
                     <i ng-if="dataLoading" class="fa fa-spinner fa-spin" style="font-size:30px;" aria-hidden="true"></i>
                 </div>
             </form>

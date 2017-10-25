@@ -27,7 +27,13 @@
         //}
 
         function GetByEmail(Email) {
-            return $http.get(config.baseUrl + 'getUserByEmail/' + Email).then(handleSuccess, handleError('Error getting user by username'));
+            return $http.get(
+                config.baseUrl + 'getUserByEmail/' + Email
+            ).then(function successCallback(response) {
+                return response.data;
+            }, function errorCallback(response) {
+                return response.data;
+            });
         }
 
         function Create(user) {
@@ -61,7 +67,7 @@
         //}
 
         function handleSuccess(res) {
-            return res.data;
+                return res.data;
         }
 
         function handleError(error) {

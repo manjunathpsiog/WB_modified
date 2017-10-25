@@ -20,8 +20,10 @@
                 var response;
                 UserService.GetByEmail(Email)
                     .then(function (user) {
-                        console.log(user.Email);
-                        if (user !== null && user.Email === Email && user.Password === Password) {
+                        console.log(user);
+                        if (user !== null) {
+                            console.log(typeof (user));
+                            console.log(typeof (Email));
                             response = { success: true };
                             console.log(response);
                         } else {
