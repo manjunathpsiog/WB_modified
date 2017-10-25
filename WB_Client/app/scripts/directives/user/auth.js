@@ -15,7 +15,8 @@
             console.log(vm.Password);
             vm.dataLoading = true;
             authentication.Login(vm.Email, vm.Password, function (response) {
-                if (response == "Succes") {
+                console.log(typeof(response));
+                if (response == "success") {
                     authentication.SetCredentials(vm.Email, vm.Password);
                     $location.path('/dashboard/home');
                 } else {

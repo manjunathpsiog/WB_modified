@@ -23,10 +23,10 @@
                         var e = user["Users"]["0"].Email;
                         var p = user["Users"]["0"].Password;
                         if (user !== null && e === Email && p === Password) {
-                            response = { success: true };
+                            response = "success";
                             console.log(response);
                         } else {
-                            response = { success: false, message: 'Email or password is incorrect' };
+                            response = "fail";
                             console.log(response);
                         }
                         callback(response);
