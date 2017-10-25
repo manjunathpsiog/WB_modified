@@ -94,7 +94,7 @@ angular.module('sbAdminApp')
                 return;
             }
             console.log(vm.user, $rootScope.globals.currentUser.Email);
-            UserService.Update(vm.user)
+            UserService.Update(vm.user, $rootScope.globals.currentUser.Email)
                 .then(function () {
                     console.log("Updated");
                 });

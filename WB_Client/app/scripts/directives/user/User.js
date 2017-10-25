@@ -49,7 +49,7 @@
 
         function Update(user, Old) {
             return $http.put(
-                config.baseUrl + 'updateUserByEmail', user, Old
+                config.baseUrl + 'updateUserByEmail/'+Old, user
             ).then(function successCallback(response) {
                 return response.data;
             }, function errorCallback(response) {

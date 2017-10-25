@@ -39,7 +39,7 @@ exports.updateUserByEmail = function (req, res) {
         if (!err) {
             var dat = req.body;
             db.collection("Users").update(
-                { "Email" : req.body.Old },
+                { "Email" : req.params.Old },
                 {
                     FirstName: req.body.FirstName, LastName: req.body.LastName,
                     Email: req.body.Email, Password: req.body.Password
