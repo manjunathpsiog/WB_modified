@@ -1,52 +1,34 @@
-<div class="container">
+<div ng-controller="manageCtrl as vm" class="container">
     <div class="row">
-        <div class="col-md-4">
-
-        </div>
-        <h2>Log in here</h2>
+        <h2>Manage Profile</h2>
     </div>
 
     <div class="row">
-        <div class="col-md-2">
-
-        </div>
         <div class="col-md-6 offset-md-4">
-            <form class="center-block" id="needs-validation">
+            <form class="center-block" name="manage" ng-submit="vm.updateProfile()" style="margin-top:30px;">
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Email address</label>
-                    <input style="width:300px" required type="email" class="form-control" placeholder="Enter email">
-                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                    <label for="exampleInputEmail1">First Name</label>
+                    <input style="width:300px" name="FirstName" ng-model="vm.user.FirstName" required type="text" ng-value="FirstName" class="form-control" placeholder="First Name">
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputPassword1">Password</label>
-                    <input style="width:300px" required type="password" class="form-control" placeholder="Password">
+                    <label for="exampleInputEmail1">Last Name</label>
+                    <input style="width:300px" name="LastName" ng-model="vm.user.LastName" required type="text" ng-value="LastName" class="form-control" placeholder="Last Name">
                 </div>
-                <div class="form-check">
-                    <label class="form-check-label">
-                        <input type="checkbox" class="form-check-input">
-                        Remember Me
-                    </label>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Email</label>
+                    <input style="width:300px" name="Email" ng-model="vm.user.Email" required type="email" ng-value="Email" class="form-control" placeholder="Email">
                 </div>
-                <button type="submit" class="btn btn-success text-center" style="width:150px;">Log in</button>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Password</label>
+                    <input style="width:300px" name="Password" ng-model="vm.user.Password" required type="password" ng-value="Password" class="form-control" placeholder="Password">
+                </div>
+                <div>
+                    <br />
+                    <button ng type="submit" class="btn btn-primary" style="width:150px;">Update Profile</button>
+                    <button ng-click="vm.deleteProfile()" class="btn btn-danger" style="width:150px;">Delete Profile</button>
+                    <i ng-show="dataLoading" class="fa fa-spinner fa-spin" style="font-size:30px;" aria-hidden="true"></i>
+                </div>
             </form>
         </div>
     </div>
 </div>
-
-<script>
-    // Example starter JavaScript for disabling form submissions if there are invalid fields
-    (function () {
-        'use strict';
-
-        window.addEventListener('load', function () {
-            var form = document.getElementById('needs-validation');
-            form.addEventListener('submit', function (event) {
-                if (form.checkValidity() === false) {
-                    event.preventDefault();
-                    event.stopPropagation();
-                }
-                form.classList.add('was-validated');
-            }, false);
-        }, false);
-    })();
-</script>

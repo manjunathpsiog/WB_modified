@@ -7,6 +7,18 @@
  * Controller of the sbAdminApp
  */
 angular.module('sbAdminApp')
-  .controller('MainCtrl', function($scope) {
+    .controller('MainCtrl', function ($scope, UserService, authentication, $rootScope) {
+        if ($rootScope.globals.currentUser) {
+            $scope.data =
+                {
+                    isLoggedIn: true
+                }
+        }
+        else {
+            $scope.data =
+                {
+                    isLoggedIn: false
+                }
+        }
     });
 

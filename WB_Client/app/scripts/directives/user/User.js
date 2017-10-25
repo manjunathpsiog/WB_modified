@@ -9,22 +9,23 @@
     function UserService($http, config) {
         var service = {};
 
-        //service.GetAll = GetAll;
-        //service.GetById = GetById;
+        service.GetAll = GetAll;
         service.GetByEmail = GetByEmail;
         service.Create = Create;
-        //service.Update = Update;
-        //service.Delete = Delete;
+        service.Update = Update;
+        service.Delete = Delete;
 
         return service;
 
-        //function GetAll() {
-        //    return $http.get('/api/users').then(handleSuccess, handleError('Error getting all users'));
-        //}
-
-        //function GetById(id) {
-        //    return $http.get('/api/users/' + id).then(handleSuccess, handleError('Error getting user by id'));
-        //}
+        function GetAll() {
+            return $http.get(
+                config.baseUrl + 'getAllUsers/'
+            ).then(function successCallback(response) {
+                return response.data;
+            }, function errorCallback(response) {
+                return response.data;
+            });
+        }
 
         function GetByEmail(Email) {
             return $http.get(
@@ -38,7 +39,7 @@
 
         function Create(user) {
             return $http.post(
-                config.baseUrl + 'addUser', user
+                config.baseUrl + 'addUser/', user
             ).then(function successCallback(response) {
                 return response.data;
             }, function errorCallback(response) {
@@ -46,13 +47,28 @@
             });
         }
 
-        //function Update(user) {
-        //    return $http.put('/api/users/' + user.id, user).then(handleSuccess, handleError('Error updating user'));
-        //}
+        function Update(user, Old) {
+            return $http.put(
+                config.baseUrl + 'updateUserByEmail', user, Old
+            ).then(function successCallback(response) {
+                return response.data;
+            }, function errorCallback(response) {
+                return response.data;
+            });
+        }
 
-        //function Delete(id) {
-        //    return $http.delete('/api/users/' + id).then(handleSuccess, handleError('Error deleting user'));
-        //}
+        function Delete(Email) {
+            console.log(Email);
+            return $http.delete(
+                config.baseUrl + 'deleteUserByEmail/'+ Email
+            ).then(function successCallback(response) {
+                console.log(response);
+                return response.data;
+            }, function errorCallback(response) {
+                console.log(response);
+                return response.data;
+            });
+        }
 
         //// private functions
 
@@ -67,7 +83,7 @@
         //}
 
         function handleSuccess(res) {
-                return res.data;
+            return res.data;
         }
 
         function handleError(error) {

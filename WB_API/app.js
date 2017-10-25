@@ -58,8 +58,8 @@ app.get('/getCoordbyFlowIdBlockID/:id', coordinates.getCoordbyFlowIdBlockID);
 app.get('/getAllUsers', users.getAllUsers);
 app.post('/addUser', users.addUser);
 app.get('/getUserByEmail/:Email', users.getUserByEmail);
-app.post('/updateUserByEmail', users.updateUserByEmail);
-app.delete('/deleteUserByEmail', users.deleteUserByEmail);
+app.put('/updateUserByEmail', users.updateUserByEmail);
+app.delete('/deleteUserByEmail/:Email', users.deleteUserByEmail);
 
 app.get('/getAllFlowCharts', flowChart.getAllFlowCharts);
 app.get('/getAllFlowChartNames', flowChart.getAllFlowChartNames);

@@ -21,7 +21,7 @@
         }
 
         function loadCurrentUser() {
-            UserService.GetByUsername($rootScope.globals.currentUser.username)
+            UserService.GetByEmail($rootScope.globals.currentUser.Email)
                 .then(function (user) {
                     vm.user = user;
                 });
@@ -34,8 +34,8 @@
                 });
         }
 
-        function deleteUser(id) {
-            UserService.Delete(id)
+        function deleteUser(Email) {
+            UserService.Delete(Email)
             .then(function () {
                 loadAllUsers();
             });

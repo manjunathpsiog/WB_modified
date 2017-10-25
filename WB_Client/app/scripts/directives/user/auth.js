@@ -1,5 +1,5 @@
 ﻿angular.module('sbAdminApp')
-    .controller('registerCtrl', function ($location, $scope, authentication, UserService, FlashService) {
+    .controller('loginCtrl', function ($location, $rootScope, authentication, UserService, FlashService) {
         var vm = this;
 
         vm.login = login;
@@ -11,11 +11,9 @@
         })();
 
         function login() {
-            console.log(vm.Email);
-            console.log(vm.Password);
             vm.dataLoading = true;
             authentication.Login(vm.Email, vm.Password, function (response) {
-                console.log(typeof(response));
+                console.log(typeof (response));
                 if (response == "success") {
                     authentication.SetCredentials(vm.Email, vm.Password);
                     $location.path('/dashboard/home');
@@ -25,13 +23,17 @@
                 }
             });
         }
-
+    });
+angular.module('sbAdminApp')
+    .controller('registerCtrl', function ($location, $rootScope, authentication, UserService, FlashService) {
+        var vm = this
         vm.register = register;
 
         function register() {
             vm.dataLoading = true;
             UserService.Create(vm.user)
                 .then(function (response) {
+                    console.log(vm.user);
                     if (response == "Saved Successfully") {
                         FlashService.Success('Registration successful', true);
                         console.log("Registration successful");
@@ -42,5 +44,73 @@
                     }
                 });
         };
+    });
+angular.module('sbAdminApp')
+    .controller('manageCtrl', function ($location, $scope, $rootScope, authentication, UserService, FlashService) {
+
+        var vm = this;
+
+        vm.user = null;
+        vm.allUsers = [];
+        vm.deleteProfile = deleteProfile;
+        vm.updateProfile = updateProfile;
+
+        initController();
+
+        function initController() {
+            loadCurrentUser();
+            loadAllUsers();
+        }
+
+        function loadCurrentUser() {
+            UserService.GetByEmail($rootScope.globals.currentUser.Email)
+                .then(function (user) {
+                    $scope.Email = user["Users"]["0"].Email;
+                    $scope.FirstName = user["Users"]["0"].FirstName;
+                    $scope.LastName = user["Users"]["0"].LastName;
+                    $scope.Password = user["Users"]["0"].Password;
+                });
+        }
+
+        function loadAllUsers() {
+            UserService.GetAll()
+                .then(function (users) {
+                    vm.allUsers = users;
+                });
+        }
+
+        function deleteProfile() {
+            UserService.Delete($rootScope.globals.currentUser.Email)
+                .then(function () {
+                    console.log($rootScope.globals.currentUser.Email);
+                    authentication.ClearCredentials();
+                    $location.path('/auth/logout');
+                });
+        }
+
+        function updateProfile() {
+            if (vm.user == null)
+            {
+                return;
+            }
+            console.log(vm.user, $rootScope.globals.currentUser.Email);
+            UserService.Update(vm.user)
+                .then(function () {
+                    console.log("Updated");
+                });
+        }
+    });
+
+angular.module('sbAdminApp')
+    .controller('logoutCtrl', function ($location, $scope, $rootScope, authentication, $state, $timeout) {
+        $timeout(function () {
+            $state.go('auth.login');
+        }, 3000);
+
+        (function initController() {
+            // reset login status
+            authentication.ClearCredentials();
+            //console.log("problem from not inside");
+        })();
     });
 

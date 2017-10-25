@@ -129,19 +129,24 @@ angular
             })
             .state('auth.register', {
                 templateUrl: 'views/auth/register.html',
-                url: '/register'
+                url: '/register',
+                controller : 'registerCtrl'
             })
             .state('auth.manage', {
                 templateUrl: 'views/auth/manage.html',
-                url: '/manage'
+                url: '/manage',
+                controller: 'manageCtrl'
             })
             .state('auth.login', {
                 templateUrl: 'views/auth/login.html',
-                url: '/login'
+                url: '/login',
+                controller : 'loginCtrl'
             })
             .state('auth.logout', {
                 templateUrl: 'views/auth/logout.html',
-                url: '/logout'
+                url: '/logout',
+                controller: 'logoutCtrl'
+
             })
             .state('dashboard.CreateFlowChart', {
                 templateUrl: 'views/ui-elements/CreateFlowChart.html',
@@ -187,7 +192,7 @@ function run($rootScope, $location, $cookies, $http) {
 
     $rootScope.$on('$locationChangeStart', function (event, next, current) {
         // redirect to login page if not logged in and trying to access a restricted page
-        var restrictedPage = $.inArray($location.path(), ['/auth/login', '/auth/register']) === -1;
+        var restrictedPage = $.inArray($location.path(), ['/auth/login', '/auth/register', '/auth/logout']) === -1;
         var loggedIn = $rootScope.globals.currentUser;
         if (restrictedPage && !loggedIn) {
             $location.path('/auth/login');

@@ -23,16 +23,8 @@ exports.deleteUserByEmail = function (req, res) {
     // Connect to the db
     MongoClient.connect(url, function (err, db) {
         if (!err) {
-            var dat = req.body;
-            db.collection("Users").remove(
-                { UserID: req.body.UserID },
-                {
-                    FirstName: req.body.FirstName, LastName: req.body.LastName,
-                    Email: req.body.Email, Password: req.body.Password
-                }
-                ,
-                { upsert: true }
-            )
+            var dat = { "Email" : req.params.Email };
+            db.collection("Users").remove(dat);
             res.send("Deleted Successfully");
         }
         else {
@@ -47,12 +39,12 @@ exports.updateUserByEmail = function (req, res) {
         if (!err) {
             var dat = req.body;
             db.collection("Users").update(
-                { Email: req.body.Email },
+                { "Email" : req.body.Old },
                 {
                     FirstName: req.body.FirstName, LastName: req.body.LastName,
                     Email: req.body.Email, Password: req.body.Password
                 },
-                { upsert: true }
+                { upsert: false }
             )
             res.send("Updated Successfully");
         }
