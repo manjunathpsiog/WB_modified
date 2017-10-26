@@ -526,7 +526,7 @@
                             //nodeTemplateMap: diagram.nodeTemplateMap,  // share the templates used by diagram
                             model: new go.GraphLinksModel([  // specify the contents of the Palette
                                 { category: "Start", text: "Start" },
-                                { text: "Step", figure: "Rectangle", tetx: "Process" },
+                                { text: "Process", figure: "Rectangle", },
                                 { text: "???", figure: "Diamond" },
                                 { category: "Input", figure: "Input", text: "Input" },
                                 { category: "Comment", text: "Comment" },
@@ -575,7 +575,7 @@
                         makePort("B", go.Spot.Bottom, true, false)
                     ));
 
-                    diagram.nodeTemplateMap.add("Connector",
+                diagram.nodeTemplateMap.add("Connector",
                     $(go.Node, "Spot", nodeStyle(),
                         $(go.Panel, "Auto",
                             $(go.Shape, "Circle",
@@ -754,7 +754,7 @@
                 // { "category": "Connector", "text": "0", "key": -7, "loc": "-200 -270" },
                 { "category": "Input", "figure": "Input", "text": "Input", "key": -4, "loc": "-317 -349" },
                 { "category": "End", "text": "End", "key": -6, "loc": "-315 -164" },
-                
+
             ],
             [
                 { "from": -1, "to": -2, "fromPort": "B", "toPort": "T", "points": [-317, -476.79069767441854, -317, -466.79069767441854, -317, -455.5453488372093, -317, -455.5453488372093, -317, -444.3, -317, -434.3] },

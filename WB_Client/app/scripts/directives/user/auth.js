@@ -1,5 +1,5 @@
 ﻿angular.module('sbAdminApp')
-    .controller('loginCtrl', function ($location, $rootScope, authentication, UserService, FlashService) {
+    .controller('loginCtrl', function ($location, $scope, $rootScope, authentication, UserService, FlashService) {
         var vm = this;
 
         vm.login = login;
@@ -18,14 +18,15 @@
                     authentication.SetCredentials(vm.Email, vm.Password);
                     $location.path('/dashboard/home');
                 } else {
-                    console.log("Error authenticating...");
+                    $scope.iferror = true;
+                    $scope.error = "The Username or the password is incorrect";
                     vm.dataLoading = false;
                 }
             });
         }
     });
 angular.module('sbAdminApp')
-    .controller('registerCtrl', function ($location, $rootScope, authentication, UserService, FlashService) {
+    .controller('registerCtrl', function ($location, $rootScope, authentication, UserService) {
         var vm = this
         vm.register = register;
 
@@ -35,7 +36,6 @@ angular.module('sbAdminApp')
                 .then(function (response) {
                     console.log(vm.user);
                     if (response == "Saved Successfully") {
-                        FlashService.Success('Registration successful', true);
                         console.log("Registration successful");
                         $location.path('/auth/login');
                     } else {
@@ -69,6 +69,7 @@ angular.module('sbAdminApp')
                     $scope.FirstName = user["Users"]["0"].FirstName;
                     $scope.LastName = user["Users"]["0"].LastName;
                     $scope.Password = user["Users"]["0"].Password;
+                    $rootScope.FirstName = user["Users"]["0"].FirstName
                 });
         }
 

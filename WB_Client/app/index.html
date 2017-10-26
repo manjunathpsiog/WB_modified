@@ -75,8 +75,8 @@
 
 
     <!-- Bootstrap CSS -->
-      <link rel="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-      <link rel="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js">
+    <link rel="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js">
 
     <!--Jquery Select2 -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
@@ -106,20 +106,20 @@
     <!-- Morris Charts CSS -->
     <!-- <link href="styles/morrisjs/morris.css" rel="stylesheet"> -->
 
-
+    <script async defer src="https://apis.google.com/js/api.js"
+            onload="this.onload=function(){};handleclientload()"
+            onreadystatechange="if (this.readystate === 'complete') this.onload()">
+    </script>
 </head>
-<!--<script async defer src="https://apis.google.com/js/api.js"
-        onload="this.onload=function(){};handleClientLoad()"
-        onreadystatechange="if (this.readyState === 'complete') this.onload()">
-</script>-->
+
 
 <body oncontextmenu="return false;">
 
     <div ng-app="sbAdminApp">
 
         <div ui-view></div>
-        <!--<button type="button" class="btn btn-success" id="authorize-button" style="display: none;">Authorize</button>
-        <button type="button" class="btn btn-danger" id="signout-button" style="display: none;">Sign Out</button>-->
+        <button type="button" class="btn btn-success" id="authorize-button">Authorize</button>
+        <button type="button" class="btn btn-danger" id="signout-button">Sign Out</button>
 
     </div>
 

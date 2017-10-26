@@ -16,7 +16,7 @@ angular
         'angular-loading-bar',
         'ngRoute',
         'ngCookies',
-    ]).run(run)
+    ])
     .value('config', {
         baseUrl: 'http://192.168.10.147:1337/'
         //baseUrl: 'http://192.168.1.6:1337/'
@@ -130,7 +130,7 @@ angular
             .state('auth.register', {
                 templateUrl: 'views/auth/register.html',
                 url: '/register',
-                controller : 'registerCtrl'
+                controller: 'registerCtrl'
             })
             .state('auth.manage', {
                 templateUrl: 'views/auth/manage.html',
@@ -140,7 +140,7 @@ angular
             .state('auth.login', {
                 templateUrl: 'views/auth/login.html',
                 url: '/login',
-                controller : 'loginCtrl'
+                controller: 'loginCtrl'
             })
             .state('auth.logout', {
                 templateUrl: 'views/auth/logout.html',
@@ -180,7 +180,8 @@ angular
                 templateUrl: 'views/ui-elements/Download.html',
                 url: '/download'
             })
-    }]);
+    }])
+    .run(run);
 
 run.$inject = ['$rootScope', '$location', '$cookies', '$http'];
 function run($rootScope, $location, $cookies, $http) {

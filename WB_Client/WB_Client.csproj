@@ -68,6 +68,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\img\promo1.png" />
     <Content Include="app\js\xmlToJSON.js" />
     <Content Include="app\scripts\directives\modal\fileUploadPopup.directive.js" />
     <Content Include="app\scripts\directives\genAndView\genandview.html" />

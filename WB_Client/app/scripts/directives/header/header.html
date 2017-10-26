@@ -1,5 +1,5 @@
 <nav ng-controller="MainCtrl" class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="#"><img src="img/logo.png" /></a>
+    <a class="navbar-brand" ui-sref="dashboard.home"><img src="img/logo.png" /></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -39,23 +39,19 @@
             </li>
             <li class="nav-item">
                 <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    <input class="form-control mr-sm-2" style="border-radius:30px;width:300px" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" style="border-radius:30px;margin-left:-50px;" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
                 </form>
             </li>
-            <li class="nav-item ml-lg-5">
-                <div class="dropdown ml-lg-5">
-                    <button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Profile
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" ui-sref="auth.manage">Manage</a>
-                        <a ng-hide="data.isLoggedIn" class="dropdown-item" ui-sref="auth.register">Register</a>
-                        <a ng-show="data.isLoggedIn" class="dropdown-item" ui-sref="auth.logout">logout</a>
-                        <a ng-hide="data.isLoggedIn" class="dropdown-item" ui-sref="auth.login">login</a>
-                    </div>
-                </div>
-            </li>
         </ul>
+        <div ng-show="data.isLoggedIn" class="dropdown" style="margin-right:20px;">
+            <button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fa fa-user-circle-o" aria-hidden="true"></i>  {{FirstName}}
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" ui-sref="auth.manage">Manage</a>
+                <a class="dropdown-item" ui-sref="auth.logout">logout</a>
+            </div>
+        </div>
     </div>
 </nav>

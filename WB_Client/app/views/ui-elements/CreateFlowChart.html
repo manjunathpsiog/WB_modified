@@ -157,7 +157,7 @@
 
                                         <div style="width: 100%; white-space: nowrap;">
                                             <span class="form-control" style="display: inline-block; vertical-align: top; width: 200px">
-                                                <go-Palatte go-model="model" style="height: 500px"></go-Palatte>
+                                                <go-Palatte go-model="model" style="border:none;height: 500px"></go-Palatte>
 
                                             </span>
                                             <span class="form-control" style="display: inline-block; vertical-align: top; width: 80%">
@@ -177,13 +177,14 @@
                                     </div>
                                 </div>
 
-                                <div id="myModal" class="modal modalpopup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog">
+
+
+                                <div id="myModal" class="modal">
+                                    <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <span onclick="closepopup();" class="close">&times;</span>
-                                                <h3 class="modal-title">File Ordering</h3>
-
+                                                <h5 class="modal-title" id="exampleModalLabel">File Ordering</h5>
+                                                    <span class="close" style="cursor:pointer" onclick="closepopup();" aria-hidden="true">&times;</span>
                                             </div>
                                             <!-- Modal content -->
                                             <div class="modal-body">
@@ -232,6 +233,7 @@
                                                     <div id="ListView" class="sortable"></div>
                                                     <div class="modal-footer">
                                                         <button class="btn btn-primary" ng-click="updateJSONData()">Save</button>
+                                                        <button type="button" onclick="closepopup()" class="btn btn-warning">Close</button>
                                                     </div>
                                                 </div>
 
