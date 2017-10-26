@@ -47,9 +47,9 @@
             });
         }
 
-        function Update(user, Old) {
+        function Update(user, Email) {
             return $http.put(
-                config.baseUrl + 'updateUserByEmail/'+Old, user
+                config.baseUrl + 'updateUserByEmail/'+Email, user
             ).then(function successCallback(response) {
                 return response.data;
             }, function errorCallback(response) {

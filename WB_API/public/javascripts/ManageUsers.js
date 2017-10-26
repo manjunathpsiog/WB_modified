@@ -23,7 +23,7 @@ exports.deleteUserByEmail = function (req, res) {
     // Connect to the db
     MongoClient.connect(url, function (err, db) {
         if (!err) {
-            var dat = { "Email" : req.params.Email };
+            var dat = { "Email": req.params.Email };
             db.collection("Users").remove(dat);
             res.send("Deleted Successfully");
         }
@@ -37,9 +37,9 @@ exports.updateUserByEmail = function (req, res) {
     // Connect to the db
     MongoClient.connect(url, function (err, db) {
         if (!err) {
-            var dat = req.body;
+            var dat = { "Email": req.params.Email };
             db.collection("Users").update(
-                { "Email" : req.params.Old },
+                dat,
                 {
                     FirstName: req.body.FirstName, LastName: req.body.LastName,
                     Email: req.body.Email, Password: req.body.Password

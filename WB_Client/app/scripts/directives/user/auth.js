@@ -82,7 +82,6 @@ angular.module('sbAdminApp')
         function deleteProfile() {
             UserService.Delete($rootScope.globals.currentUser.Email)
                 .then(function () {
-                    console.log($rootScope.globals.currentUser.Email);
                     authentication.ClearCredentials();
                     $location.path('/auth/logout');
                 });
@@ -96,6 +95,7 @@ angular.module('sbAdminApp')
             console.log(vm.user, $rootScope.globals.currentUser.Email);
             UserService.Update(vm.user, $rootScope.globals.currentUser.Email)
                 .then(function () {
+                    authentication.SetCredentials(vm.user.Email, vm.user.Password);
                     console.log("Updated");
                 });
         }

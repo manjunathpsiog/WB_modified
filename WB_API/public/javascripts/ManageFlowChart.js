@@ -28,7 +28,8 @@ exports.deleteFlowchartByID = function (req, res) {
                 { flowChartID: req.body.flowChartID },
                 {
                     nodeDataArray: req.body.nodeDataArray, linkDataArray: req.body.linkDataArray,
-                    flowchartName: req.body.flowchartName, flowChartID: req.body.flowChartID
+                    flowchartName: req.body.flowchartName, flowChartID: req.body.flowChartID,
+                    Email: req.body.Email
                 }
                 ,
                 { upsert: true }
@@ -50,7 +51,8 @@ exports.updateFlowchartByID = function (req, res) {
                 { flowChartID: req.body.flowChartID },
                 {
                     nodeDataArray: req.body.nodeDataArray, linkDataArray: req.body.linkDataArray,
-                    flowchartName: req.body.flowchartName, flowChartID: req.body.flowChartID
+                    flowchartName: req.body.flowchartName, flowChartID: req.body.flowChartID,
+                    Email : req.body.Email
                 }
                 ,
                 { upsert: true }

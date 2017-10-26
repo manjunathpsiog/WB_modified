@@ -816,7 +816,9 @@
             var flowchartID = "flowChartID"
             data[flowchartID] = myGuid;
             var flowchartName = "flowchartName"
-            data[flowchartName] = $("#txtFileName").val() + data[flowchartID];
+            data[flowchartName] = $("#txtFileName").val();
+            var Email = "Email";
+            data[Email] = $rootScope.globals.currentUser.Email;
 
             $http({
                 method: 'POST',
@@ -841,7 +843,9 @@
             var flowchartID = "flowChartID"
             data[flowchartID] = flowID;
             var flowchartName = "flowchartName"
+            var Email = "Email";
             data[flowchartName] = $scope.itemSelected.flowchartName;
+            data[Email] = $rootScope.globals.currentUser.Email;
 
             $http({
                 method: 'POST',
@@ -863,10 +867,12 @@
         $scope.DeleteFlowChart = function () {
             var flowID = $scope.itemSelected.flowChartID
             var data = JSON.parse($scope.model.toJson());
-            var flowchartID = "flowChartID"
+            var flowchartID = "flowChartID";
             data[flowchartID] = flowID;
-            var flowchartName = "flowchartName"
+            var flowchartName = "flowchartName";
+            var Email = "Email";
             data[flowchartName] = $scope.itemSelected.flowchartName;
+            data[Email] = $rootScope.globals.currentUser.Email;
 
             $http({
                 method: 'DELETE',
