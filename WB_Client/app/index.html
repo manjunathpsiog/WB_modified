@@ -27,6 +27,7 @@
     <script src="bower_components/jquery-ui/jquery-ui.min.js"></script>
     <script src="bower_components/popper.js/dist/umd/popper.min.js"></script>
     <script src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.min.js"></script>
     <script src="bower_components/Bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="bower_components/angular-route/angular-route.min.js"></script>
     <script src="bower_components/angular-cookies/angular-cookies.min.js"></script>
@@ -107,7 +108,8 @@
     <!-- <link href="styles/morrisjs/morris.css" rel="stylesheet"> -->
 
     <script async defer src="https://apis.google.com/js/api.js"
-            onload="this.onload=function(){};handleclientload()"
+            onload="this.onload = function () { };
+    handleClientLoad()"
             onreadystatechange="if (this.readystate === 'complete') this.onload()">
     </script>
 </head>

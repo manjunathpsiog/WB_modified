@@ -13,6 +13,7 @@ angular
         'oc.lazyLoad',
         'ui.router',
         'ui.bootstrap',
+        'ngSanitize',
         'angular-loading-bar',
         'ngRoute',
         'ngCookies',
@@ -146,27 +147,31 @@ angular
                 templateUrl: 'views/auth/logout.html',
                 url: '/logout',
                 controller: 'logoutCtrl'
-
             })
             .state('dashboard.CreateFlowChart', {
                 templateUrl: 'views/ui-elements/CreateFlowChart.html',
-                url: '/CreateFlowChart'
+                url: '/CreateFlowChart',
+                controller: 'MinimalCtrl'
             })
             .state('dashboard.ViewFlowChart', {
                 templateUrl: 'views/ui-elements/ViewFlowChart.html',
-                url: '/ViewFlowChart'
+                url: '/ViewFlowChart',
+                controller: 'MinimalCtrl'
             })
             .state('dashboard.ModifyFlowChart', {
                 templateUrl: 'views/ui-elements/ModifyFlowChart.html',
-                url: '/ModifyFlowChart'
+                url: '/ModifyFlowChart',
+                controller: 'MinimalCtrl'
             })
             .state('dashboard.DeleteFlowChart', {
                 templateUrl: 'views/ui-elements/DeleteFlowChart.html',
-                url: '/DeleteFlowChart'
+                url: '/DeleteFlowChart',
+                controller: 'MinimalCtrl'
             })
             .state('dashboard.CreateUsability', {
                 templateUrl: 'views/ui-elements/CreateUsability.html',
-                url: '/CreateUsability'
+                url: '/CreateUsability',
+                controller: 'MinimalCtrl'
             })
             .state('dashboard.ViewPresentations', {
                 templateUrl: 'views/ui-elements/ViewPresentations.html',
