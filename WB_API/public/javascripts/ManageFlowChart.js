@@ -52,7 +52,7 @@ exports.updateFlowchartByID = function (req, res) {
                 {
                     nodeDataArray: req.body.nodeDataArray, linkDataArray: req.body.linkDataArray,
                     flowchartName: req.body.flowchartName, flowChartID: req.body.flowChartID,
-                    Email : req.body.Email
+                    Email: req.body.Email
                 }
                 ,
                 { upsert: true }
@@ -109,6 +109,23 @@ exports.getFlowChartByID = function (req, res) {
                 db.close();
             });
 
+        }
+        else {
+            res.send("failure");
+        }
+    });
+
+};
+
+exports.getFlowChartByEmail = function (req, res) {
+    MongoClient.connect(url, function (err, db) {
+        var query = { Email: req.params.Email };
+        if (!err) {
+            var collection = db.collection('Flowchart').find(query, { "flowChartID": 1, "flowchartName": 2, _id: 0 })
+                .toArray(function (err, flowchart) {
+                    // so now, we can return all students to the screen.
+                    res.status(200).json({ flowchart });
+                });
         }
         else {
             res.send("failure");

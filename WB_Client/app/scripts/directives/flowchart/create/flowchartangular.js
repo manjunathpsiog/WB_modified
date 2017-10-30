@@ -745,7 +745,7 @@
             }
         }
     })
-    .controller('MinimalCtrl', function ($scope, $location, $rootScope, $http, slideshowService, config) {
+    .controller('MinimalCtrl', function ($scope, $location, $rootScope, $http, slideshowService, config, $state) {
         $scope.model = new go.GraphLinksModel(
             [
                 { "category": "Start", "text": "Start", "key": -1, "loc": "-317 -502" },
@@ -827,11 +827,11 @@
                 headers: {
                     'Content-Type': 'application/json; charset=utf-8'
                 }
-            }).then(function successCallback(response, $state) {
+            }).then(function successCallback(response) {
                 $scope.employees = response.data;
-                alert(JSON.stringify($scope.employees));
+                //alert(JSON.stringify($scope.employees));
                 //$location.path("#/dashboard/ModifyFlowChart");
-                window.open("#/dashboard/ModifyFlowChart", "_self");
+                $state.go("dashboard.ModifyFlowChart");
             }, function errorCallback(response) {
                 console.log(response.statusText);
             });
@@ -856,7 +856,7 @@
                 }
             }).then(function successCallback(response) {
                 $scope.employees = response.data;
-                alert(JSON.stringify($scope.employees));
+                location.reload();
             }, function errorCallback(response) {
                 console.log(response.statusText);
             });
@@ -882,10 +882,11 @@
                     'Content-Type': 'application/json; charset=utf-8'
                 }
             }).then(function successCallback(response) {
+                console.log(response);
                 $scope.employees = response.data;
                 //alert(JSON.stringify("Deleted Successfully"));
                 //window.location = "#/dashboard/ViewFlowChart";
-                location.reload()
+                location.reload();
             }, function errorCallback(response) {
                 console.log(response.statusText);
             });

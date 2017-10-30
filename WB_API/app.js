@@ -65,6 +65,7 @@ app.get('/getAllFlowCharts', flowChart.getAllFlowCharts);
 app.get('/getAllFlowChartNames', flowChart.getAllFlowChartNames);
 app.post('/addFlowchart', flowChart.addFlowchart);
 app.get('/getFlowChartByID/:id', flowChart.getFlowChartByID);
+app.get('/getFlowChartByEmail/:Email', flowChart.getFlowChartByEmail);
 app.get('/getFlowChartByName/:id', flowChart.getFlowChartByName);
 app.get('/getFlowChartByFlowIdBlockId/:flowId/:blockId', flowChart.getFlowChartByFlowIdBlockId);
 app.post('/updateFlowchartByID', flowChart.updateFlowchartByID);

@@ -1,5 +1,5 @@
 ﻿angular.module('sbAdminApp')
-    .directive('flowchartddl', function ($http, config) {
+    .directive('flowchartddl', function ($http, config, $rootScope) {
         return {
             restrict: 'E',
             scope: false,
@@ -7,12 +7,13 @@
             link: function (scope, elem, attr) {               
                 $http({
                     method: 'GET',
-                    url: config.baseUrl + 'getAllFlowChartNames',
+                    url: config.baseUrl + 'getFlowChartByEmail/' + $rootScope.globals.currentUser.Email,
                     data: {},
                     headers: {
                         'Content-Type': 'application/json; charset=utf-8'
                     }
                 }).then(function successCallback(response) {
+                    console.log(response.data);
                     scope.items = response.data.flowchart;
                     scope.itemSelected = response.data.flowchart[0];
                 }, function errorCallback(response) {
