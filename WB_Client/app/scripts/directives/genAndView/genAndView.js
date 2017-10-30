@@ -423,7 +423,7 @@ angular.module('sbAdminApp')
                         for (var iLoop = 0; iLoop < returnResult.coOrdinates.length; iLoop++) {
                             var values = returnResult.coOrdinates[iLoop];
                             var fileId = values.fileId;
-
+                            console.log(fileId);
                             requestXHR("https://www.googleapis.com/drive/v3/files/" + fileId + '?alt=media', accessToken, iLoop);
                         }
                        
