@@ -746,270 +746,265 @@
         }
     })
     .controller('MinimalCtrl', function ($scope, $location, $rootScope, $http, slideshowService, config) {
-        if ($rootScope.globals.currentUser == "") {
-            console.log("not there");
-            $location.path("/auth/login");
+        $scope.model = new go.GraphLinksModel(
+            [
+                { "category": "Start", "text": "Start", "key": -1, "loc": "-317 -502" },
+                { "text": "Process", "figure": "Rectangle", "tetx": "Process", "key": -2, "loc": "-317 -418" },
+                { "text": "???", "figure": "Diamond", "key": -3, "loc": "-317 -273" },
+                // { "category": "Connector", "text": "0", "key": -7, "loc": "-200 -270" },
+                { "category": "Input", "figure": "Input", "text": "Input", "key": -4, "loc": "-317 -349" },
+                { "category": "End", "text": "End", "key": -6, "loc": "-315 -164" },
+
+            ],
+            [
+                { "from": -1, "to": -2, "fromPort": "B", "toPort": "T", "points": [-317, -476.79069767441854, -317, -466.79069767441854, -317, -455.5453488372093, -317, -455.5453488372093, -317, -444.3, -317, -434.3] },
+                { "from": -2, "to": -4, "fromPort": "B", "toPort": "T", "points": [-317, -401.7, -317, -391.7, -317, -383.5, -317, -383.5, -317, -375.3, -317, -365.3] },
+                { "from": -4, "to": -3, "fromPort": "B", "toPort": "T", "points": [-317, -332.7, -317, -322.7, -317, -318.9, -317, -318.9, -317, -315.1, -317, -305.1] },
+                { "from": -3, "to": -6, "fromPort": "B", "toPort": "T", "visible": true, "points": [-317, -240.90000000000003, -317, -230.90000000000003, -317, -212.87441860465117, -315, -212.87441860465117, -315, -194.84883720930233, -315, -184.84883720930233] },
+                // { "from": -3, "to": -7, "fromPort": "R", "toPort": "L", "visible": true, "points": [-317, -240.90000000000003, -317, -230.90000000000003, -317, -212.87441860465117, -315, -212.87441860465117, -315, -194.84883720930233, -315, -184.84883720930233] }
+            ]
+        );
+
+        $scope.slideshow = function () {
+            slideshowService.getSlideshowJSON('00d86a61-e963-48cc-8e59-acf10a9cb213', '-1_-2_-4_-3_-6').then(function (res) {
+                var data = res;
+            });
         }
-        else {
-            $scope.model = new go.GraphLinksModel(
-                [
-                    { "category": "Start", "text": "Start", "key": -1, "loc": "-317 -502" },
-                    { "text": "Process", "figure": "Rectangle", "tetx": "Process", "key": -2, "loc": "-317 -418" },
-                    { "text": "???", "figure": "Diamond", "key": -3, "loc": "-317 -273" },
-                    // { "category": "Connector", "text": "0", "key": -7, "loc": "-200 -270" },
-                    { "category": "Input", "figure": "Input", "text": "Input", "key": -4, "loc": "-317 -349" },
-                    { "category": "End", "text": "End", "key": -6, "loc": "-315 -164" },
 
-                ],
-                [
-                    { "from": -1, "to": -2, "fromPort": "B", "toPort": "T", "points": [-317, -476.79069767441854, -317, -466.79069767441854, -317, -455.5453488372093, -317, -455.5453488372093, -317, -444.3, -317, -434.3] },
-                    { "from": -2, "to": -4, "fromPort": "B", "toPort": "T", "points": [-317, -401.7, -317, -391.7, -317, -383.5, -317, -383.5, -317, -375.3, -317, -365.3] },
-                    { "from": -4, "to": -3, "fromPort": "B", "toPort": "T", "points": [-317, -332.7, -317, -322.7, -317, -318.9, -317, -318.9, -317, -315.1, -317, -305.1] },
-                    { "from": -3, "to": -6, "fromPort": "B", "toPort": "T", "visible": true, "points": [-317, -240.90000000000003, -317, -230.90000000000003, -317, -212.87441860465117, -315, -212.87441860465117, -315, -194.84883720930233, -315, -184.84883720930233] },
-                    // { "from": -3, "to": -7, "fromPort": "R", "toPort": "L", "visible": true, "points": [-317, -240.90000000000003, -317, -230.90000000000003, -317, -212.87441860465117, -315, -212.87441860465117, -315, -194.84883720930233, -315, -184.84883720930233] }
-                ]
-            );
-
-            $scope.slideshow = function () {
-                slideshowService.getSlideshowJSON('00d86a61-e963-48cc-8e59-acf10a9cb213', '-1_-2_-4_-3_-6').then(function (res) {
-                    var data = res;
-                });
-            }
-
-            $scope.saveUsability = function () {
-                flowchartID = $scope.itemSelected.flowChartID;
-                blockID = $scope.blkid;
-                var imageCount = finalCords.length;
-                var kc = 0;
-                for (var i = 0; i < imageCount; i++) {
-                    var item = { "flowchartID": flowchartID, "blockID": blockID, "FileID": finalCords[i].ImageID, "coordinates": finalCords[i].coordinates };
-                    var data = angular.toJson(item, true);
-                    var url = config.baseUrl + 'addCoordinates';
-                    // console.log("post");
-                    console.log(JSON.stringify(data));
-                    $.ajax({
-                        crossDomain: "true",
-                        type: "POST",
-                        url: url,
-                        data: data,
-                        cache: false,
-                        timeout: 50000,
-                        contentType: "application/json",
-                        success: function (response) {
-                            console.log(response);
-                            kc++;
-                            /*if (kc == imageCount)
-                                alert("Saved successfully!");*/
-                        },
-                        error: function (jqXHR, textStatus, errorThrown) {
-
-                            console.log('error ' + textStatus + " " + errorThrown);
-                        }
-                    });
-                }
-
-                document.getElementById("EditScreen").style.zIndex = 0;
-                document.getElementById("EditScreen").style.display = "none";
-            }
-
-            $scope.model.selectedNodeData = null;
-            $scope.saveFlowChart = function ($location) {
-
-                var myGuid = GUID();
-                GUID.register(myGuid);
-                var data = JSON.parse($scope.model.toJson());
-                var flowchartID = "flowChartID"
-                data[flowchartID] = myGuid;
-                var flowchartName = "flowchartName"
-                data[flowchartName] = $("#txtFileName").val();
-                var Email = "Email";
-                data[Email] = $rootScope.globals.currentUser.Email;
-
-                $http({
-                    method: 'POST',
-                    url: config.baseUrl + 'addFlowchart',
+        $scope.saveUsability = function () {
+            flowchartID = $scope.itemSelected.flowChartID;
+            blockID = $scope.blkid;
+            var imageCount = finalCords.length;
+            var kc = 0;
+            for (var i = 0; i < imageCount; i++) {
+                var item = { "flowchartID": flowchartID, "blockID": blockID, "FileID": finalCords[i].ImageID, "coordinates": finalCords[i].coordinates };
+                var data = angular.toJson(item, true);
+                var url = config.baseUrl + 'addCoordinates';
+                // console.log("post");
+                console.log(JSON.stringify(data));
+                $.ajax({
+                    crossDomain: "true",
+                    type: "POST",
+                    url: url,
                     data: data,
-                    headers: {
-                        'Content-Type': 'application/json; charset=utf-8'
+                    cache: false,
+                    timeout: 50000,
+                    contentType: "application/json",
+                    success: function (response) {
+                        console.log(response);
+                        kc++;
+                        /*if (kc == imageCount)
+                            alert("Saved successfully!");*/
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+
+                        console.log('error ' + textStatus + " " + errorThrown);
                     }
-                }).then(function successCallback(response, $state) {
-                    $scope.employees = response.data;
-                    alert(JSON.stringify($scope.employees));
-                    //$location.path("#/dashboard/ModifyFlowChart");
-                    window.open("#/dashboard/ModifyFlowChart", "_self");
-                }, function errorCallback(response) {
-                    console.log(response.statusText);
                 });
             }
 
-            $scope.UpdateFlowChart = function () {
-                var flowID = $scope.itemSelected.flowChartID
-                var data = JSON.parse($scope.model.toJson());
-                var flowchartID = "flowChartID"
-                data[flowchartID] = flowID;
-                var flowchartName = "flowchartName"
-                var Email = "Email";
-                data[flowchartName] = $scope.itemSelected.flowchartName;
-                data[Email] = $rootScope.globals.currentUser.Email;
+            document.getElementById("EditScreen").style.zIndex = 0;
+            document.getElementById("EditScreen").style.display = "none";
+        }
+
+        $scope.model.selectedNodeData = null;
+        $scope.saveFlowChart = function ($location) {
+
+            var myGuid = GUID();
+            GUID.register(myGuid);
+            var data = JSON.parse($scope.model.toJson());
+            var flowchartID = "flowChartID"
+            data[flowchartID] = myGuid;
+            var flowchartName = "flowchartName"
+            data[flowchartName] = $("#txtFileName").val();
+            var Email = "Email";
+            data[Email] = $rootScope.globals.currentUser.Email;
+
+            $http({
+                method: 'POST',
+                url: config.baseUrl + 'addFlowchart',
+                data: data,
+                headers: {
+                    'Content-Type': 'application/json; charset=utf-8'
+                }
+            }).then(function successCallback(response, $state) {
+                $scope.employees = response.data;
+                alert(JSON.stringify($scope.employees));
+                //$location.path("#/dashboard/ModifyFlowChart");
+                window.open("#/dashboard/ModifyFlowChart", "_self");
+            }, function errorCallback(response) {
+                console.log(response.statusText);
+            });
+        }
+
+        $scope.UpdateFlowChart = function () {
+            var flowID = $scope.itemSelected.flowChartID
+            var data = JSON.parse($scope.model.toJson());
+            var flowchartID = "flowChartID"
+            data[flowchartID] = flowID;
+            var flowchartName = "flowchartName"
+            var Email = "Email";
+            data[flowchartName] = $scope.itemSelected.flowchartName;
+            data[Email] = $rootScope.globals.currentUser.Email;
+
+            $http({
+                method: 'POST',
+                url: config.baseUrl + 'updateFlowchartByID',
+                data: data,
+                headers: {
+                    'Content-Type': 'application/json; charset=utf-8'
+                }
+            }).then(function successCallback(response) {
+                $scope.employees = response.data;
+                alert(JSON.stringify($scope.employees));
+            }, function errorCallback(response) {
+                console.log(response.statusText);
+            });
+
+
+        }
+
+        $scope.DeleteFlowChart = function () {
+            var flowID = $scope.itemSelected.flowChartID
+            var data = JSON.parse($scope.model.toJson());
+            var flowchartID = "flowChartID";
+            data[flowchartID] = flowID;
+            var flowchartName = "flowchartName";
+            var Email = "Email";
+            data[flowchartName] = $scope.itemSelected.flowchartName;
+            data[Email] = $rootScope.globals.currentUser.Email;
+
+            $http({
+                method: 'DELETE',
+                url: config.baseUrl + 'deleteFlowchartByID',
+                data: data,
+                headers: {
+                    'Content-Type': 'application/json; charset=utf-8'
+                }
+            }).then(function successCallback(response) {
+                $scope.employees = response.data;
+                //alert(JSON.stringify("Deleted Successfully"));
+                //window.location = "#/dashboard/ViewFlowChart";
+                location.reload()
+            }, function errorCallback(response) {
+                console.log(response.statusText);
+            });
+
+
+        }
+
+
+        $scope.UploadFile = function () {
+
+            insertFile(document.getElementById("fileUpload").files[0], function (response) {
+                var fileUnID = GUID();
+                GUID.register(fileUnID);
+
+                returnResult.assets.push({ fileID: fileUnID, assetType: response.mimeType, assetName: response.name, assetURL: response.id });
+                document.getElementById("fileUpload").value = "";
+
+
+                var Key = document.getElementById('spnKey');
+                var jsondata = $scope.model.toJson();
+                var data = JSON.parse(jsondata);  //parse the JSON
+                var resStr;
+
+                var OrderCount = 0;
+                $.each(data.nodeDataArray, function (i, el) {
+                    var newdata;
+                    if (this.key === parseInt(Key.innerHTML)) {
+                        if (!this.assets) {
+                            this.assets = [];
+                            OrderCount = 0;
+                        }
+                        else
+                            OrderCount = this.assets.length;
+                        this.assets.push({ fileID: fileUnID, assetType: response.mimeType, assetName: response.name, assetURL: response.id, Order: OrderCount });
+                        resStr = JSON.stringify(data);
+
+                    }
+                });
+                $scope.model = go.Model.fromJson(data);
+                $scope.model.setDataProperty('lastModified', (new Date()).toString());
+                // document.getElementById("mySavedModel").value = myDiagram.model.toJson();
+                console.log(JSON.stringify(data));
+                notifySuccess();
+
+
+
+                loadImages();
+                //loadImagesAsList();
+            });
+
+        }
+        $scope.SelectFile = function () {
+            // printFile($('#ddlJsonList').val(),$scope);
+        }
+
+        $scope.LoadFile = function () {
+            listFiles($scope);
+        }
+        $scope.ddlValueChanged = function () {
+            if ($scope.itemSelected) {
+                var floID = $scope.itemSelected.flowChartID;
 
                 $http({
-                    method: 'POST',
-                    url: config.baseUrl + 'updateFlowchartByID',
-                    data: data,
+                    method: 'GET',
+                    url: config.baseUrl + 'getFlowChartByID/' + floID,
+                    data: '',
                     headers: {
                         'Content-Type': 'application/json; charset=utf-8'
                     }
                 }).then(function successCallback(response) {
-                    $scope.employees = response.data;
-                    alert(JSON.stringify($scope.employees));
+
+                    $scope.model = go.Model.fromJson(response.data.Flowchart[0]);
+
                 }, function errorCallback(response) {
                     console.log(response.statusText);
                 });
-
-
             }
 
-            $scope.DeleteFlowChart = function () {
-                var flowID = $scope.itemSelected.flowChartID
-                var data = JSON.parse($scope.model.toJson());
-                var flowchartID = "flowChartID";
-                data[flowchartID] = flowID;
-                var flowchartName = "flowchartName";
-                var Email = "Email";
-                data[flowchartName] = $scope.itemSelected.flowchartName;
-                data[Email] = $rootScope.globals.currentUser.Email;
+        }
+        $scope.updateJSONData = function () {
 
-                $http({
-                    method: 'DELETE',
-                    url: config.baseUrl + 'deleteFlowchartByID',
-                    data: data,
-                    headers: {
-                        'Content-Type': 'application/json; charset=utf-8'
-                    }
-                }).then(function successCallback(response) {
-                    $scope.employees = response.data;
-                    //alert(JSON.stringify("Deleted Successfully"));
-                    //window.location = "#/dashboard/ViewFlowChart";
-                    location.reload()
-                }, function errorCallback(response) {
-                    console.log(response.statusText);
-                });
+            var indexOrder = [];
+            $('#ListView div ').each(function (i) {
+                var eachdivindex = $(this).index();
+                var filename = $(this).attr('id');
+                indexOrder.push({ assetURL: filename, Order: eachdivindex });
+            });
+            var jsonValforOrder = JSON.stringify(indexOrder);
+            $scope.funcMergeJson(jsonValforOrder);
+            //console.log(json);
+        }
+        $scope.funcMergeJson = function (fileorders) {
+            var jsonData = $scope.model.toJson();
 
-
-            }
-
-
-            $scope.UploadFile = function () {
-
-                insertFile(document.getElementById("fileUpload").files[0], function (response) {
-                    var fileUnID = GUID();
-                    GUID.register(fileUnID);
-
-                    returnResult.assets.push({ fileID: fileUnID, assetType: response.mimeType, assetName: response.name, assetURL: response.id });
-                    document.getElementById("fileUpload").value = "";
-
-
-                    var Key = document.getElementById('spnKey');
-                    var jsondata = $scope.model.toJson();
-                    var data = JSON.parse(jsondata);  //parse the JSON
-                    var resStr;
-
-                    var OrderCount = 0;
-                    $.each(data.nodeDataArray, function (i, el) {
-                        var newdata;
-                        if (this.key === parseInt(Key.innerHTML)) {
-                            if (!this.assets) {
-                                this.assets = [];
-                                OrderCount = 0;
-                            }
-                            else
-                                OrderCount = this.assets.length;
-                            this.assets.push({ fileID: fileUnID, assetType: response.mimeType, assetName: response.name, assetURL: response.id, Order: OrderCount });
-                            resStr = JSON.stringify(data);
-
-                        }
-                    });
-                    $scope.model = go.Model.fromJson(data);
-                    $scope.model.setDataProperty('lastModified', (new Date()).toString());
-                    // document.getElementById("mySavedModel").value = myDiagram.model.toJson();
-                    console.log(JSON.stringify(data));
-                    notifySuccess();
-
-
-
-                    loadImages();
-                    //loadImagesAsList();
-                });
-
-            }
-            $scope.SelectFile = function () {
-                // printFile($('#ddlJsonList').val(),$scope);
-            }
-
-            $scope.LoadFile = function () {
-                listFiles($scope);
-            }
-            $scope.ddlValueChanged = function () {
-                if ($scope.itemSelected) {
-                    var floID = $scope.itemSelected.flowChartID;
-
-                    $http({
-                        method: 'GET',
-                        url: config.baseUrl + 'getFlowChartByID/' + floID,
-                        data: '',
-                        headers: {
-                            'Content-Type': 'application/json; charset=utf-8'
-                        }
-                    }).then(function successCallback(response) {
-
-                        $scope.model = go.Model.fromJson(response.data.Flowchart[0]);
-
-                    }, function errorCallback(response) {
-                        console.log(response.statusText);
-                    });
-                }
-
-            }
-            $scope.updateJSONData = function () {
-
-                var indexOrder = [];
-                $('#ListView div ').each(function (i) {
-                    var eachdivindex = $(this).index();
-                    var filename = $(this).attr('id');
-                    indexOrder.push({ assetURL: filename, Order: eachdivindex });
-                });
-                var jsonValforOrder = JSON.stringify(indexOrder);
-                $scope.funcMergeJson(jsonValforOrder);
-                //console.log(json);
-            }
-            $scope.funcMergeJson = function (fileorders) {
-                var jsonData = $scope.model.toJson();
-
-                var data = JSON.parse(jsonData);
-                var orderData = JSON.parse(fileorders);
-                //var Count = Object.keys(fileorders).length;
-                for (var iL = 0; iL < data.nodeDataArray.length; iL++) {
-                    var item = data.nodeDataArray[iL];
-                    if (item.key == $scope.blkid) {
-                        if (item.assets) {
-                            for (var jL = 0; jL < item.assets.length; jL++) {
-                                for (var kL = 0; kL < orderData.length; kL++) {
-                                    if (item.assets[jL].assetURL == orderData[kL].assetURL) {
-                                        item.assets[jL].Order = orderData[kL].Order;
-                                        break;
-                                    }
+            var data = JSON.parse(jsonData);
+            var orderData = JSON.parse(fileorders);
+            //var Count = Object.keys(fileorders).length;
+            for (var iL = 0; iL < data.nodeDataArray.length; iL++) {
+                var item = data.nodeDataArray[iL];
+                if (item.key == $scope.blkid) {
+                    if (item.assets) {
+                        for (var jL = 0; jL < item.assets.length; jL++) {
+                            for (var kL = 0; kL < orderData.length; kL++) {
+                                if (item.assets[jL].assetURL == orderData[kL].assetURL) {
+                                    item.assets[jL].Order = orderData[kL].Order;
+                                    break;
                                 }
                             }
-                            returnResult.assets = item.assets;
-                            break;
                         }
+                        returnResult.assets = item.assets;
+                        break;
                     }
                 }
-                var FinalData = JSON.stringify(data);
-                $scope.model = go.Model.fromJson(FinalData);
-                console.log($scope.model);
             }
-        });
+            var FinalData = JSON.stringify(data);
+            $scope.model = go.Model.fromJson(FinalData);
+            console.log($scope.model);
+        }
+    });
 
 //angular.element(document).ready(function(){
 //     listFiles();
@@ -1535,6 +1530,4 @@ function ShowDivs() {
     $('#uploadFile').show();
     $('#details').hide();
 }
-}
-});
 

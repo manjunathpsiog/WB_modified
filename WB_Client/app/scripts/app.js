@@ -1,13 +1,5 @@
 /// <reference path="directives/genAndView/genAndView.js" />
 'use strict';
-/**
- * @ngdoc overview
- * @name sbAdminApp
- * @description
- * # sbAdminApp
- *
- * Main module of the application.
- */
 angular
     .module('sbAdminApp', [
         'oc.lazyLoad',
@@ -23,7 +15,7 @@ angular
         //baseUrl: 'http://192.168.1.6:1337/'
     })
 
-    .config(['$stateProvider', '$urlRouterProvider', '$ocLazyLoadProvider', function ($stateProvider, $urlRouterProvider, $ocLazyLoadProvider) {
+    .config(['$stateProvider', '$urlRouterProvider', '$ocLazyLoadProvider', function ($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, $location) {
 
         $ocLazyLoadProvider.config({
             debug: false,
@@ -188,8 +180,8 @@ angular
     }])
     .run(run);
 
-run.$inject = ['$rootScope', '$location', '$cookies', '$http'];
-function run($rootScope, $location, $cookies, $http) {
+run.$inject = ['$rootScope', '$location', '$cookies', '$http', '$state'];
+function run($rootScope, $location, $cookies, $http, $state) {
     // keep user logged in after page refresh
     $rootScope.globals = $cookies.getObject('globals') || {};
     if ($rootScope.globals.currentUser) {
@@ -198,10 +190,10 @@ function run($rootScope, $location, $cookies, $http) {
 
     $rootScope.$on('$locationChangeStart', function (event, next, current) {
         // redirect to login page if not logged in and trying to access a restricted page
-        var restrictedPage = $.inArray($location.path(), ['/auth/login', '/auth/register', '/auth/logout']) === -1;
+        var restrictedPage = $.inArray($state.go(), ['/auth/login', '/auth/register', '/auth/logout']) === -1;
         var loggedIn = $rootScope.globals.currentUser;
         if (restrictedPage && !loggedIn) {
-            $location.path('/auth/login');
+            $state.go('auth.login');
         }
     });
 }
