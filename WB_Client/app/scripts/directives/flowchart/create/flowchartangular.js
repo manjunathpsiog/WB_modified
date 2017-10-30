@@ -1279,27 +1279,10 @@ async function loadImages() {
                 xhr.responseType = 'arraybuffer';
                 xhr.onload = function () {
                     var base64 = 'data:image/png;base64,' + base64ArrayBuffer(xhr.response);
-
-                    //"' data-darkbox='" + base64 + "'data-darkbox-group='one'/></div>
                     divString += " <div><img id='" + values.assetURL + "' height='50' width='50' src='" + base64 + "' data-darkbox='" + base64 + "'data-darkbox-group='one'></div>";
-                    //var divOuter = document.createElement("div");
-
-                    //divString += "<b>" + values.assetName + "</b>";
-
-                    // divString += "<br/><br/>";
-
-                    //src = "http://placehold.it/50x50/f0f"
-                    //data - darkbox="http://placehold.it/800x600/f0f"
-                    //data - darkbox - group="one"
-
-                    //  divOuter.innerHTML = divString;
                     isXHRrunning = false;
                 }
-
-
-
                 xhr.send();
-
                 checkXHRAvailable();
                 await sleep(5000);
                 jLoop++;
@@ -1457,8 +1440,16 @@ function printFile(fileId, $scope) {
 }
 // To load the list of files
 var divStringIL;
+
+function imagesshow() {
+    $('#uploadFile').hide();
+    $('#details').hide();
+    $('#im1').hide();
+}
+
 function loadImagesAsList() {
     $('#uploadFile').hide();
+    $('#im1').hide();
     $('#details').show();
     var bool = false;
     divStringIL = "";
@@ -1530,5 +1521,6 @@ function requestXHRLI(url, accessToken, assetURL) {
 function ShowDivs() {
     $('#uploadFile').show();
     $('#details').hide();
+    $('#im1').hide();
 }
 
