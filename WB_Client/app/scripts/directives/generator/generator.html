@@ -42,11 +42,8 @@
 <div class="mdl-card mdl-cell mdl-cell--12-col" id="loader" ng-show="loader">
     <div class="mdl-card__supporting-text mdl-grid mdl-grid--no-spacing">
         <h4 class="mdl-cell mdl-cell--12-col">Generating Test Cases..</h4>
-
         <div class="section__text mdl-cell mdl-cell--10-col-desktop mdl-cell--6-col-tablet mdl-cell--3-col-phone">
-
             <img style="height:150px; margin-left:35%" src="https://d13yacurqjgara.cloudfront.net/users/82092/screenshots/1073359/spinner.gif" />
-
         </div>
     </div>
 
@@ -54,42 +51,35 @@
 </div>
 
 
-<div class="mdl-card mdl-cell mdl-cell--12-col" ng-show="results">
-    <div class="mdl-card__supporting-text mdl-grid mdl-grid--no-spacing">
+<div style="margin-top:10px;" ng-show="results">
+    <div class="">
         <div>
-
             <h3 id="flwName"></h3>
         </div>
-
-        <div class="section__text mdl-cell mdl-cell--10-col-desktop mdl-cell--6-col-tablet mdl-cell--3-col-phone">
-
+        <div class="">
             <div>
-
                 <div style="width:50%">
                     <h4 id="numberofresults"></h4>
                 </div>
-                <!-- <div class="mdl-card__actions" style="background-color:#9CCC65; width:25%">
-                 <button class="mdl-button">
-                 Export .csv!
-                 </button>
-                </div> -->
-
-                <div style="background-color:lightgrey;padding:5px 5px 5px 5px; ">
-                    <div style="float:right;cursor:pointer;">
-                        <button ng-click="goBack()" class="btn btn-warning">Close</button>
+                <div class="bg-dark" style="border-radius:10px;">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <p class="text-success">Select the starting node</p>
+                            <select id="startNode" class="form-control" ng-model="startNode" ng-change="nodeList()" style="width:200px;"></select>
+                        </div>
+                        <div class="col-md-5">
+                            <p class="text-primary">Select the ending node</p>
+                            <select id="endNode" class="form-control" ng-model="endNode" ng-change="nodeList()" style="width:200px;"></select>
+                        </div>
+                        <div class="col-md-1">
+                            <button id="resetFilters" class="btn btn-warning" ng-click="clickedGenerate(true)">
+                                Reset
+                            </button>
+                        </div>
+                        <div class="col-md-1">
+                            <button ng-click="goBack()" class="btn btn-danger">Close</button>
+                        </div>
                     </div>
-
-                    Select the starting node
-
-                    <select id="startNode" class="form-control" ng-model="startNode" ng-change="nodeList()" style="width:100px;"></select>
-
-                    Select the ending node
-                    <select id="endNode" class="form-control" ng-model="endNode" ng-change="nodeList()" style="width:200px;"></select>
-
-                    <span style="width:10px">&nbsp;</span>
-                    <button id="resetFilters" class="btn btn-primary" ng-click="clickedGenerate(true)">
-                        Reset filters
-                    </button>
                 </div>
             </div>
             <br />
