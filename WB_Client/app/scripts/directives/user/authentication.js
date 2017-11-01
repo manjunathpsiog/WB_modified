@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('sbAdminApp')
+        .module('Workbench')
         .factory('authentication', authentication);
 
     authentication.$inject = ['$http', '$cookies', '$rootScope', '$timeout', 'UserService'];

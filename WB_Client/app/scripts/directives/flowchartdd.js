@@ -1,4 +1,4 @@
-﻿angular.module('sbAdminApp')
+﻿angular.module('Workbench')
     .directive('flowchartddl', function ($http, config, $rootScope) {
         return {
             restrict: 'E',

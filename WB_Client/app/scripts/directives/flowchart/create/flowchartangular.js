@@ -1,4 +1,4 @@
-﻿angular.module('sbAdminApp')
+﻿angular.module("Workbench")
     .directive('goDiagram', function ($http, $compile, config) {
         return {
             restrict: 'E',

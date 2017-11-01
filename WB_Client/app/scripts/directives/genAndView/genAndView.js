@@ -12,7 +12,7 @@
  */
 
 
-angular.module('sbAdminApp')
+angular.module('Workbench')
     .directive('genandview', ['generatorService', 'slideshowService', function (generatorService, slideshowService) {
         return {
             templateUrl: 'scripts/directives/genAndView/genandview.html',

@@ -1,7 +1,7 @@
 /// <reference path="directives/genAndView/genAndView.js" />
 'use strict';
 angular
-    .module('sbAdminApp', [
+    .module('Workbench', [
         'oc.lazyLoad',
         'ui.router',
         'ui.bootstrap',
@@ -32,7 +32,7 @@ angular
                     loadMyDirectives: function ($ocLazyLoad) {
                         return $ocLazyLoad.load(
                             {
-                                name: 'sbAdminApp',
+                                name: 'Workbench',
                                 files: [
                                     'scripts/directives/header/header.js',
                                     'scripts/directives/flowchartdd.js',
@@ -86,7 +86,7 @@ angular
                     loadMyDirectives: function ($ocLazyLoad) {
                         return $ocLazyLoad.load(
                             {
-                                name: 'sbAdminApp',
+                                name: 'Workbench',
                                 files: [
                                     'scripts/directives/header/header.js',
                                     'scripts/directives/flowchartdd.js',
@@ -105,7 +105,7 @@ angular
                 resolve: {
                     loadMyFiles: function ($ocLazyLoad) {
                         return $ocLazyLoad.load({
-                            name: 'sbAdminApp',
+                            name: 'Workbench',
                             files: [
                                 'scripts/controllers/main.js',
                                 'scripts/directives/generator/generator.js',
@@ -195,7 +195,7 @@ function run($rootScope, $location, $cookies, $http, $state) {
 
 //Service to Generate all combinations of flows
 angular
-    .module('sbAdminApp').factory('generatorService', ['$http', 'config', function ($http, config) {
+    .module('Workbench').factory('generatorService', ['$http', 'config', function ($http, config) {
         var data = { name: 'MS' };
 
         return {

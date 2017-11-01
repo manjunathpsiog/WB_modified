@@ -1,4 +1,4 @@
-﻿angular.module('sbAdminApp')
+﻿angular.module('Workbench')
     .controller('loginCtrl', function ($location, $scope, $rootScope, authentication, UserService, FlashService) {
         var vm = this;
 
@@ -25,7 +25,7 @@
             });
         }
     });
-angular.module('sbAdminApp')
+angular.module('Workbench')
     .controller('registerCtrl', function ($location, $rootScope, authentication, UserService) {
         var vm = this
         vm.register = register;
@@ -45,7 +45,7 @@ angular.module('sbAdminApp')
                 });
         };
     });
-angular.module('sbAdminApp')
+angular.module('Workbench')
     .controller('manageCtrl', function ($location, $scope, $rootScope, authentication, UserService, FlashService) {
 
         var vm = this;
@@ -102,7 +102,7 @@ angular.module('sbAdminApp')
         }
     });
 
-angular.module('sbAdminApp')
+angular.module('Workbench')
     .controller('logoutCtrl', function ($location, $scope, $rootScope, authentication, $state, $timeout) {
         $timeout(function () {
             $state.go('auth.login');

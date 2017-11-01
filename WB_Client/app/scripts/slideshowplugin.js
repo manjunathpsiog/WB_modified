@@ -1,4 +1,4 @@
-﻿angular.module('sbAdminApp').service('slideshowService', function ($http, $q, config) {
+﻿angular.module('Workbench').service('slideshowService', function ($http, $q, config) {
     this.getSlideshowJSON = function (flowchart, flow) {
         var one = $http({
             method: 'GET',

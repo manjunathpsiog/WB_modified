@@ -1,12 +1,12 @@
 'use strict';
 /**
  * @ngdoc function
- * @name sbAdminApp.controller:MainCtrl
+ * @name Workbench.controller:MainCtrl
  * @description
  * # MainCtrl
- * Controller of the sbAdminApp
+ * Controller of the Workbench
  */
-angular.module('sbAdminApp')
+angular.module('Workbench')
   .controller('FormCtrl', function($scope) {
     
 });

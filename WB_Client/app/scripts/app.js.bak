@@ -1,14 +1,14 @@
 'use strict';
 /**
  * @ngdoc overview
- * @name sbAdminApp
+ * @name Workbench
  * @description
- * # sbAdminApp
+ * # Workbench
  *
  * Main module of the application.
  */
 angular
-    .module('sbAdminApp', [
+    .module('Workbench', [
         'oc.lazyLoad',
         'ui.router',
         'ui.bootstrap',
@@ -31,7 +31,7 @@ angular
                     loadMyDirectives: function ($ocLazyLoad) {
                         return $ocLazyLoad.load(
                             {
-                                name: 'sbAdminApp',
+                                name: 'Workbench',
                                 files: [
                                     'scripts/directives/header/header.js',
                                     'scripts/directives/header/header-notification/header-notification.js',
@@ -83,7 +83,7 @@ angular
                 resolve: {
                     loadMyFiles: function ($ocLazyLoad) {
                         return $ocLazyLoad.load({
-                            name: 'sbAdminApp',
+                            name: 'Workbench',
                             files: [
                                 'scripts/controllers/main.js',
                                 'scripts/directives/notifications/notifications.js',
@@ -120,7 +120,7 @@ angular
                             ]
                         }),
                             $ocLazyLoad.load({
-                                name: 'sbAdminApp',
+                                name: 'Workbench',
                                 files: ['scripts/controllers/chartContoller.js']
                             })
                     }
@@ -180,7 +180,7 @@ angular
              })
     }]);
 
-angular.module('sbAdminApp')
+angular.module('Workbench')
     .controller('sampleController', ['$scope', function($scope){
         $scope.toggleJsonXml = function(){
             alert('abcd');
@@ -188,7 +188,7 @@ angular.module('sbAdminApp')
     }])
 
 angular
-    .module('sbAdminApp').factory('generatorService', ['$http', function ($http) {
+    .module('Workbench').factory('generatorService', ['$http', function ($http) {
     var data = { name: 'MS' };
     var urlBase = 'http://localhost:3000/';
     return {

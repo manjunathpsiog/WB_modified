@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('sbAdminApp')
+        .module('Workbench')
         .factory('FlashService', FlashService);
 
     FlashService.$inject = ['$rootScope'];

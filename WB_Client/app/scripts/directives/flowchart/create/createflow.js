@@ -1,5 +1,5 @@
 ﻿(function () {
-    var app = angular.module('sbAdminApp');
+    var app = angular.module('Workbench');
     app.controller('flowchartcontroller', function () {
         var vm = this;
         vm.loadgojs = (function () {

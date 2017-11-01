@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('sbAdminApp')
+        .module('Workbench')
         .factory('UserService', UserService);
 
     UserService.$inject = ['$http', 'config'];

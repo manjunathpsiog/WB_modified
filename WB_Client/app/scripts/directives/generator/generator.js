@@ -10,7 +10,7 @@
  */
 
 
-angular.module('sbAdminApp')
+angular.module('Workbench')
     .directive('generator', ['generatorService', function (generatorService) {
         return {
             templateUrl: 'scripts/directives/generator/generator.html',
