@@ -35,14 +35,12 @@ angular
                                 name: 'sbAdminApp',
                                 files: [
                                     'scripts/directives/header/header.js',
-                                    'scripts/directives/header/header-notification/header-notification.js',
                                     'scripts/directives/flowchartdd.js',
                                     'scripts/directives/genAndView/genandview.js',
                                     'scripts/directives/generator/generator.js',
                                     'scripts/slideshowplugin.js',
                                     'scripts/directives/user/User.js',
                                     'scripts/directives/user/authentication.js',
-                                    'scripts/directives/user/flash.js'
                                 ]
                             }),
                             $ocLazyLoad.load(
@@ -91,7 +89,6 @@ angular
                                 name: 'sbAdminApp',
                                 files: [
                                     'scripts/directives/header/header.js',
-                                    'scripts/directives/header/header-notification/header-notification.js',
                                     'scripts/directives/flowchartdd.js',
                                     'scripts/directives/genAndView/genandview.js',
                                     'scripts/directives/generator/generator.js',
@@ -111,8 +108,6 @@ angular
                             name: 'sbAdminApp',
                             files: [
                                 'scripts/controllers/main.js',
-                                'scripts/directives/timeline/timeline.js',
-                                'scripts/directives/notifications/notifications.js',
                                 'scripts/directives/generator/generator.js',
                                 'scripts/directives/genAndView/genandview.js',
                             ]
