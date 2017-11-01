@@ -1,5 +1,5 @@
 ﻿angular.module('Workbench')
-    .controller('loginCtrl', function ($location, $scope, $rootScope, authentication, UserService, FlashService) {
+    .controller('loginCtrl', function ($location, $scope, $rootScope, authentication, UserService) {
         var vm = this;
 
         vm.login = login;
