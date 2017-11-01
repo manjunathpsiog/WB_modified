@@ -208,6 +208,8 @@
                         jQuery(this).addClass('current');
                         jQuery(tab_id).addClass('current');
                     })
+                    document.getElementById("imageLoader").style.display = "none";
+
                     // createWindowWithHtml();
 
                     var modal = document.getElementById('myModal');
@@ -220,6 +222,12 @@
 
                     var jsondata = diagram.model.toJson();
                     var data = JSON.parse(jsondata);
+
+                    //$.each(data.nodeDataArray, function (i, el) {
+                    //    var newdata;
+                    //    if (this.key === parseInt(spanKey))
+                    //        obj.assets = value.assets;
+                    //});
 
                     for (var iL = 0; iL < data.nodeDataArray.length; iL++) {
 
@@ -1572,8 +1580,11 @@ function requestXHRLI(url, accessToken, assetURL) {
         xmlHttpReq.send(null);
     }
 }
+
+
 function ShowDivs() {
     $('#uploadFile').show();
     $('#details').hide();
     $('#im1').hide();
 }
+
