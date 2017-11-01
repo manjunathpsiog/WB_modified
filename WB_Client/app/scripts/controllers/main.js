@@ -12,7 +12,7 @@ angular.module('sbAdminApp')
             $scope.data =
                 {
                     isLoggedIn: true
-                }
+                };
             UserService.GetByEmail($rootScope.globals.currentUser.Email)
                 .then(function (user) {
                     $scope.FirstName = user["Users"]["0"].FirstName;
@@ -22,7 +22,7 @@ angular.module('sbAdminApp')
             $scope.data =
                 {
                     isLoggedIn: false
-                }
+                };
         }
     });
 
