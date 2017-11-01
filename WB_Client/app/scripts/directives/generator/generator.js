@@ -319,19 +319,35 @@ angular.module('sbAdminApp')
                         pushobject.testcase = tempStatement
                         dataTable.push(pushobject);
                         testroutes.push(teststmt);
-                        console.log(teststmt);
 
 
                         // document.getElementById("testcases").innerHTML += "<li>"+ tempStatement + "\n </li>";
                     }
-                    console.log(dataTable);
-
+                    var testcase = dataTable;
+                    console.log(testcase[5].testcase);
                     if (first == 'Y')
                         backupArray = dataTable;
 
                     if (first == 'R') {
                         dataTable = backupArray;
                     }
+
+                    var html = "<table class='table table-dark'>";
+                    html += "<thead>";
+                    html += "<tr>";
+                    html += "<th scope='col'>S.No</th>";
+                    html += "<th scope='col'>Test Cases</th>";
+                    html += "</tr>";
+                    html += "</thead>";
+                    var no = dataTable;
+                    for (var i = 0; i < no.length; i++) {
+                        html += "<tr>";
+                        html += "<td>" + (i+1) + "</td>";
+                        html += "<td>" + testcase[i].testcase + "</td>";
+                        html += "</tr>";
+                    }
+                    html += "</table>";
+                    document.getElementById("testCase").innerHTML = html;
 
                     $(document).ready(function () {
                         $('#testCaseTable').DataTable({

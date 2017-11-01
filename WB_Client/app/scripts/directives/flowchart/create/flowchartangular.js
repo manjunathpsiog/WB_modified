@@ -328,22 +328,6 @@
                         makePort("B", go.Spot.Bottom, true, false)
                     ));
 
-                diagram.nodeTemplateMap.add("Connector",
-                    $(go.Node, "Spot", nodeStyle(),
-                        $(go.Panel, "Auto",
-                            $(go.Shape, "Circle",
-                                { maxSize: new go.Size(40, 40), fill: "black", stroke: null }),
-                            $(go.TextBlock, "Connector",
-                                { font: "bold 11pt Helvetica, Arial, sans-serif", editable: true, stroke: lightText },
-                                new go.Binding("text"))
-                        ),
-                        // three named ports, one on each side except the top, all output only:
-                        makePort("T", go.Spot.Top, true, true),
-                        makePort("L", go.Spot.Left, true, false),
-                        makePort("R", go.Spot.Right, true, false),
-                        makePort("B", go.Spot.Bottom, true, false)
-                    ));
-
                 diagram.nodeTemplateMap.add("End",
                     $(go.Node, "Auto", nodeStyle(),
                         $(go.Panel, "Auto",
@@ -357,6 +341,53 @@
                         makePort("T", go.Spot.Top, false, true),
                         makePort("L", go.Spot.Left, false, true),
                         makePort("R", go.Spot.Right, false, true)
+                    ));
+
+                diagram.nodeTemplateMap.add("S_FStart",
+                    $(go.Node, "Spot", nodeStyle(),
+                        $(go.Panel, "Auto",
+                            $(go.Shape, "Circle",
+                                { maxSize: new go.Size(80, 80), fill: "red", stroke: null }),
+                            $(go.TextBlock, "S_FStart",
+                                { font: "bold 8pt Helvetica, Arial, sans-serif", editable: true, stroke: lightText, wrap: go.TextBlock.None },
+                                new go.Binding("text"))
+                        ),
+                        // three named ports, one on each side except the top, all output only:
+                        makePort("T", go.Spot.Top, true, true),
+                        makePort("L", go.Spot.Left, true, false),
+                        makePort("R", go.Spot.Right, true, false),
+                        makePort("B", go.Spot.Bottom, true, false)
+                    ));
+
+                diagram.nodeTemplateMap.add("S_FCall",
+                    $(go.Node, "Spot", nodeStyle(),
+                        $(go.Panel, "Auto",
+                            $(go.Shape, "PrimitiveToCall",
+                                { width: 110, height: 90, fill: "purple", stroke: null }),
+                            $(go.TextBlock, "Call Subflow",
+                                { font: "bold 8pt Helvetica, Arial, sans-serif", editable: true, stroke: lightText, wrap: go.TextBlock.None },
+                                new go.Binding("text"))
+                        ),
+                        // three named ports, one on each side except the top, all output only:
+                        makePort("T", go.Spot.Top, true, true),
+                        makePort("L", go.Spot.Left, true, false),
+                        makePort("R", go.Spot.Right, true, false),
+                        makePort("B", go.Spot.Bottom, true, false)
+                    ));
+
+                diagram.nodeTemplateMap.add("S_FEnd",
+                    $(go.Node, "Spot", nodeStyle(),
+                        $(go.Panel, "Auto",
+                            $(go.Shape, "Circle",
+                                { maxSize: new go.Size(80, 80), fill: "black", stroke: null }),
+                            $(go.TextBlock, "S_FEnd",
+                                { font: "bold 8pt Helvetica, Arial, sans-serif", editable: true, stroke: lightText, wrap: go.TextBlock.None },
+                                new go.Binding("text"))
+                        ),
+                        // three named ports, one on each side except the top, all output only:
+                        makePort("T", go.Spot.Top, true, true),
+                        makePort("L", go.Spot.Left, true, false),
+                        makePort("R", go.Spot.Right, true, false),
                     ));
 
                 diagram.nodeTemplateMap.add("Comment",
@@ -531,7 +562,9 @@
                                 { category: "Input", figure: "Input", text: "Input" },
                                 { category: "Comment", text: "Comment" },
                                 { category: "End", text: "End" },
-                                { category: "Connector", text: "Connector" }
+                                { category: "S_FStart", text: "SF Start" },
+                                { category: "S_FEnd", text: "SF End" },
+                                { category: "S_FCall", text: "Call SubFlow" },
                             ])
                         });
 
@@ -559,6 +592,22 @@
                         makePort("R", go.Spot.Right, true, true),
                         makePort("B", go.Spot.Bottom, true, false)
                     ));
+                diagram.nodeTemplateMap.add("S_FCall",
+                    $(go.Node, "Spot", nodeStyle(),
+                        $(go.Panel, "Auto",
+                            $(go.Shape, "PrimitiveToCall",
+                                { width:110, height:90, fill: "purple", stroke: null }),
+                            $(go.TextBlock, "Call Subflow",
+                                { font: "bold 8pt Helvetica, Arial, sans-serif", editable: true, stroke: lightText, wrap: go.TextBlock.None },
+                                new go.Binding("text"))
+                        ),
+                        // three named ports, one on each side except the top, all output only:
+                        makePort("T", go.Spot.Top, true, true),
+                        makePort("L", go.Spot.Left, true, false),
+                        makePort("R", go.Spot.Right, true, false),
+                        makePort("B", go.Spot.Bottom, true, false)
+                    ));
+
 
                 diagram.nodeTemplateMap.add("Start",
                     $(go.Node, "Spot", nodeStyle(),
@@ -575,13 +624,13 @@
                         makePort("B", go.Spot.Bottom, true, false)
                     ));
 
-                diagram.nodeTemplateMap.add("Connector",
+                diagram.nodeTemplateMap.add("S_FStart",
                     $(go.Node, "Spot", nodeStyle(),
                         $(go.Panel, "Auto",
                             $(go.Shape, "Circle",
-                                { maxSize: new go.Size(40, 40), fill: "black", stroke: null }),
-                            $(go.TextBlock, "Connector",
-                                { font: "bold 11pt Helvetica, Arial, sans-serif", editable: true, stroke: lightText },
+                                { maxSize: new go.Size(80, 80), fill: "red", stroke: null }),
+                            $(go.TextBlock, "S_FStart",
+                                { font: "bold 8pt Helvetica, Arial, sans-serif", editable: true, stroke: lightText, wrap: go.TextBlock.None },
                                 new go.Binding("text"))
                         ),
                         // three named ports, one on each side except the top, all output only:
@@ -589,6 +638,21 @@
                         makePort("L", go.Spot.Left, true, false),
                         makePort("R", go.Spot.Right, true, false),
                         makePort("B", go.Spot.Bottom, true, false)
+                    ));
+
+                diagram.nodeTemplateMap.add("S_FEnd",
+                    $(go.Node, "Spot", nodeStyle(),
+                        $(go.Panel, "Auto",
+                            $(go.Shape, "Circle",
+                                { maxSize: new go.Size(80, 80), fill: "black", stroke: null }),
+                            $(go.TextBlock, "S_FEnd",
+                                { font: "bold 8pt Helvetica, Arial, sans-serif", editable: true, stroke: lightText, wrap: go.TextBlock.None },
+                                new go.Binding("text"))
+                        ),
+                        // three named ports, one on each side except the top, all output only:
+                        makePort("T", go.Spot.Top, true, true),
+                        makePort("L", go.Spot.Left, true, false),
+                        makePort("R", go.Spot.Right, true, false),
                     ));
 
                 diagram.nodeTemplateMap.add("End",
