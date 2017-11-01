@@ -2847,10 +2847,6 @@
     <Content Include="app\scripts\controllers\chartContoller.js" />
     <Content Include="app\scripts\controllers\form.js" />
     <Content Include="app\scripts\controllers\main.js" />
-    <Content Include="app\scripts\directives\chat\chat.html" />
-    <Content Include="app\scripts\directives\chat\chat.js" />
-    <Content Include="app\scripts\directives\dashboard\stats\stats.html" />
-    <Content Include="app\scripts\directives\dashboard\stats\stats.js" />
     <Content Include="app\scripts\directives\flowchart\create\createflow.js" />
     <Content Include="app\scripts\directives\flowchart\create\flowchartangular.js" />
     <Content Include="app\scripts\directives\header\header-notification\header-notification.html" />
@@ -2882,6 +2878,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="app\assests\" />
+    <Folder Include="app\scripts\directives\dashboard\" />
     <Folder Include="app\scripts\directives\flowchart\view\" />
     <Folder Include="dist\bower_components\angular-animate\" />
     <Folder Include="dist\bower_components\angular-bootstrap\" />
