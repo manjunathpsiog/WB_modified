@@ -167,11 +167,7 @@ angular
             .state('dashboard.generateTests', {
                 templateUrl: 'views/pages/generateTests.html',
                 url: '/generateTests'
-            })
-            .state('dashboard.download', {
-                templateUrl: 'views/ui-elements/Download.html',
-                url: '/download'
-            })
+            });
     }])
     .run(run);
 

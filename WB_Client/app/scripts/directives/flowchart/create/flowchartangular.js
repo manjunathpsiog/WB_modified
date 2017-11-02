@@ -1,7 +1,4 @@
-﻿var authorizeButton = document.getElementById('authorize-button');
-var signoutButton = document.getElementById('signout-button');
-
-angular.module("Workbench")
+﻿angular.module("Workbench")
     .directive('goDiagram', function ($http, $compile, config) {
         return {
             restrict: 'E',
@@ -1128,7 +1125,7 @@ var returnResult = { key: goJSKey, assets: [] };
 //var SCOPES = 'https://www.googleapis.com/auth/drive.metadata.readonly';
 var SCOPES = 'https://www.googleapis.com/auth/drive';
 
-
+var authorizeButton = document.getElementById('authorize-button');
 var signoutButton = document.getElementById('signout-button');
 
 function handleClientLoad() {
@@ -1189,6 +1186,8 @@ function initClient() {
 
     //var SCOPES = 'https://www.googleapis.com/auth/drive.metadata.readonly';
     var SCOPES = 'https://www.googleapis.com/auth/drive';
+    var authorizeButton = document.getElementById('authorize-button');
+    var signoutButton = document.getElementById('signout-button');
     gapi.client.init({
         discoveryDocs: DISCOVERY_DOCS,
         clientId: CLIENT_ID,
@@ -1205,9 +1204,9 @@ function initClient() {
 }
 
 function updateSigninStatus(isSignedIn) {
+    var authorizeButton = document.getElementById('authorize-button');
+    var signoutButton = document.getElementById('signout-button');
     if (isSignedIn) {
-        var authorizeButton = document.getElementById('authorize-button');
-        var signoutButton = document.getElementById('signout-button');
         authorizeButton.style.display = 'none';
         signoutButton.style.display = 'block';
         //listFiles();
