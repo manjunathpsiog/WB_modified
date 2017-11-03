@@ -11,7 +11,7 @@ angular
         'ngCookies',
     ])
     .value('config', {
-        baseUrl: 'http://192.168.10.147:1337/'
+        baseUrl: 'http://192.168.1.3:1337/'
         //baseUrl: 'http://192.168.1.6:1337/'
     })
 
