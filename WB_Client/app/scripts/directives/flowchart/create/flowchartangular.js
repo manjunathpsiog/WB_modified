@@ -810,6 +810,19 @@
         }
     })
     .controller('MinimalCtrl', function ($scope, $location, $rootScope, $http, slideshowService, config, $state) {
+        function sameCategory(fromnode, fromport, tonode, toport) {
+            return fromnode.data.category === tonode.data.category;
+            // this could look at the fromport.fill and toport.fill instead,
+            // assuming that the ports are Shapes, which they are because portID was set on them,
+            // and that there is a data Binding on the Shape.fill
+          }
+        
+          // only allow new links between ports of the same color
+          diagram.toolManager.linkingTool.linkValidation = sameCategory;
+        
+          // only allow reconnecting an existing link to a port of the same color
+          diagram.toolManager.relinkingTool.linkValidation = sameCategory;
+        
         $scope.model = new go.GraphLinksModel(
             [
                 { "category": "Start", "text": "Start", "key": -1, "loc": "-317 -502" },
