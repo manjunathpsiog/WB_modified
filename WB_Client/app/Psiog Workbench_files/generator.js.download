@@ -168,7 +168,6 @@ angular.module('Workbench')
                 }
 
                 scope.nodeList = function () {
-
                     semioutp = [];
                     //outp = resultsData;
                     console.log(outp);
@@ -320,7 +319,7 @@ angular.module('Workbench')
                     }
 
                     $(document).ready(function () {
-                        var table = $('#testCaseTable').DataTable({
+                        $('#testCaseTable').DataTable({
                             data: dataTable,
                             dom: 'Bfrtip',
                             "bDestroy": true,
@@ -340,9 +339,7 @@ angular.module('Workbench')
                                 'pdfHtml5'
                             ]
                         })
-
-                        table.buttons().container()
-                            .appendTo('#example_wrapper .col-md-6:eq(0)');
+                            .appendTo('#example_wrapper btn btn primary');
                     });
 
 
