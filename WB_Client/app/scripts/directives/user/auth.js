@@ -12,12 +12,13 @@
 
         function login() {
             vm.dataLoading = true;
+            $scope.iferror = false;
             authentication.Login(vm.Email, vm.Password, function (response) {
                 console.log(typeof (response));
                 if (response == "success") {
                     authentication.SetCredentials(vm.Email, vm.Password);
                     $location.path('/dashboard/home');
-                } else {
+                } else if(response == "fail") {
                     $scope.iferror = true;
                     $scope.error = "The Username or the password is incorrect";
                     vm.dataLoading = false;
@@ -46,7 +47,7 @@ angular.module('Workbench')
         };
     });
 angular.module('Workbench')
-    .controller('manageCtrl', function ($location, $scope, $rootScope, authentication, UserService, FlashService) {
+    .controller('manageCtrl', function ($location, $scope, $rootScope, authentication, UserService) {
 
         var vm = this;
 

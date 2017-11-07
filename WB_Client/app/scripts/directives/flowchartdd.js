@@ -8,7 +8,7 @@
                 $http({
                     method: 'GET',
                     //url: config.baseUrl + 'getFlowChartByEmail/' + $rootScope.globals.currentUser.Email,
-                    url: config.baseUrl + 'getAllFlowChartNames',
+                    url: config.baseUrl + 'getFlowchartByEmail/' + $rootScope.globals.currentUser.Email,
                     data: {},
                     headers: {
                         'Content-Type': 'application/json; charset=utf-8'

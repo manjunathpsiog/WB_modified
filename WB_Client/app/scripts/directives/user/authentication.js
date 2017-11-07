@@ -20,11 +20,14 @@
                 var response;
                 UserService.GetByEmail(Email)
                     .then(function (user) {
-                        var e = user["Users"]["0"].Email;
-                        var p = user["Users"]["0"].Password;
-                        if (user !== null && e === Email && p === Password) {
-                            response = "success";
-                            console.log(response);
+                        var u = user["Users"].length;
+                        if (u !== 0) {
+                            var e = user["Users"]["0"].Email;
+                            var p = user["Users"]["0"].Password;
+                            if (e === Email && p === Password) {
+                                response = "success";
+                                console.log(response);
+                            }
                         } else {
                             response = "fail";
                             console.log(response);
