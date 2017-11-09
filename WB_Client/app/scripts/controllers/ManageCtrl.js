@@ -1,6 +1,6 @@
 ﻿angular.module("Workbench")
     .controller('ManageCtrl', function ($scope, $location, $rootScope, $http, slideshowService, config,
-        $state, saveChart, modifyChart, deleteChart) {
+        $state, manageChart) {
         $scope.model = new go.GraphLinksModel(
             [
                 { "category": "Start", "text": "Start", "key": -1, "loc": "-317 -502" },
@@ -64,15 +64,15 @@
 
         $scope.model.selectedNodeData = null;
         $scope.saveFlowChart = function () {
-            saveChart.sc($scope.model);
+            manageChart.sc($scope.model);
         };
 
         $scope.UpdateFlowChart = function () {
-            modifyChart.mc($scope.model)
+            manageChart.mc($scope.model)
         };
 
         $scope.DeleteFlowChart = function () {
-            deleteChart.dc($scope.model, $scope.itemSelected)
+            manageChart.dc($scope.model, $scope.itemSelected)
         }
 
         $scope.UploadFile = function () {

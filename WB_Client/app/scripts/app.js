@@ -11,8 +11,8 @@ angular
         'ngCookies',
     ])
     .value('config', {
-        baseUrl: 'http://192.168.10.147:1337/'
-        //baseUrl: 'http://192.168.1.6:1337/'
+        baseUrl: 'http://192.168.1.8:1337/'
+        //baseUrl: 'http://192.168.1.8:1337/'
     })
 
     .config(['$stateProvider', '$urlRouterProvider', '$ocLazyLoadProvider', function ($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, $location) {
@@ -139,10 +139,7 @@ angular
                             {
                                 name: 'Workbench',
                                 files: [
-                                    'scripts/directives/flowchart/saveChart.js',
-                                    'scripts/directives/flowchart/modifyChart.js',
-                                    'scripts/directives/flowchart/deleteChart.js',
-                                    'scripts/directives/flowchart/viewChart.js',
+                                    'scripts/directives/flowchart/manageChart.js',
                                     'scripts/directives/flowchart/manageCtrl.js',
                                     'scripts/directives/flowchart/flowchartdd.js',
                                     'scripts/directives/flowchart/manageCtrl.js',
@@ -165,10 +162,7 @@ angular
                             {
                                 name: 'Workbench',
                                 files: [
-                                    'scripts/directives/flowchart/saveChart.js',
-                                    'scripts/directives/flowchart/modifyChart.js',
-                                    'scripts/directives/flowchart/deleteChart.js',
-                                    'scripts/directives/flowchart/viewChart.js',
+                                    'scripts/directives/flowchart/manageChart.js',
                                     'scripts/directives/flowchart/manageCtrl.js',
                                     'scripts/directives/flowchart/flowchartdd.js',
                                     'scripts/directives/flowchart/GoDiagram.js',
@@ -190,10 +184,7 @@ angular
                             {
                                 name: 'Workbench',
                                 files: [
-                                    'scripts/directives/flowchart/saveChart.js',
-                                    'scripts/directives/flowchart/modifyChart.js',
-                                    'scripts/directives/flowchart/deleteChart.js',
-                                    'scripts/directives/flowchart/viewChart.js',
+                                    'scripts/directives/flowchart/manageChart.js',
                                     'scripts/directives/flowchart/flowchartdd.js',
                                     'scripts/directives/flowchart/manageCtrl.js',
                                     'scripts/directives/flowchart/GoDiagram.js',
@@ -215,10 +206,7 @@ angular
                             {
                                 name: 'Workbench',
                                 files: [
-                                    'scripts/directives/flowchart/saveChart.js',
-                                    'scripts/directives/flowchart/modifyChart.js',
-                                    'scripts/directives/flowchart/deleteChart.js',
-                                    'scripts/directives/flowchart/viewChart.js',
+                                    'scripts/directives/flowchart/manageChart.js',
                                     'scripts/directives/flowchart/flowchartdd.js',
                                     'scripts/directives/flowchart/manageCtrl.js',
                                     'scripts/directives/flowchart/GoDiagram.js',
