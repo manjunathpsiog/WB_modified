@@ -1,5 +1,5 @@
 ﻿angular.module("Workbench")
-.controller('ManageCtrl', function ($scope, $location, $rootScope, $http, slideshowService, config, $state) {
+    .controller('ManageCtrl', function ($scope, $location, $rootScope, $http, slideshowService, config, $state, saveChart, modifyChart) {
         $scope.model = new go.GraphLinksModel(
             [
                 { "category": "Start", "text": "Start", "key": -1, "loc": "-317 -502" },
@@ -62,61 +62,13 @@
         }
 
         $scope.model.selectedNodeData = null;
-        $scope.saveFlowChart = function ($location) {
-
-            var myGuid = GUID();
-            GUID.register(myGuid);
-            var data = JSON.parse($scope.model.toJson());
-            var flowchartID = "flowChartID"
-            data[flowchartID] = myGuid;
-            var flowchartName = "flowchartName"
-            data[flowchartName] = $("#txtFileName").val();
-            var Email = "Email";
-            data[Email] = $rootScope.globals.currentUser.Email;
-
-            $http({
-                method: 'POST',
-                url: config.baseUrl + 'addFlowchart',
-                data: data,
-                headers: {
-                    'Content-Type': 'application/json; charset=utf-8'
-                }
-            }).then(function successCallback(response) {
-                $scope.employees = response.data;
-                //alert(JSON.stringify($scope.employees));
-                //$location.path("#/dashboard/ModifyFlowChart");
-                $state.go("dashboard.ModifyFlowChart");
-            }, function errorCallback(response) {
-                console.log(response.statusText);
-            });
-        }
+        $scope.saveUsability = function () {
+            saveChart.sc($scope.model);
+        };
 
         $scope.UpdateFlowChart = function () {
-            var flowID = $scope.itemSelected.flowChartID
-            var data = JSON.parse($scope.model.toJson());
-            var flowchartID = "flowChartID"
-            data[flowchartID] = flowID;
-            var flowchartName = "flowchartName"
-            var Email = "Email";
-            data[flowchartName] = $scope.itemSelected.flowchartName;
-            data[Email] = $rootScope.globals.currentUser.Email;
-
-            $http({
-                method: 'POST',
-                url: config.baseUrl + 'updateFlowchartByID',
-                data: data,
-                headers: {
-                    'Content-Type': 'application/json; charset=utf-8'
-                }
-            }).then(function successCallback(response) {
-                $scope.employees = response.data;
-                location.reload();
-            }, function errorCallback(response) {
-                console.log(response.statusText);
-            });
-
-
-        }
+            modifyChart.mc($scope.model)
+        };
 
         $scope.DeleteFlowChart = function () {
             var flowID = $scope.itemSelected.flowChartID

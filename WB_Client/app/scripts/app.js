@@ -139,12 +139,15 @@ angular
                             {
                                 name: 'Workbench',
                                 files: [
+                                    'scripts/directives/flowchart/saveChart.js',
+                                    'scripts/directives/flowchart/modifyChart.js',
+                                    'scripts/directives/flowchart/manageCtrl.js',
                                     'scripts/directives/flowchart/flowchartdd.js',
                                     'scripts/directives/flowchart/manageCtrl.js',
                                     'scripts/directives/flowchart/GoDiagram.js',
                                     'scripts/directives/flowchart/GoPalatte.js',
                                     'scripts/directives/flowchart/sortable.js',
-                                    'scripts/slideshowplugin.js'
+                                    'scripts/slideshowplugin.js',
                                 ]
                             })
                     }
@@ -160,8 +163,10 @@ angular
                             {
                                 name: 'Workbench',
                                 files: [
-                                    'scripts/directives/flowchart/flowchartdd.js',
+                                    'scripts/directives/flowchart/saveChart.js',
+                                    'scripts/directives/flowchart/modifyChart.js',
                                     'scripts/directives/flowchart/manageCtrl.js',
+                                    'scripts/directives/flowchart/flowchartdd.js',
                                     'scripts/directives/flowchart/GoDiagram.js',
                                     'scripts/directives/flowchart/GoPalatte.js',
                                     'scripts/directives/flowchart/sortable.js',
@@ -181,6 +186,8 @@ angular
                             {
                                 name: 'Workbench',
                                 files: [
+                                    'scripts/directives/flowchart/saveChart.js',
+                                    'scripts/directives/flowchart/modifyChart.js',
                                     'scripts/directives/flowchart/flowchartdd.js',
                                     'scripts/directives/flowchart/manageCtrl.js',
                                     'scripts/directives/flowchart/GoDiagram.js',
