@@ -35,9 +35,6 @@ angular
                                 name: 'Workbench',
                                 files: [
                                     'scripts/directives/header/header.js',
-                                    'scripts/directives/flowchartdd.js',
-                                    'scripts/directives/genAndView/genandview.js',
-                                    'scripts/directives/generator/generator.js',
                                     'scripts/slideshowplugin.js',
                                     'scripts/directives/user/User.js',
                                     'scripts/directives/user/authentication.js',
