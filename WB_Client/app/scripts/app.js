@@ -124,10 +124,10 @@ angular
                                 name: 'Workbench',
                                 files: [
                                     'scripts/services/manageChart.js',
-                                    'scripts/directives/flowchart/flowchartdd.js',
-                                    'scripts/directives/flowchart/GoDiagram.js',
-                                    'scripts/directives/flowchart/GoPalatte.js',
-                                    'scripts/directives/flowchart/sortable.js',
+                                    'scripts/directives/flowchartdd.js',
+                                    'scripts/directives/GoDiagram.js',
+                                    'scripts/directives/GoPalatte.js',
+                                    'scripts/directives/sortable.js',
                                     'js/slideshowplugin.js',
                                 ]
                             })
@@ -145,10 +145,10 @@ angular
                                 name: 'Workbench',
                                 files: [
                                     'scripts/services/manageChart.js',
-                                    'scripts/directives/flowchart/flowchartdd.js',
-                                    'scripts/directives/flowchart/GoDiagram.js',
-                                    'scripts/directives/flowchart/GoPalatte.js',
-                                    'scripts/directives/flowchart/sortable.js',
+                                    'scripts/directives/flowchartdd.js',
+                                    'scripts/directives/GoDiagram.js',
+                                    'scripts/directives/GoPalatte.js',
+                                    'scripts/directives/sortable.js',
                                     'js/slideshowplugin.js'
                                 ]
                             })
@@ -166,10 +166,10 @@ angular
                                 name: 'Workbench',
                                 files: [
                                     'scripts/services/manageChart.js',
-                                    'scripts/directives/flowchart/flowchartdd.js',
-                                    'scripts/directives/flowchart/GoDiagram.js',
-                                    'scripts/directives/flowchart/GoPalatte.js',
-                                    'scripts/directives/flowchart/sortable.js',
+                                    'scripts/directives/flowchartdd.js',
+                                    'scripts/directives/GoDiagram.js',
+                                    'scripts/directives/GoPalatte.js',
+                                    'scripts/directives/sortable.js',
                                     'js/slideshowplugin.js'
                                 ]
                             })
@@ -187,10 +187,10 @@ angular
                                 name: 'Workbench',
                                 files: [
                                     'scripts/services/manageChart.js',
-                                    'scripts/directives/flowchart/flowchartdd.js',
-                                    'scripts/directives/flowchart/GoDiagram.js',
-                                    'scripts/directives/flowchart/GoPalatte.js',
-                                    'scripts/directives/flowchart/sortable.js',
+                                    'scripts/directives/flowchartdd.js',
+                                    'scripts/directives/GoDiagram.js',
+                                    'scripts/directives/GoPalatte.js',
+                                    'scripts/directives/sortable.js',
                                     'js/slideshowplugin.js'
                                 ]
                             })
@@ -207,10 +207,10 @@ angular
                             {
                                 name: 'Workbench',
                                 files: [
-                                    'scripts/directives/flowchart/flowchartdd.js',
-                                    'scripts/directives/flowchart/GoDiagram.js',
-                                    'scripts/directives/flowchart/GoPalatte.js',
-                                    'scripts/directives/flowchart/sortable.js',
+                                    'scripts/directives/flowchartdd.js',
+                                    'scripts/directives/GoDiagram.js',
+                                    'scripts/directives/GoPalatte.js',
+                                    'scripts/directives/sortable.js',
                                     'scripts/slideshowplugin.js'
                                 ]
                             })
@@ -226,10 +226,10 @@ angular
                             {
                                 name: 'Workbench',
                                 files: [
-                                    'scripts/directives/flowchart/flowchartdd.js',
-                                    'scripts/directives/flowchart/GoDiagram.js',
-                                    'scripts/directives/flowchart/GoPalatte.js',
-                                    'scripts/directives/flowchart/sortable.js',
+                                    'scripts/directives/flowchartdd.js',
+                                    'scripts/directives/GoDiagram.js',
+                                    'scripts/directives/GoPalatte.js',
+                                    'scripts/directives/sortable.js',
                                     'scripts/slideshowplugin.js'
                                 ]
                             })
