@@ -1,5 +1,6 @@
 ﻿angular.module("Workbench")
-    .controller('ManageCtrl', function ($scope, $location, $rootScope, $http, slideshowService, config, $state, saveChart, modifyChart) {
+    .controller('ManageCtrl', function ($scope, $location, $rootScope, $http, slideshowService, config,
+        $state, saveChart, modifyChart, deleteChart) {
         $scope.model = new go.GraphLinksModel(
             [
                 { "category": "Start", "text": "Start", "key": -1, "loc": "-317 -502" },
@@ -62,7 +63,7 @@
         }
 
         $scope.model.selectedNodeData = null;
-        $scope.saveUsability = function () {
+        $scope.saveFlowChart = function () {
             saveChart.sc($scope.model);
         };
 
@@ -71,31 +72,7 @@
         };
 
         $scope.DeleteFlowChart = function () {
-            var flowID = $scope.itemSelected.flowChartID
-            var data = JSON.parse($scope.model.toJson());
-            var flowchartID = "flowChartID";
-            data[flowchartID] = flowID;
-            var flowchartName = "flowchartName";
-            var Email = "Email";
-            data[flowchartName] = $scope.itemSelected.flowchartName;
-            data[Email] = $rootScope.globals.currentUser.Email;
-
-            $http({
-                method: 'DELETE',
-                url: config.baseUrl + 'deleteFlowchartByID',
-                data: data,
-                headers: {
-                    'Content-Type': 'application/json; charset=utf-8'
-                }
-            }).then(function successCallback(response) {
-                console.log(response);
-                $scope.employees = response.data;
-                //alert(JSON.stringify("Deleted Successfully"));
-                //window.location = "#/dashboard/ViewFlowChart";
-                location.reload();
-            }, function errorCallback(response) {
-                console.log(response.statusText);
-            });
+            deleteChart.dc($scope.model, $scope.itemSelected)
         }
 
         $scope.UploadFile = function () {

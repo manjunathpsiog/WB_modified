@@ -141,6 +141,8 @@ angular
                                 files: [
                                     'scripts/directives/flowchart/saveChart.js',
                                     'scripts/directives/flowchart/modifyChart.js',
+                                    'scripts/directives/flowchart/deleteChart.js',
+                                    'scripts/directives/flowchart/viewChart.js',
                                     'scripts/directives/flowchart/manageCtrl.js',
                                     'scripts/directives/flowchart/flowchartdd.js',
                                     'scripts/directives/flowchart/manageCtrl.js',
@@ -165,6 +167,8 @@ angular
                                 files: [
                                     'scripts/directives/flowchart/saveChart.js',
                                     'scripts/directives/flowchart/modifyChart.js',
+                                    'scripts/directives/flowchart/deleteChart.js',
+                                    'scripts/directives/flowchart/viewChart.js',
                                     'scripts/directives/flowchart/manageCtrl.js',
                                     'scripts/directives/flowchart/flowchartdd.js',
                                     'scripts/directives/flowchart/GoDiagram.js',
@@ -188,6 +192,8 @@ angular
                                 files: [
                                     'scripts/directives/flowchart/saveChart.js',
                                     'scripts/directives/flowchart/modifyChart.js',
+                                    'scripts/directives/flowchart/deleteChart.js',
+                                    'scripts/directives/flowchart/viewChart.js',
                                     'scripts/directives/flowchart/flowchartdd.js',
                                     'scripts/directives/flowchart/manageCtrl.js',
                                     'scripts/directives/flowchart/GoDiagram.js',
@@ -209,6 +215,10 @@ angular
                             {
                                 name: 'Workbench',
                                 files: [
+                                    'scripts/directives/flowchart/saveChart.js',
+                                    'scripts/directives/flowchart/modifyChart.js',
+                                    'scripts/directives/flowchart/deleteChart.js',
+                                    'scripts/directives/flowchart/viewChart.js',
                                     'scripts/directives/flowchart/flowchartdd.js',
                                     'scripts/directives/flowchart/manageCtrl.js',
                                     'scripts/directives/flowchart/GoDiagram.js',
