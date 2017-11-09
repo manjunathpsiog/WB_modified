@@ -35,7 +35,6 @@ angular
                                 name: 'Workbench',
                                 files: [
                                     'scripts/directives/header/header.js',
-                                    'scripts/slideshowplugin.js',
                                     'scripts/directives/user/User.js',
                                     'scripts/directives/user/authentication.js',
                                 ]
@@ -105,8 +104,6 @@ angular
                             name: 'Workbench',
                             files: [
                                 'scripts/controllers/main.js',
-                                'scripts/directives/generator/generator.js',
-                                'scripts/directives/genAndView/genandview.js',
                             ]
                         })
                     }
@@ -135,31 +132,127 @@ angular
             .state('dashboard.CreateFlowChart', {
                 templateUrl: 'views/ui-elements/CreateFlowChart.html',
                 url: '/CreateFlowChart',
-                controller: 'ManageCtrl'
+                controller: 'ManageCtrl',
+                resolve: {
+                    loadMyDirectives: function ($ocLazyLoad) {
+                        return $ocLazyLoad.load(
+                            {
+                                name: 'Workbench',
+                                files: [
+                                    'scripts/directives/flowchartdd.js',
+                                    'scripts/directives/flowchart/manageCtrl.js',
+                                    'scripts/directives/flowchart/GoDiagram.js',
+                                    'scripts/directives/flowchart/GoPalatte.js',
+                                    'scripts/directives/flowchart/sortable.js',
+                                    'scripts/slideshowplugin.js'
+                                ]
+                            })
+                    }
+                }
             })
             .state('dashboard.ViewFlowChart', {
                 templateUrl: 'views/ui-elements/ViewFlowChart.html',
                 url: '/ViewFlowChart',
-                controller: 'ManageCtrl'
+                controller: 'ManageCtrl',
+                resolve: {
+                    loadMyDirectives: function ($ocLazyLoad) {
+                        return $ocLazyLoad.load(
+                            {
+                                name: 'Workbench',
+                                files: [
+                                    'scripts/directives/flowchartdd.js',
+                                    'scripts/directives/flowchart/manageCtrl.js',
+                                    'scripts/directives/flowchart/GoDiagram.js',
+                                    'scripts/directives/flowchart/GoPalatte.js',
+                                    'scripts/directives/flowchart/sortable.js',
+                                    'scripts/slideshowplugin.js'
+                                ]
+                            })
+                    }
+                }
             })
             .state('dashboard.ModifyFlowChart', {
                 templateUrl: 'views/ui-elements/ModifyFlowChart.html',
                 url: '/ModifyFlowChart',
-                controller: 'ManageCtrl'
+                controller: 'ManageCtrl',
+                resolve: {
+                    loadMyDirectives: function ($ocLazyLoad) {
+                        return $ocLazyLoad.load(
+                            {
+                                name: 'Workbench',
+                                files: [
+                                    'scripts/directives/flowchartdd.js',
+                                    'scripts/directives/flowchart/manageCtrl.js',
+                                    'scripts/directives/flowchart/GoDiagram.js',
+                                    'scripts/directives/flowchart/GoPalatte.js',
+                                    'scripts/directives/flowchart/sortable.js',
+                                    'scripts/slideshowplugin.js'
+                                ]
+                            })
+                    }
+                }
             })
             .state('dashboard.DeleteFlowChart', {
                 templateUrl: 'views/ui-elements/DeleteFlowChart.html',
                 url: '/DeleteFlowChart',
-                controller: 'ManageCtrl'
+                controller: 'ManageCtrl',
+                resolve: {
+                    loadMyDirectives: function ($ocLazyLoad) {
+                        return $ocLazyLoad.load(
+                            {
+                                name: 'Workbench',
+                                files: [
+                                    'scripts/directives/flowchartdd.js',
+                                    'scripts/directives/flowchart/manageCtrl.js',
+                                    'scripts/directives/flowchart/GoDiagram.js',
+                                    'scripts/directives/flowchart/GoPalatte.js',
+                                    'scripts/directives/flowchart/sortable.js',
+                                    'scripts/slideshowplugin.js'
+                                ]
+                            })
+                    }
+                }
             })
             .state('dashboard.CreateUsability', {
                 templateUrl: 'views/ui-elements/CreateUsability.html',
                 url: '/CreateUsability',
-                controller: 'ManageCtrl'
+                controller: 'ManageCtrl',
+                resolve: {
+                    loadMyDirectives: function ($ocLazyLoad) {
+                        return $ocLazyLoad.load(
+                            {
+                                name: 'Workbench',
+                                files: [
+                                    'scripts/directives/flowchartdd.js',
+                                    'scripts/directives/flowchart/manageCtrl.js',
+                                    'scripts/directives/flowchart/GoDiagram.js',
+                                    'scripts/directives/flowchart/GoPalatte.js',
+                                    'scripts/directives/flowchart/sortable.js',
+                                    'scripts/slideshowplugin.js'
+                                ]
+                            })
+                    }
+                }
             })
             .state('dashboard.ViewPresentations', {
                 templateUrl: 'views/ui-elements/ViewPresentations.html',
-                url: '/ViewPresentation'
+                url: '/ViewPresentation',
+                resolve: {
+                    loadMyDirectives: function ($ocLazyLoad) {
+                        return $ocLazyLoad.load(
+                            {
+                                name: 'Workbench',
+                                files: [
+                                    'scripts/directives/flowchartdd.js',
+                                    'scripts/directives/flowchart/manageCtrl.js',
+                                    'scripts/directives/flowchart/GoDiagram.js',
+                                    'scripts/directives/flowchart/GoPalatte.js',
+                                    'scripts/directives/flowchart/sortable.js',
+                                    'scripts/slideshowplugin.js'
+                                ]
+                            })
+                    }
+                }
             })
             .state('dashboard.generateTests', {
                 templateUrl: 'views/pages/generateTests.html',
@@ -170,6 +263,8 @@ angular
                             {
                                 name: 'Workbench',
                                 files: [
+                                    'scripts/directives/generator/generator.js',
+                                    'scripts/directives/genAndView/genandview.js',
                                     'https://cdn.datatables.net/v/bs4-4.0.0-beta/jq-3.2.1/jszip-2.5.0/dt-1.10.16/af-2.2.2/b-1.4.2/b-colvis-1.4.2/b-flash-1.4.2/b-html5-1.4.2/b-print-1.4.2/cr-1.4.1/fc-3.2.3/fh-3.1.3/kt-2.3.2/r-2.2.0/rg-1.0.2/rr-1.2.3/sc-1.4.3/sl-1.2.3/datatables.min.css',
                                     'https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.26/vfs_fonts.js',
                                     'https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.26/pdfmake.min.js',
@@ -199,34 +294,19 @@ function run($rootScope, $location, $cookies, $http, $state) {
         }
     });
 }
-
-//Service to Generate all combinations of flows
 angular
     .module('Workbench').factory('generatorService', ['$http', 'config', function ($http, config) {
         var data = { name: 'MS' };
-
         return {
             generateFromXml: function (xmlData) {
                 var formData = new FormData();
-                //formData.append("xmlData", "DSDS");
-                //console.log(xmlData, formData.getAll('xmlData'));
                 return $http.post(config.baseUrl + "generateFromXml/", $.param({ 'xmlData': xmlData }), { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } });
             },
-
             generateFromJson: function (jsonData) {
-                //var formData = new FormData(); 
-                //formData.append("flowChartID", id);
                 return $http.post(config.baseUrl + "generateFromJson/", jsonData, { headers: { 'Content-Type': 'application/json' } });
             },
-
             getJsonValue: function (id) {
                 return $http.get(config.baseUrl + "getFlowChartByID/" + id, { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } });
             }
-
-
         };
     }]);
-
-
-
-
