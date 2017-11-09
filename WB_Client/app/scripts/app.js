@@ -74,25 +74,9 @@ angular
                     }
                 }
             })
-
             .state('auth', {
                 url: '/auth',
                 templateUrl: 'views/auth/auth.html',
-                resolve: {
-                    loadMyDirectives: function ($ocLazyLoad) {
-                        return $ocLazyLoad.load(
-                            {
-                                name: 'Workbench',
-                                files: [
-                                    'scripts/directives/header/header.js',
-                                    'scripts/directives/flowchart/flowchartdd.js',
-                                    'scripts/directives/genAndView/genandview.js',
-                                    'scripts/directives/generator/generator.js',
-                                    'scripts/slideshowplugin.js'
-                                ]
-                            })
-                    }
-                }
             })
             .state('dashboard.home', {
                 url: '/home',
@@ -139,14 +123,12 @@ angular
                             {
                                 name: 'Workbench',
                                 files: [
-                                    'scripts/directives/flowchart/manageChart.js',
-                                    'scripts/directives/flowchart/manageCtrl.js',
+                                    'scripts/services/manageChart.js',
                                     'scripts/directives/flowchart/flowchartdd.js',
-                                    'scripts/directives/flowchart/manageCtrl.js',
                                     'scripts/directives/flowchart/GoDiagram.js',
                                     'scripts/directives/flowchart/GoPalatte.js',
                                     'scripts/directives/flowchart/sortable.js',
-                                    'scripts/slideshowplugin.js',
+                                    'js/slideshowplugin.js',
                                 ]
                             })
                     }
@@ -162,13 +144,12 @@ angular
                             {
                                 name: 'Workbench',
                                 files: [
-                                    'scripts/directives/flowchart/manageChart.js',
-                                    'scripts/directives/flowchart/manageCtrl.js',
+                                    'scripts/services/manageChart.js',
                                     'scripts/directives/flowchart/flowchartdd.js',
                                     'scripts/directives/flowchart/GoDiagram.js',
                                     'scripts/directives/flowchart/GoPalatte.js',
                                     'scripts/directives/flowchart/sortable.js',
-                                    'scripts/slideshowplugin.js'
+                                    'js/slideshowplugin.js'
                                 ]
                             })
                     }
@@ -184,13 +165,12 @@ angular
                             {
                                 name: 'Workbench',
                                 files: [
-                                    'scripts/directives/flowchart/manageChart.js',
+                                    'scripts/services/manageChart.js',
                                     'scripts/directives/flowchart/flowchartdd.js',
-                                    'scripts/directives/flowchart/manageCtrl.js',
                                     'scripts/directives/flowchart/GoDiagram.js',
                                     'scripts/directives/flowchart/GoPalatte.js',
                                     'scripts/directives/flowchart/sortable.js',
-                                    'scripts/slideshowplugin.js'
+                                    'js/slideshowplugin.js'
                                 ]
                             })
                     }
@@ -206,13 +186,12 @@ angular
                             {
                                 name: 'Workbench',
                                 files: [
-                                    'scripts/directives/flowchart/manageChart.js',
+                                    'scripts/services/manageChart.js',
                                     'scripts/directives/flowchart/flowchartdd.js',
-                                    'scripts/directives/flowchart/manageCtrl.js',
                                     'scripts/directives/flowchart/GoDiagram.js',
                                     'scripts/directives/flowchart/GoPalatte.js',
                                     'scripts/directives/flowchart/sortable.js',
-                                    'scripts/slideshowplugin.js'
+                                    'js/slideshowplugin.js'
                                 ]
                             })
                     }
@@ -229,7 +208,6 @@ angular
                                 name: 'Workbench',
                                 files: [
                                     'scripts/directives/flowchart/flowchartdd.js',
-                                    'scripts/directives/flowchart/manageCtrl.js',
                                     'scripts/directives/flowchart/GoDiagram.js',
                                     'scripts/directives/flowchart/GoPalatte.js',
                                     'scripts/directives/flowchart/sortable.js',
@@ -249,7 +227,6 @@ angular
                                 name: 'Workbench',
                                 files: [
                                     'scripts/directives/flowchart/flowchartdd.js',
-                                    'scripts/directives/flowchart/manageCtrl.js',
                                     'scripts/directives/flowchart/GoDiagram.js',
                                     'scripts/directives/flowchart/GoPalatte.js',
                                     'scripts/directives/flowchart/sortable.js',
@@ -268,6 +245,7 @@ angular
                             {
                                 name: 'Workbench',
                                 files: [
+                                    'scripts/services/generatorService.js',
                                     'scripts/directives/generator/generator.js',
                                     'scripts/directives/genAndView/genandview.js',
                                     'https://cdn.datatables.net/v/bs4-4.0.0-beta/jq-3.2.1/jszip-2.5.0/dt-1.10.16/af-2.2.2/b-1.4.2/b-colvis-1.4.2/b-flash-1.4.2/b-html5-1.4.2/b-print-1.4.2/cr-1.4.1/fc-3.2.3/fh-3.1.3/kt-2.3.2/r-2.2.0/rg-1.0.2/rr-1.2.3/sc-1.4.3/sl-1.2.3/datatables.min.css',
@@ -299,19 +277,3 @@ function run($rootScope, $location, $cookies, $http, $state) {
         }
     });
 }
-angular
-    .module('Workbench').factory('generatorService', ['$http', 'config', function ($http, config) {
-        var data = { name: 'MS' };
-        return {
-            generateFromXml: function (xmlData) {
-                var formData = new FormData();
-                return $http.post(config.baseUrl + "generateFromXml/", $.param({ 'xmlData': xmlData }), { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } });
-            },
-            generateFromJson: function (jsonData) {
-                return $http.post(config.baseUrl + "generateFromJson/", jsonData, { headers: { 'Content-Type': 'application/json' } });
-            },
-            getJsonValue: function (id) {
-                return $http.get(config.baseUrl + "getFlowChartByID/" + id, { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } });
-            }
-        };
-    }]);
