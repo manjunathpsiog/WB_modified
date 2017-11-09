@@ -7,13 +7,12 @@
             <div class="panel-body">
                 <div class="row">
                     <div class="col-lg-6">
-                        <form role="form">
+                        <form role="form" name="create">
                             <div class="form-group">
                                 <label>FileName :</label>
-                                <input class="form-control" id="txtFileName" placeholder="Enter text">
+                                <input class="form-control" id="txtFileName" required placeholder="Enter text">
                                 <small>Please type in a unique name for the file</small>
                             </div>
-                        </form>
                     </div>
                     <div class="col-lg-12" ng-controller="MinimalCtrl">
                         <form role="form">
@@ -106,7 +105,7 @@
                                                 <pre id="content" style="display: none"></pre>
                                             </div>
                                             <div class="modal-footer">
-                                                <button class="btn btn-outline-primary" ng-click="updateJSONData()">Save</button>
+                                                <button class="btn btn-outline-primary" ng-disabled="create.$invalid" ng-click="updateJSONData()">Save</button>
                                             </div>
                                         </div>
                                     </div>
