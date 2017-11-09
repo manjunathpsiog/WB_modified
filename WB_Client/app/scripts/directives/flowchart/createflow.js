@@ -5,11 +5,6 @@
         vm.loadgojs = (function () {
             init();
         });
-        //vm.text = "mytest";   
-        //vm.onloadFun = function () {
-        //    alert(00001);
-        //}
     });
-
 })();
 

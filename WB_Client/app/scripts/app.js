@@ -138,27 +138,27 @@ angular
             .state('dashboard.CreateFlowChart', {
                 templateUrl: 'views/ui-elements/CreateFlowChart.html',
                 url: '/CreateFlowChart',
-                controller: 'MinimalCtrl'
+                controller: 'ManageCtrl'
             })
             .state('dashboard.ViewFlowChart', {
                 templateUrl: 'views/ui-elements/ViewFlowChart.html',
                 url: '/ViewFlowChart',
-                controller: 'MinimalCtrl'
+                controller: 'ManageCtrl'
             })
             .state('dashboard.ModifyFlowChart', {
                 templateUrl: 'views/ui-elements/ModifyFlowChart.html',
                 url: '/ModifyFlowChart',
-                controller: 'MinimalCtrl'
+                controller: 'ManageCtrl'
             })
             .state('dashboard.DeleteFlowChart', {
                 templateUrl: 'views/ui-elements/DeleteFlowChart.html',
                 url: '/DeleteFlowChart',
-                controller: 'MinimalCtrl'
+                controller: 'ManageCtrl'
             })
             .state('dashboard.CreateUsability', {
                 templateUrl: 'views/ui-elements/CreateUsability.html',
                 url: '/CreateUsability',
-                controller: 'MinimalCtrl'
+                controller: 'ManageCtrl'
             })
             .state('dashboard.ViewPresentations', {
                 templateUrl: 'views/ui-elements/ViewPresentations.html',
