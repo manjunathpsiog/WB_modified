@@ -104,7 +104,7 @@
         myDiagram.model = model;
     }
     exports.rebuildGraph = rebuildGraph;
-    var nodes = (function () {
+    var nodes = /** @class */ (function () {
         function nodes(key, isGroup, parent, text, fill, size, total) {
             this.key = key;
             this.isGroup = isGroup;

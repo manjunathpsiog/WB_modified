@@ -1055,7 +1055,7 @@ var __extends = (this && this.__extends) || (function () {
         return new go.Size(MINLENGTH, MINBREADTH);
     }
     // define a custom ResizingTool to limit how far one can shrink a lane Group
-    var LaneResizingTool = (function (_super) {
+    var LaneResizingTool = /** @class */ (function (_super) {
         __extends(LaneResizingTool, _super);
         function LaneResizingTool() {
             return _super !== null && _super.apply(this, arguments) || this;
@@ -1118,7 +1118,7 @@ var __extends = (this && this.__extends) || (function () {
     // end LaneResizingTool class
     // define a custom grid layout that makes sure the length of each lane is the same
     // and that each lane is broad enough to hold its subgraph
-    var PoolLayout = (function (_super) {
+    var PoolLayout = /** @class */ (function (_super) {
         __extends(PoolLayout, _super);
         function PoolLayout() {
             var _this = _super !== null && _super.apply(this, arguments) || this;

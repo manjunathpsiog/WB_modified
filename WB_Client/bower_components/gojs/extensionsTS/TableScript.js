@@ -25,7 +25,7 @@ var __extends = (this && this.__extends) || (function () {
     var go = require("../release/go");
     var TableLayout_1 = require("./TableLayout");
     // define a custom ResizingTool to limit how far one can shrink a row or column
-    var LaneResizingTool = (function (_super) {
+    var LaneResizingTool = /** @class */ (function (_super) {
         __extends(LaneResizingTool, _super);
         function LaneResizingTool() {
             return _super !== null && _super.apply(this, arguments) || this;
@@ -157,10 +157,10 @@ var __extends = (this && this.__extends) || (function () {
             font: "bold 10pt sans-serif", isMultiline: false,
             wrap: go.TextBlock.None, overflow: go.TextBlock.OverflowEllipsis
         }, new go.Binding("text")))));
-        myDiagram.nodeTemplate =
+        myDiagram.nodeTemplate = // for regular nodes within cells (groups); you'll want to extend this
             $(go.Node, "Auto", { width: 100, height: 50, margin: 4 }, // assume uniform Margin, all around
             new go.Binding("row"), new go.Binding("column", "col"), $(go.Shape, { fill: "white" }, new go.Binding("fill", "color")), $(go.TextBlock, new go.Binding("text", "key")));
-        myDiagram.groupTemplate =
+        myDiagram.groupTemplate = // for cells
             $(go.Group, "Auto", {
                 layerName: "Background",
                 stretch: go.GraphObject.Fill,

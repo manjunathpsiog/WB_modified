@@ -47,7 +47,7 @@ var __extends = (this && this.__extends) || (function () {
     * nor background (RowColumnDefinition.background and coversSeparators properties).
     * There is no support for RowColumnDefinition.sizing, either.
     */
-    var TableLayout = (function (_super) {
+    var TableLayout = /** @class */ (function (_super) {
         __extends(TableLayout, _super);
         function TableLayout() {
             var _this = _super !== null && _super.apply(this, arguments) || this;
@@ -485,7 +485,7 @@ var __extends = (this && this.__extends) || (function () {
                         if (desiredColTotal === 0)
                             w = colHerald.actual + colleft;
                         else
-                            w = ((nosizeCols[child.column] / desiredColTotal) * originalcolleft);
+                            w = /*colHerald.actual +*/ ((nosizeCols[child.column] / desiredColTotal) * originalcolleft);
                     }
                     else {
                         // Only use colHerald.actual if it was nonzero before this loop
@@ -506,7 +506,7 @@ var __extends = (this && this.__extends) || (function () {
                         if (desiredRowTotal === 0)
                             h = rowHerald.actual + rowleft;
                         else
-                            h = ((nosizeRows[child.row] / desiredRowTotal) * originalrowleft);
+                            h = /*rowHerald.actual +*/ ((nosizeRows[child.row] / desiredRowTotal) * originalrowleft);
                     }
                     else {
                         // Only use rowHerald.actual if it was nonzero before this loop
@@ -524,10 +524,10 @@ var __extends = (this && this.__extends) || (function () {
                 // This used to set allowedSize height/width to Infinity,
                 // but we can only set it to the current row/column space, plus rowleft/colleft values, at most.
                 switch (stretch) {
-                    case go.GraphObject.Horizontal:
+                    case go.GraphObject.Horizontal:// H stretch means it can be as large as its wants vertically
                         allowedSize.height = Math.max(allowedSize.height, rowHerald.actual + rowleft);
                         break;
-                    case go.GraphObject.Vertical:
+                    case go.GraphObject.Vertical:// vice versa
                         allowedSize.width = Math.max(allowedSize.width, colHerald.actual + colleft);
                         break;
                 }

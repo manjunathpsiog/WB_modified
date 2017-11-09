@@ -48,7 +48,7 @@ var __extends = (this && this.__extends) || (function () {
         *    myDiagram.commandHandler = new LocalStorageCommandHandler();
         * </pre>
         */
-    var LocalStorageCommandHandler = (function (_super) {
+    var LocalStorageCommandHandler = /** @class */ (function (_super) {
         __extends(LocalStorageCommandHandler, _super);
         function LocalStorageCommandHandler() {
             var _this = _super !== null && _super.apply(this, arguments) || this;

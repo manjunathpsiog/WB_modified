@@ -36,7 +36,7 @@
       When the collection changes, the inspector passes on information
       to all of its Views so that they may re-populate their inputs.
     */
-    var DebugInspector = (function () {
+    var DebugInspector = /** @class */ (function () {
         function DebugInspector(divid, diagram, options) {
             var _this = this;
             this.inspectedProps = {};
@@ -432,7 +432,7 @@
     * View
     * object: usually the this.collection/Node
     */
-    var View = (function () {
+    var View = /** @class */ (function () {
         function View(object, options) {
             this.inialized = false;
             this.visible = true;

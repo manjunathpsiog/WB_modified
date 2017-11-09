@@ -35,7 +35,7 @@ var __extends = (this && this.__extends) || (function () {
     * @extends Tool
     * @class
     */
-    var SectorReshapingTool = (function (_super) {
+    var SectorReshapingTool = /** @class */ (function (_super) {
         __extends(SectorReshapingTool, _super);
         function SectorReshapingTool() {
             var _this = _super.call(this) || this;

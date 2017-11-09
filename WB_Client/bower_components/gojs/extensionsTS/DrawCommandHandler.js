@@ -44,7 +44,7 @@ var __extends = (this && this.__extends) || (function () {
     * <pre>
     *    myDiagram.commandHandler = new DrawCommandHandler();
     * </pre>*/
-    var DrawCommandHandler = (function (_super) {
+    var DrawCommandHandler = /** @class */ (function (_super) {
         __extends(DrawCommandHandler, _super);
         function DrawCommandHandler() {
             var _this = _super !== null && _super.apply(this, arguments) || this;
