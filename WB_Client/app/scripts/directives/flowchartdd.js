@@ -3,9 +3,9 @@
         return {
             restrict: 'E',
             scope: false,
-            template: '<select ng-model="itemSelected" required ng-class="selectpicker" class="form-control" ng-options="item as item.flowchartName for item in items track by item.flowChartID">'
+            template: '<select required ng-model="itemSelected" ng-class="selectpicker" class="form-control" ng-options="item as item.flowchartName for item in items track by item.flowChartID">'
             +
-            '<option value="" selected disabled>--Select the Flowchart--</option>'
+            '<option value="" disabled>--Select the Flowchart--</option>'
             +
             '</select>',
             link: function (scope, elem, attr) {
@@ -20,11 +20,11 @@
                 }).then(function successCallback(response) {
                     scope.items = response.data.flowchart;
                 }, function errorCallback(response) {
-                    $scope.isSe = true;
                     console.log(response.statusText);
                 });
 
                 scope.$watch("itemSelected", function () {
+                    console.log("Changed")
                     scope.ddlValueChanged();
                 });
             }

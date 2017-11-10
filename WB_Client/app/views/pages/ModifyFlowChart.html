@@ -1,128 +1,124 @@
-﻿<div class="container">
+﻿<div class="container" ng-controller="manageCtrl">
     <div class="row">
         <h1 class="display-4">Modify A Flow</h1>
     </div>
-    <div class="row" ng-controller="manageCtrl">
-        <div class="col-lg-6">
-            <form role="form">
+    <form role="form" ng-submit="UpdateFlowChart()" name="modify">
+        <div class="row">
+            <div class="col-lg-6">
                 <div class="form-group">
                     <label for="">Choose File</label>
                     <div class="form-group">
                         <flowchartddl></flowchartddl>
                     </div>
                 </div>
-            </form>
+            </div>
+            <div style="margin-top: 40px;" class="col-lg-2">
+                <h6>
+                    <span class="badge badge-primary">CTRL + C</span> Copy</h6>
+            </div>
+            <div style="margin-top: 40px;" class="col-lg-2">
+                <h6>
+                    <span class="badge badge-success">CTRL + V</span> Paste</h6>
+            </div>
+            <div style="margin-top: 40px;" class="col-lg-2">
+                <h6>
+                    <span class="badge badge-danger">DELETE</span> Delete</h6>
+            </div>
         </div>
-        <div style="margin-top: 40px;" class="col-lg-2">
-            <h6>
-                <span class="badge badge-primary">CTRL + C</span> Copy</h6>
-        </div>
-        <div style="margin-top: 40px;" class="col-lg-2">
-            <h6>
-                <span class="badge badge-success">CTRL + V</span> Paste</h6>
-        </div>
-        <div style="margin-top: 40px;" class="col-lg-2">
-            <h6>
-                <span class="badge badge-danger">DELETE</span> Delete</h6>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-lg-12">
-            <form role="form">
+        <div class="row">
+            <div class="col-lg-12">
                 <div class="form-group">
-                    <div>
-                        <div id="sample">
-
-                            <div style="width: 100%; white-space: nowrap;">
-                                <span class="form-control" style="display: inline-block; vertical-align: top; width: 200px">
-                                    <go-Palatte go-model="model" style="border:none;height: 500px"></go-Palatte>
-                                </span>
-                                <span class="form-control" style="display: inline-block; vertical-align: top; width: 80%">
-                                    <go-diagram go-model="model" op="1" style="height: 500px"></go-diagram>
-                                </span>
-                            </div>
-                            <div>
-                                <br />
-                                <button type="button" ng-click="UpdateFlowChart()" class="btn btn-primary">Update</button>
-                            </div>
-                            <div>
-                            </div>
+                    <div id="sample">
+                        <div style="width: 100%; white-space: nowrap;">
+                            <span class="form-control" style="display: inline-block; vertical-align: top; width: 200px">
+                                <go-Palatte go-model="model" style="border:none;height: 500px"></go-Palatte>
+                            </span>
+                            <span class="form-control" style="display: inline-block; vertical-align: top; width: 80%">
+                                <go-diagram go-model="model" op="1" style="height: 500px"></go-diagram>
+                            </span>
                         </div>
-                    </div>
-                    <div id="myModal" class="modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <span onclick="closepopup();" class="close">&times;</span>
-                                    <h3 class="modal-title">File Ordering</h3>
-                                </div>
-                                <!-- Modal content -->
-                                <div class="modal-body">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="text-center text-white">
-                                                <a class="btn btn-primary" style="cursor:pointer" data-toggle="#uploadFile" onclick="return ShowDivs()">
-                                                    File Upload
-                                                </a>
-                                                <a class="btn btn-primary" style="cursor:pointer" data-toggle="#details" onclick="return loadImagesAsList()">
-                                                    Order File
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <br />
-                                    <div id="uploadFile" class="tab-content current">
-                                        <div id="FileUploadDiv">
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="alert alert-success" style="width: 200px; float: right;">
-                                                        <span id="spnKey" style="display: none"></span>
-                                                        <span class="large label tag label-primary">
-                                                            <span id="spnText"></span>
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="smallUploadBox">
-                                                        <input type="file" id="fileUpload" />
-                                                        <br />
-                                                        <br />
-                                                        <!--ng-click="UploadFile()"-->
-                                                        <button class="btn btn-primary" ng-click="UploadFile()">
-                                                            <i class="fa fa-upload"></i>
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div id="im1" class="tab-content">
-                                        <div id="viewList" class="sortable">
-                                        </div>
-                                        <div id="imageLoader" style="align-content: center; display: none">
-                                            <img src="img/ellipsis.gif" style="" />
-                                        </div>
-                                        <div id="viewError">
-                                            <h6 class="text-danger">No views to show.</h6>
-                                        </div>
-                                    </div>
-                                    <div id="details" class="tab-content">
-                                        <div id="ListView" class="sortable"></div>
-                                    </div>
-                                    <div id="divAssets" style="display: none">
-                                        <table id="tableAssets" style="border: 1px solid; display: none" border="1"></table>
-                                        <br />
-                                    </div>
-                                    <pre id="content" style="display: none"></pre>
-                                </div>
-                                <div class="modal-footer">
-                                    <button class="btn btn-outline-primary" ng-click="updateJSONData()">Save</button>
-                                </div>
-                            </div>
+                        <div class="text-center">
+                            <br />
+                            <button type="submit" ng-disabled="modify.$invalid" class="btn btn-primary">Update</button>
                         </div>
                     </div>
                 </div>
-            </form>
+            </div>
         </div>
+    </form>
+
+    <div id="myModal" class="modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <form>
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <span onclick="closepopup();" class="close">&times;</span>
+                        <h3 class="modal-title">File Ordering</h3>
+                    </div>
+                    <!-- Modal content -->
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="text-center text-white">
+                                    <a class="btn btn-primary" style="cursor:pointer" data-toggle="#uploadFile" onclick="return ShowDivs()">
+                                        File Upload
+                                    </a>
+                                    <a class="btn btn-primary" style="cursor:pointer" data-toggle="#details" onclick="return loadImagesAsList()">
+                                        Order File
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                        <div id="uploadFile" class="tab-content current">
+                            <div id="FileUploadDiv">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="alert alert-success" style="width: 200px; float: right;">
+                                            <span id="spnKey" style="display: none"></span>
+                                            <span class="large label tag label-primary">
+                                                <span id="spnText"></span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="smallUploadBox">
+                                            <input type="file" id="fileUpload" />
+                                            <br />
+                                            <br />
+                                            <!--ng-click="UploadFile()"-->
+                                            <button class="btn btn-primary" ng-click="UploadFile()">
+                                                <i class="fa fa-upload"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="im1" class="tab-content">
+                            <div id="viewList" class="sortable">
+                            </div>
+                            <div id="imageLoader" style="align-content: center; display: none">
+                                <img src="img/ellipsis.gif" style="" />
+                            </div>
+                            <div id="viewError">
+                                <h6 class="text-danger">No views to show.</h6>
+                            </div>
+                        </div>
+                        <div id="details" class="tab-content">
+                            <div id="ListView" class="sortable"></div>
+                        </div>
+                        <div id="divAssets" style="display: none">
+                            <table id="tableAssets" style="border: 1px solid; display: none" border="1"></table>
+                            <br />
+                        </div>
+                        <pre id="content" style="display: none"></pre>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-outline-primary" ng-click="updateJSONData()">Save</button>
+                    </div>
+                </div>
+            </div>
+        </form>
     </div>
 </div>

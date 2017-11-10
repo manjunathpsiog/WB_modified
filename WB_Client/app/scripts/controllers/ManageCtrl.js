@@ -9,31 +9,31 @@
                     "key": -1,
                     "loc": "-317 -502"
                 },
-                { 
-                    "text": "Process", 
-                    "figure": "Rectangle", 
-                    "tetx": "Process", 
-                    "key": -2, 
-                    "loc": "-317 -418" 
+                {
+                    "text": "Process",
+                    "figure": "Rectangle",
+                    "tetx": "Process",
+                    "key": -2,
+                    "loc": "-317 -418"
                 },
-                { 
-                    "text": "???", 
-                    "figure": "Diamond", 
-                    "key": -3, 
-                    "loc": "-317 -273" 
+                {
+                    "text": "???",
+                    "figure": "Diamond",
+                    "key": -3,
+                    "loc": "-317 -273"
                 },
-                { 
-                    "category": "Input", 
-                    "figure": "Input", 
-                    "text": "Input", 
-                    "key": -4, 
-                    "loc": "-317 -349" 
+                {
+                    "category": "Input",
+                    "figure": "Input",
+                    "text": "Input",
+                    "key": -4,
+                    "loc": "-317 -349"
                 },
-                { 
-                    "category": "End", 
-                    "text": "End", 
-                    "key": -6, 
-                    "loc": "-315 -164" 
+                {
+                    "category": "End",
+                    "text": "End",
+                    "key": -6,
+                    "loc": "-315 -164"
                 },
             ],
             [
@@ -47,46 +47,14 @@
 
         $scope.slideshow = function () {
             slideshowService.getSlideshowJSON('00d86a61-e963-48cc-8e59-acf10a9cb213', '-1_-2_-4_-3_-6').
-            then(function (res) {
-                var data = res;
-            });
+                then(function (res) {
+                    var data = res;
+                });
         }
 
         $scope.saveUsability = function () {
-            flowchartID = $scope.itemSelected.flowChartID;
-            blockID = $scope.blkid;
-            var imageCount = finalCords.length;
-            var kc = 0;
-            for (var i = 0; i < imageCount; i++) {
-                var item = { "flowchartID": flowchartID, "blockID": blockID, "FileID": finalCords[i].ImageID, "coordinates": finalCords[i].coordinates };
-                var data = angular.toJson(item, true);
-                var url = config.baseUrl + 'addCoordinates';
-                // console.log("post");
-                console.log(JSON.stringify(data));
-                $.ajax({
-                    crossDomain: "true",
-                    type: "POST",
-                    url: url,
-                    data: data,
-                    cache: false,
-                    timeout: 50000,
-                    contentType: "application/json",
-                    success: function (response) {
-                        console.log(response);
-                        kc++;
-                        /*if (kc == imageCount)
-                            alert("Saved successfully!");*/
-                    },
-                    error: function (jqXHR, textStatus, errorThrown) {
-
-                        console.log('error ' + textStatus + " " + errorThrown);
-                    }
-                });
-            }
-
-            document.getElementById("EditScreen").style.zIndex = 0;
-            document.getElementById("EditScreen").style.display = "none";
-        }
+            manageChart.sc($scope.itemSelected);
+        };
 
         $scope.model.selectedNodeData = null;
         $scope.saveFlowChart = function () {
@@ -94,6 +62,7 @@
         };
 
         $scope.UpdateFlowChart = function () {
+            console.log($scope.model.flowChartID);
             manageChart.mc($scope.model, $scope.itemSelected)
         };
 
@@ -672,22 +641,17 @@ function loadImagesAsList() {
     }
     else
         notifyUSFailure();
-}
-
+};
 var xmlHttpReqQueueIL = new Array();
 
 //***** Function to call the xhrl *****
 function requestXHRLI(url, accessToken, assetURL) {
     var xmlHttpReq;
-
     xmlHttpReq = new XMLHttpRequest()
     xmlHttpReq.onload = function () {
         xmlHttpReqQueueIL.shift();
-
         var base64 = 'data:image/png;base64,' + base64ArrayBuffer(xmlHttpReq.response);
-
         divStringIL += " <div><img id='" + assetURL + "' height='50' width='50' src='" + base64 + "'></div><br/>";
-
         if (xmlHttpReqQueueIL.length > 0)
             xmlHttpReqQueueIL[0].send(null);
         else {
@@ -696,17 +660,14 @@ function requestXHRLI(url, accessToken, assetURL) {
             viewList.innerHTML = divStringIL;
         }
     }
-
     xmlHttpReq.open('GET', url, true);
     xmlHttpReq.setRequestHeader('Authorization', 'Bearer ' + accessToken);
     xmlHttpReq.responseType = 'arraybuffer';
     xmlHttpReqQueueIL.push(xmlHttpReq);
-
     if (xmlHttpReqQueueIL.length == 1) {
         xmlHttpReq.send(null);
     }
 }
-
 
 //*****This is used to show the images on the flowchart right click context*****
 function ShowDivs() {
