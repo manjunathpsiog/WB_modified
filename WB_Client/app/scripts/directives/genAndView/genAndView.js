@@ -1,5 +1,5 @@
-/// <reference path="../../../views/ui-elements/ViewPresentations.html" />
-/// <reference path="../../../views/ui-elements/ViewPresentations.html" />
+/// <reference path="../../../views/pages/ViewPresentations.html" />
+/// <reference path="../../../views/pages/ViewPresentations.html" />
 'use strict';
 
 /**

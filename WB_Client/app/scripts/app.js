@@ -81,7 +81,7 @@ angular
             .state('dashboard.home', {
                 url: '/home',
                 controller: 'MainCtrl',
-                templateUrl: 'views/ui-elements/Home.html',
+                templateUrl: 'views/pages/Home.html',
                 resolve: {
                     loadMyFiles: function ($ocLazyLoad) {
                         return $ocLazyLoad.load({
@@ -114,7 +114,7 @@ angular
                 controller: 'logoutCtrl'
             })
             .state('dashboard.CreateFlowChart', {
-                templateUrl: 'views/ui-elements/CreateFlowChart.html',
+                templateUrl: 'views/pages/CreateFlowChart.html',
                 url: '/CreateFlowChart',
                 controller: 'ManageCtrl',
                 resolve: {
@@ -135,7 +135,7 @@ angular
                 }
             })
             .state('dashboard.ViewFlowChart', {
-                templateUrl: 'views/ui-elements/ViewFlowChart.html',
+                templateUrl: 'views/pages/ViewFlowChart.html',
                 url: '/ViewFlowChart',
                 controller: 'ManageCtrl',
                 resolve: {
@@ -156,7 +156,7 @@ angular
                 }
             })
             .state('dashboard.ModifyFlowChart', {
-                templateUrl: 'views/ui-elements/ModifyFlowChart.html',
+                templateUrl: 'views/pages/ModifyFlowChart.html',
                 url: '/ModifyFlowChart',
                 controller: 'ManageCtrl',
                 resolve: {
@@ -177,7 +177,7 @@ angular
                 }
             })
             .state('dashboard.DeleteFlowChart', {
-                templateUrl: 'views/ui-elements/DeleteFlowChart.html',
+                templateUrl: 'views/pages/DeleteFlowChart.html',
                 url: '/DeleteFlowChart',
                 controller: 'ManageCtrl',
                 resolve: {
@@ -198,7 +198,7 @@ angular
                 }
             })
             .state('dashboard.CreateUsability', {
-                templateUrl: 'views/ui-elements/CreateUsability.html',
+                templateUrl: 'views/pages/CreateUsability.html',
                 url: '/CreateUsability',
                 controller: 'ManageCtrl',
                 resolve: {
@@ -218,7 +218,7 @@ angular
                 }
             })
             .state('dashboard.ViewPresentations', {
-                templateUrl: 'views/ui-elements/ViewPresentations.html',
+                templateUrl: 'views/pages/ViewPresentations.html',
                 url: '/ViewPresentation',
                 resolve: {
                     loadMyDirectives: function ($ocLazyLoad) {
