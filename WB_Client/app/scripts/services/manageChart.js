@@ -46,14 +46,14 @@ function manageChart($location, $rootScope, $http, config, $state) {
 
     // ***** Modify the flowchart using this function *****
 
-    function mc(model) {
-        var flowID = $scope.itemSelected.flowChartID
+    function mc(model, itemSelected) {
+        var flowID = itemSelected.flowChartID
         var data = JSON.parse(model.toJson());
         var flowchartID = "flowChartID"
         data[flowchartID] = flowID;
         var flowchartName = "flowchartName"
         var Email = "Email";
-        data[flowchartName] = $scope.itemSelected.flowchartName;
+        data[flowchartName] = itemSelected.flowchartName;
         data[Email] = $rootScope.globals.currentUser.Email;
 
         $http({

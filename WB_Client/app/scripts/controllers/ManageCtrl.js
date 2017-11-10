@@ -3,13 +3,38 @@
         $state, manageChart) {
         $scope.model = new go.GraphLinksModel(
             [
-                { "category": "Start", "text": "Start", "key": -1, "loc": "-317 -502" },
-                { "text": "Process", "figure": "Rectangle", "tetx": "Process", "key": -2, "loc": "-317 -418" },
-                { "text": "???", "figure": "Diamond", "key": -3, "loc": "-317 -273" },
-                // { "category": "Connector", "text": "0", "key": -7, "loc": "-200 -270" },
-                { "category": "Input", "figure": "Input", "text": "Input", "key": -4, "loc": "-317 -349" },
-                { "category": "End", "text": "End", "key": -6, "loc": "-315 -164" },
-
+                {
+                    "category": "Start",
+                    "text": "Start",
+                    "key": -1,
+                    "loc": "-317 -502"
+                },
+                { 
+                    "text": "Process", 
+                    "figure": "Rectangle", 
+                    "tetx": "Process", 
+                    "key": -2, 
+                    "loc": "-317 -418" 
+                },
+                { 
+                    "text": "???", 
+                    "figure": "Diamond", 
+                    "key": -3, 
+                    "loc": "-317 -273" 
+                },
+                { 
+                    "category": "Input", 
+                    "figure": "Input", 
+                    "text": "Input", 
+                    "key": -4, 
+                    "loc": "-317 -349" 
+                },
+                { 
+                    "category": "End", 
+                    "text": "End", 
+                    "key": -6, 
+                    "loc": "-315 -164" 
+                },
             ],
             [
                 { "from": -1, "to": -2, "fromPort": "B", "toPort": "T", "points": [-317, -476.79069767441854, -317, -466.79069767441854, -317, -455.5453488372093, -317, -455.5453488372093, -317, -444.3, -317, -434.3] },
@@ -21,7 +46,8 @@
         );
 
         $scope.slideshow = function () {
-            slideshowService.getSlideshowJSON('00d86a61-e963-48cc-8e59-acf10a9cb213', '-1_-2_-4_-3_-6').then(function (res) {
+            slideshowService.getSlideshowJSON('00d86a61-e963-48cc-8e59-acf10a9cb213', '-1_-2_-4_-3_-6').
+            then(function (res) {
                 var data = res;
             });
         }
@@ -68,7 +94,7 @@
         };
 
         $scope.UpdateFlowChart = function () {
-            manageChart.mc($scope.model)
+            manageChart.mc($scope.model, $scope.itemSelected)
         };
 
         $scope.DeleteFlowChart = function () {
@@ -571,18 +597,21 @@ function listFiles($scope) {
 
     }
 }
+
+// ***** To Append the images on the flowchart *****
 function appendPre(message) {
     var pre = document.getElementById('content');
     var textContent = document.createTextNode(message + '\n');
     pre.appendChild(textContent);
 }
 
-
-
 $('#ddlJsonList').change(function () {
     $("#divOuterBodder").css("display", "");
     printFile($('#ddlJsonList').val());
 });
+
+
+// ***** Function to print the file *****
 function printFile(fileId, $scope) {
     var accessToken = gapi.auth2.getAuthInstance().currentUser.get().getAuthResponse().access_token;
     var xhr = new XMLHttpRequest();
@@ -600,12 +629,16 @@ function printFile(fileId, $scope) {
 // To load the list of files
 var divStringIL;
 
+
+// ***** This is to load the images when the modal opens *****
 function imagesshow() {
     $('#uploadFile').hide();
     $('#details').hide();
     $('#im1').hide();
 }
 
+
+// ***** This is to load the images when the modal opens *****
 function loadImagesAsList() {
     $('#uploadFile').hide();
     $('#im1').hide();
@@ -642,6 +675,8 @@ function loadImagesAsList() {
 }
 
 var xmlHttpReqQueueIL = new Array();
+
+//***** Function to call the xhrl *****
 function requestXHRLI(url, accessToken, assetURL) {
     var xmlHttpReq;
 
@@ -672,6 +707,8 @@ function requestXHRLI(url, accessToken, assetURL) {
     }
 }
 
+
+//*****This is used to show the images on the flowchart right click context*****
 function ShowDivs() {
     $('#uploadFile').show();
     $('#details').hide();
