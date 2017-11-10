@@ -15,7 +15,7 @@ function manageChart($location, $rootScope, $http, config, $state) {
 
 
 
-    // ***** Save the flowchart using this function *****
+    // ***** Save the flowchart *****
     
     function sc(model) {
         var myGuid = GUID();
@@ -44,7 +44,7 @@ function manageChart($location, $rootScope, $http, config, $state) {
         });
     }
 
-    // ***** Modify the flowchart using this function *****
+    // ***** Modify the flowchart *****
 
     function mc(model, itemSelected) {
         var flowID = itemSelected.flowChartID
@@ -71,7 +71,7 @@ function manageChart($location, $rootScope, $http, config, $state) {
         });
     }
 
-    //***** Delete the flowchart using this flowchart *****
+    //***** Delete the flowchart *****
 
     function dc(model,item) {
         var flowID = item.flowChartID

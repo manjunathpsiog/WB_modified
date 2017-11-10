@@ -20,6 +20,7 @@
                 }).then(function successCallback(response) {
                     scope.items = response.data.flowchart;
                 }, function errorCallback(response) {
+                    $scope.isSe = true;
                     console.log(response.statusText);
                 });
 
